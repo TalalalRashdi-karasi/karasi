@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "10BZvyyTd6yUEc5KyriZ/fixjdBn3JQeJZnC0/eRYnQmElUnHU7OS2zwAsfjNPL/5jdyJVsmMTdWX5ECxCfhkw==",
+  "dgSpecHash": "q2VGCFtNgqi0n6v+zbf2hVejeobdqAANClsopF8kbfsRtYPZk8mxs0+vhKPcnsf77L4vHo6LcUWfpyE13WIkZw==",
   "success": true,
-  "projectFilePath": "/Users/saidal-souti/Documents/repos/ticketApp/Shubak_Website.csproj",
+  "projectFilePath": "/Users/saidal-souti/Documents/repos/ticketApp/src/Shubak_Website.csproj",
   "expectedPackageFiles": [
     "/Users/saidal-souti/.nuget/packages/azure.core/1.24.0/azure.core.1.24.0.nupkg.sha512",
     "/Users/saidal-souti/.nuget/packages/azure.identity/1.6.0/azure.identity.1.6.0.nupkg.sha512",
