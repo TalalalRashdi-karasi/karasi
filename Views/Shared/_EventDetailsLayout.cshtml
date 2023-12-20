@@ -1,0 +1,189 @@
+﻿
+@using System.Security.Claims
+@{
+    UserModel userProfile = null;
+    var user = Context.User.Claims.FirstOrDefault(x => x.Type.Equals("UserProfile", StringComparison.OrdinalIgnoreCase))?.Value;
+    if (user != null)
+    {
+        userProfile = new();
+        userProfile = Newtonsoft.Json.JsonConvert.DeserializeObject<UserModel>(user);
+        ViewData["UserProfile"] = userProfile;
+        
+    }
+
+   
+}
+
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Shubak</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Shubak_Website.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/iconsax/style.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/bootstrap-icons/bootstrap-icons.css"/>
+</head>
+<body>
+   
+    <header>
+        <div class=" m-1 p-4">
+            <div class="row">
+
+                <div class="col-6">
+                <h5>EVENTTICKET</h5>
+                </div>
+                <div class="col-6">
+                    
+                        <div class="ms-auto">
+
+
+                        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                        <div class="offcanvas-header">
+                            <h1 id="offcanvasRightLabel">القائمة الرئيسية </h1>
+                            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+
+                            @if(userProfile != null)
+                            {
+                                <ul class="masterMenu">
+                                    <li>
+                                        <a asp-area="" value="1" asp-controller="Admin" asp-action="index">
+                                            <button  class="" ><i class="isax isax-ticket-2 "></i> | إنشاء تذاكر للفعالية</button>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a asp-area="" asp-controller="Account" asp-action="Logout">
+                                            <button  class="" ><i class="isax isax-ticket-2 "></i> | تسجيل خروج</button>
+                                        </a>
+                                    </li>
+
+
+                                </ul>
+
+                            }else{
+
+                                <li>
+                                    <a asp-area="" asp-controller="account" asp-action="register">
+                                        <button class="" ><i class="isax isax-ticket-2 "></i> | إنشاء حساب جديد</button>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a asp-area="" asp-controller="Account" asp-action="Login">
+                                        <button class="" ><i class="isax isax-ticket-2 "></i> |  تسجيل دخول</button>
+                                    </a>
+                                </li>
+
+                            }
+
+                            <hr>
+
+
+                            <a asp-area="" asp-controller="Account" asp-action="Logout">
+                                <button  class="glass-button w-100" ><i class="isax isax-ticket-2 "></i> | Logout</button>
+                            </a>
+                            
+                        </div>
+                        </div>
+                           
+                        </div>
+                        @if(userProfile != null)
+                        {
+
+                           <div class="ms-auto text-end">
+                            <a class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">مرحبا يا,</a>
+
+                            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                              <div class="offcanvas-header">
+                                <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                              </div>
+                              <div class="offcanvas-body">
+                                ...
+                              </div>
+                            </div>
+                           
+                        
+                      
+                        </div>
+                        }
+                        else{
+                            <div class="col-auto text-end">
+                                <a class="loginLink"  asp-area="" asp-controller="Account" asp-action="Login">
+                                <h5>مرحبا ، سجل دخولك</h5>
+                            </a>
+
+                            <a class="registerLink"  asp-area="" asp-controller="account" asp-action="register">
+                                <h6 >او انشئ حساب جديد</h6>
+                            </a>
+                            </div>
+                            
+                        }
+
+
+                   
+                </div>
+
+                
+                
+            </div>
+            <!-- <div class="row mt-5">
+                <div class="col-lg-lg mt-4 my-1">
+                    <h3 class="">Recommended for you</h3>
+                </div>
+        
+                <div id="slider-container" class="slider">
+                    <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1511593358241-7eea1f3c84e5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=20" alt="">
+                    </div>
+                    <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1560259324-12a044e67c34?ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=20" alt="">
+                    </div>
+                    <div class="slide">
+                            <img src="images.unsplash.com/photo-1532787799187-93655e51d472?ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=20" alt="">
+                    </div>
+                    <div onclick="prev()" class="control-prev-btn">
+                         <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <div onclick="next()" class="control-next-btn">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+                
+                
+        
+
+
+            </div> -->
+            </section>
+        
+        
+        </div>
+
+       
+
+</header>
+    <div class="container-fluid">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer footer-style   text-muted">
+        <div class="container">
+            &copy; 2023 - Shubak_Website - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

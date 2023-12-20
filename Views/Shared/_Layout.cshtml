@@ -1,0 +1,175 @@
+﻿@using System.Security.Claims
+@{
+UserModel userProfile = null;
+var user = Context.User.Claims.FirstOrDefault(x => x.Type.Equals("UserProfile",
+StringComparison.OrdinalIgnoreCase))?.Value;
+if (user != null)
+{
+userProfile = new();
+userProfile = Newtonsoft.Json.JsonConvert.DeserializeObject<UserModel>(user);
+    ViewData["UserProfile"] = userProfile;
+
+    }
+
+    <!-- var UserTicket =  ViewData["userCardTicket"] as IEnumerable<TicketModel>; -->
+    }
+    <!DOCTYPE html>
+    <html lang="ar" dir="rtl">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"] - Shubak</title>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/Shubak_Website.styles.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/lib/iconsax/style.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/lib/bootstrap-icons/bootstrap-icons.css" />
+
+        <meta name="google-site-verification" content="kJj2l_am0CgWHAAvods0AA_dGJ7tmKF4AbvNAnoPuV4" />
+
+        @{
+
+        var Token = ViewData["UserToken"];
+        
+        
+        <div class="container-fluid">
+            <div class="d-flex p-2 bd-highlight mt-2 bg-light border-raduis">
+
+
+                    <div class="col-auto text-end">
+                        @if( Token != null)
+                        {
+                            <a class="loginLink" asp-area="" asp-controller="Account" asp-action="Login">
+                                <h5>مرحبا ، @ViewData["ShowFirstName"]</h5>  
+                            </a>
+
+                            <a class="registerLink" asp-area="" asp-controller="Account" asp-action="Logout">
+                                <h6>تسجيل خروج</h6>
+                            </a>
+                        }
+                        else{
+
+                            <a class="loginLink" asp-area="" asp-controller="Account" asp-action="Login">
+                                <h5>تسجيل الدخول</h5>  
+                            </a>
+                        <a class="registerLink" asp-area="" asp-controller="Account" asp-action="Register">
+                            <h6>او انشئ حساب جديد</h6>
+                        </a>
+
+                          }
+                    </div>
+
+                  
+
+
+                
+                <div class="me-auto p-2 bd-highlight">
+                    <a asp-controller="Home" asp-action="index">
+                        <img width="130" src="/assets/Shubak-logo.svg">
+                    </a>
+                  
+                </div>
+              </div>
+        </div>
+
+    }
+    
+    </head>
+
+
+    <body>
+
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
+        aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h1 id="offcanvasRightLabel">القائمة الرئيسية </h1>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+
+            @if(userProfile != null)
+            {
+            <ul class="masterMenu">
+                <li>
+                    <a asp-area="" value="1" asp-controller="Admin" asp-action="index">
+                        <button class="btn btn-light btn-lg w-100"><i class="isax isax-ticket-2 "></i> | إنشاء تذاكر
+                            للفعالية</button>
+                    </a>
+                </li>
+
+            </ul>
+
+            }else{
+
+            <li>
+                <a asp-area="" asp-controller="account" asp-action="register">
+                    <button class=""><i class="isax isax-ticket-2 "></i> | إنشاء حساب
+                        جديد</button>
+                </a>
+            </li>
+
+            <li>
+                <a asp-area="" asp-controller="Account" asp-action="Login">
+                    <button class=""><i class="isax isax-ticket-2 "></i> | تسجيل دخول</button>
+                </a>
+            </li>
+
+            }
+
+            <hr>
+
+            @if(userProfile != null)
+            {
+                <a asp-area="" asp-controller="Account" asp-action="Logout">
+                    <button class="btn btn-dark btn-lg w-100"><i class="isax isax-ticket-2 "></i> |
+                        تسجيل الخروج</button>
+                </a>
+            }
+
+
+        </div>
+    </div>
+        <div class="container-fluid">
+            <main role="main">
+                @RenderBody()
+            </main>
+        </div>
+
+        <footer class="border-top footer mt-5  footer-style  ">
+
+
+            <div class="container">
+
+                <div class="d-flex">
+
+                    <div>
+                        <a style="text-decoration: none;" class="d-inline-block text-white mx-4 " asp-area="" asp-controller="Home" asp-action="Privacy">سياسية الاستخدام</a>
+                        <a style="text-decoration: none;" class="d-inline-block text-white" asp-area="" asp-controller="Home" asp-action="Privacy">من نحن ؟</a>
+                    </div>
+
+                    <div class="me-auto">
+                        <h6>&copy; 2023 - Shubak Website -</h6>
+                    </div>
+
+                </div>
+                
+
+              
+            </div>
+        </footer>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        @await RenderSectionAsync("Scripts", required: false)
+    </body>
+
+    </html>
+
+
+    <script>
+        function redirectOnClick() {
+            document.location = 'Admin/index';
+        }
+    </script>

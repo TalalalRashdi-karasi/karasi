@@ -1,0 +1,161 @@
+@model IEnumerable<EventViewModel>;
+@{
+
+  var evID =  ViewData["eventID"];
+}
+
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+
+
+
+
+ 
+<div class="card mt-3">
+
+  <form asp-action="UpdateEvents" asp-controler="Admin" enctype="multipart/form-data" method="post">
+  <div class="card-body">
+    <div class="d-flex  bd-highlight mb-3">
+      <div>
+        
+      </div>
+      <div class="me-auto p-2 bd-highlight">
+        <button type="submit" class="btn btn-primary">تحديث </button>
+          <button type="submit " class="btn btn-light">تعطيل</button>
+        
+     
+            <input hidden name="Id" value="@evID">
+        
+      </div>
+    </div>
+    <hr>
+
+    @foreach(var eventData in Model){
+
+      if( @eventData.Id ==  ( evID as int? )){
+    
+            <div class="row  g-2">
+            <div class="mb-3">
+              <label for="formFile" class="form-label">الإعلان التسويقي للفعالية </label>
+              <img src="@eventData.EvImage" width="100%" height="300">
+              <input value="@eventData.EvImage" class="form-control" type="file" name="EvImage">
+            
+              
+            </div>
+            <div class="row g-2">
+              <div class="col-9">
+                <div class="form-floating  mb-3">
+                  <input type="text" value="@eventData.EventName" name="EventName" class="form-control form-control-lg" id="floatingInput" placeholder="Event Name">
+                  <label for="floatingInput">الاسم</label>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="form-floating">
+                  <select name="EventType" class="form-select " id="floatingSelectGrid" aria-label="Floating label select example">
+                    <option value="@eventData.EventType">@eventData.EventType</option>
+                    <option value="1">فعالية فنية</option>
+                    <option value="2">فعالية رياضية</option>
+                    <option value="3">فعالية علمية</option>
+                    <option value="4">فعالية ترفيهية</option>
+                    <option value="5">ورشة عمل</option>
+                  </select>
+                  <label for="floatingSelectGrid">ما هو مجال الفعالية ؟</label>
+                </div>
+              </div>
+            
+            </div>
+              <div class="form-floating mb-3">
+                  <textarea name="AboutEvent"  type="text" class="form-control " placeholder="اكتب عن الفعالية بشكل عام" id="floatingTextarea2" style="height: 200px">
+                  @eventData.AboutEvent
+                  </textarea>
+                  <label for="floatingTextarea2">نبذه توضحية عن الفعالية </label>
+                </div>
+            </div>
+            
+            <div class="row mb-3 g-2">
+              <div class="col-md">
+                <div class="form-floating">
+                  <input name="SeatCount" value="@eventData.SeatCount" type="number" class="form-control " id="floatingInputGrid" placeholder="عدد المقاعد" >
+                  <label for="floatingInputGrid">كم عدد المقاعد المتاحة ؟</label>
+                </div>
+              </div>
+              
+              <div class="col-md">
+                <div class="form-floating">
+                  <select name="Target" class="form-select " id="floatingSelectGrid" aria-label="Floating label select example">
+                    <option value="@eventData.Target">@eventData.Target</option>
+                    <option value="1">نساء</option>
+                    <option value="2">رجال</option>
+                    <option value="3">الجميع </option>
+                  </select>
+                  <label for="floatingSelectGrid">من الفيئة المستدفه ؟</label>
+                </div>
+              </div>
+            </div>
+            
+            <div class="row mb-3 g-2">
+              <div class="col-md">
+                  <div class="form-floating">
+                      <input name="EventPlace" type="text" value="@eventData.EventPlace"  class="form-control" id="floatingInput" placeholder="مكان الفعالية">
+                      <label for="floatingInput">اين ستقام الفعالية ؟</label>
+                  </div>
+              </div>
+              <div class="col-md">
+                  <div class="form-floating">
+                      <input name="EventPrice" type="text" value="@eventData.EventPrice"  class="form-control  form-control-lg" id="floatingInput" placeholder="مبلغ المشاركة">
+                      <label for="floatingInput">تكلفة المشاركة في الفعالية</label>
+                  </div>
+              </div>
+            </div>
+            
+            <div class="row mb-3 g-2">
+              <div class="col-md">
+                  <div class="form-floating mb-3">
+                      <input type="datetime" value="@eventData.EventDate" name="EventDate" class="form-control  form-control-lg" id="floatingInput" placeholder="تاريخ الفعالية">
+                      <label for="floatingInput">تاريخ الفعالية</label>
+                  </div>
+              </div>
+              <div class="col-md">
+                  <div class="form-floating mb-3">
+                      <input type="datetime" value="@eventData.EventTime" name="EventTime" class="form-control  form-control-lg" id="floatingInput" placeholder="توقيت الفعالية">
+                      <label for="floatingInput">توقيت الفعالية</label>
+                  </div>
+              </div>
+            </div>
+            
+          }
+        }
+        
+            
+            <div id="successMessage" style="display: none;">
+            <label>Form submitted successfully!</label>
+            </div>
+
+
+    
+    
+
+
+
+
+
+  </div>
+  </form> 
+
+
+
+
+</div>
+
+
+
+</html>
+
+
+
+
+
+
+
+

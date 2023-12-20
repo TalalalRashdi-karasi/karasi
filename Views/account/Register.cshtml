@@ -1,0 +1,139 @@
+
+@{
+    ViewData["Title"] = "تسجيل حساب جديد";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="contaner">
+
+
+    <div class="row mt-4 justify-content-center">
+        <div class="col-lg-6">
+            <h1 class="title-style">لن تنفذ عنك التذاكر بعد اليوم</h1>
+            <h5 class="mb-5">انشئ حسابك الأن مجاناَ</h5>
+            <form  id="SignUpForm"  enctype="multipart/form-data" >
+
+                <div class="col mt-3">
+                    <label style="width:100%;">
+                        <input class="radio-input" id="UserType" value="true" type="radio" name="UserType">
+                        <span class="radio-tile">
+                            <span class="radio-icon">
+                            
+                            </span>
+                            <h5 class="radio-label">حساب مؤسسي</h5>
+                            <h6> إضافة  و إدارة الفعاليات</h6>
+                        </span>
+                    </label>
+                </div>
+
+                <div class="col mt-3 mb-3">
+                    <label style="width:100%;">
+                        <input class="radio-input" id="UserType" value="false" type="radio" name="UserType">
+                        <span class="radio-tile">
+                            <span class="radio-icon">
+                            
+                            </span>
+                            <h5 class="radio-label">حساب فردي</h5>
+                            <h6>تستمتع بكل مميزات الموقع لكنك لاتستطيع إضافة فعالية</h6>
+                        </span>
+                    </label>
+                </div>
+
+                <div class="form-floating mb-3">
+                
+                    <input type="text" name="Firstname" class="form-control form-control-lg" id="floatingInput"
+                        placeholder="ahmed">
+                    <label for="Firstname">اسمك </label>
+                </div>
+
+                <div class="form-floating mb-3">
+                          <select name="Sex" class="form-select " id="floatingSelectGrid" aria-label="Floating label select example">
+                            <option value="1">ذكر</option>
+                            <option value="2">انثى</option>
+                          </select>
+                          <label for="floatingSelectGrid">الجنس</label>
+                </div>
+                
+                <div class="form-floating mb-3">
+                
+                    <input type="email" name="Email" class="form-control form-control-lg" id="floatingInput"
+                        placeholder="name@example.com">
+                    <label for="floatingInput">بريدك الإلكتروني</label>
+                </div>
+                <div class="form-floating">
+                    <input type="password" name="Password" class="form-control form-control-lg" id="floatingPassword"
+                        placeholder="Password">
+                    <label for="Password">الرقم السري</label>
+                </div>
+
+                <h4 class="mt-4 mb-4">اي نوع من الفعاليات تفضل ؟  </h4>
+                <h6>حدد واحدة او ربما الكل !</h6>
+
+                    <div class="col mt-3">
+                        <label style="width:100%;">
+                            <input class="radio-input"  type="checkbox" id="Artisticevents" value="true"  name="Artisticevents">
+                                <span class="radio-tile">
+                                    <span class="radio-icon">
+                                        
+                                    </span>
+                                    <h5 class="radio-label"> الفعاليات الفنية</h5>
+                                </span>
+                        </label>
+                    </div>
+
+                    <div class="col mt-3">
+                        <label style="width:100%;">
+                            <input id="Sportsevents" value="true" class="radio-input" type="checkbox" name="Sportsevents">
+                            <span class="radio-tile">
+                                <span class="radio-icon">
+                                  
+                                </span>
+                                <h5 class="radio-label"> الفعاليات الرياضية</h5>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="col mt-3">
+                        <label style="width:100%;">
+                            <input class="radio-input" id="Scientificevents" value="true" type="checkbox" name="Scientificevents">
+                            <span class="radio-tile">
+                                <span class="radio-icon">
+                                
+                                </span>
+                                <h5 class="radio-label"> الفعاليات العلمية</h5>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="col mt-3">
+                        <label style="width:100%;">
+                            <input class="radio-input" id="Entertainmentevents" value="true" type="checkbox" name="Entertainmentevents">
+                            <span class="radio-tile">
+                                <span class="radio-icon">
+                                
+                                </span>
+                                <h5 class="radio-label"> الفعاليات الترفيهية</h5>
+                            </span>
+                        </label>
+                    </div>
+
+            
+                
+                <button class="btn btn-lg btn-dark mt-4" type="submit">انشئ حسابي</button>
+                <button class="btn btn-lg  mt-4" type="reset">تصفية الحقول</button>
+
+                <div id="successMessage" class="d-none">
+                    <label>Form submitted successfully!</label>
+                </div>
+            </form>
+
+
+            <hr/>
+        </div>
+    </div>
+
+</div>
+
+
+

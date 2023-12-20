@@ -1,0 +1,169 @@
+@{
+
+  Layout = "~/Views/Shared/_AdminLayout.cshtml";
+ }
+
+@model Shubak_Website.Models.EventViewModel
+
+
+
+@using System.Security.Claims
+@{
+    UserModel userProfile = null;
+    var user = Context.User.Claims.FirstOrDefault(x => x.Type.Equals("UserProfile", StringComparison.OrdinalIgnoreCase))?.Value;
+    if (user != null)
+    {
+        userProfile = new();
+        userProfile = Newtonsoft.Json.JsonConvert.DeserializeObject<UserModel>(user);
+
+    }
+    var UserToken = ViewData["UserTokenForAdminPage"];
+}
+
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+
+
+
+<div class="alert alert-success mt-3" role="alert">
+
+  <div class="d-flex">
+    <div>
+      <h6> تم إضافة الفعالية بنجاح</h6>
+      <h5>اسم الفعالية كامل هنا</h5>
+    </div>
+
+    <div class="me-auto">
+      <button class="btn btn-light">التفاصيل</button>
+    </div>
+  </div>
+
+</div>
+
+<div class="card mt-3">
+  <div class="card-body">
+      <h3 class="card-title mt-3">
+          إضافة فعالية جديدة
+      </h3>
+      <hr>
+     
+
+      <form class=" justify-content-end" id="AddNewEvent" action="/Admin/AddNewEvent" enctype="multipart/form-data" method="post">
+
+        <input type="text" value="@UserToken" hidden name="UserId">
+        <div class="row  g-2">
+        <div class="mb-3">
+          <label for="formFile" class="form-label">الإعلان التسويقي للفعالية </label>
+          <input  class="form-control" type="file" name="EvImage">
+        
+          
+        </div>
+        <div class="row g-2">
+          <div class="col-9">
+            <div class="form-floating  mb-3">
+              <input type="text" name="EventName" class="form-control form-control-lg" id="floatingInput" placeholder="Event Name">
+              <label for="floatingInput">اسم الفعالية </label>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="form-floating">
+              <select name="EventType" class="form-select " id="floatingSelectGrid" aria-label="Floating label select example">
+                <option value="فعالية فنية">فعالية فنية</option>
+                <option value="فعالية رياضية">فعالية رياضية</option>
+                <option value="فعالية علمية">فعالية علمية</option>
+                <option value="فعالية ترفيهية">فعالية ترفيهية</option>
+                <option value="ورشة عمل">ورشة عمل</option>
+              </select>
+              <label for="floatingSelectGrid">ما هو مجال الفعالية ؟</label>
+            </div>
+          </div>
+        
+        </div>
+          <div class="form-floating mb-3">
+              <textarea name="AboutEvent" type="text" class="form-control " placeholder="اكتب عن الفعالية بشكل عام" id="floatingTextarea2" style="height: 200px"></textarea>
+              <label for="floatingTextarea2">نبذه توضحية عن الفعالية </label>
+            </div>
+        </div>
+        
+        <div class="row mb-3 g-2">
+          <div class="col-md">
+            <div class="form-floating">
+              <input name="SeatCount" type="number" class="form-control " id="floatingInputGrid" placeholder="عدد المقاعد" >
+              <label for="floatingInputGrid">كم عدد المقاعد المتاحة ؟</label>
+            </div>
+          </div>
+          
+          <div class="col-md">
+            <div class="form-floating">
+              <select name="Target" class="form-select " id="floatingSelectGrid" aria-label="Floating label select example">
+                <option value="1">نساء</option>
+                <option value="2">رجال</option>
+                <option value="3">الجميع </option>
+              </select>
+              <label for="floatingSelectGrid">من الفيئة المستدفه ؟</label>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row mb-3 g-2">
+          <div class="col-md">
+              <div class="form-floating">
+                  <input name="EventPlace" type="text"  class="form-control" id="floatingInput" placeholder="مكان الفعالية">
+                  <label for="floatingInput">اين ستقام الفعالية ؟</label>
+              </div>
+          </div>
+          <div class="col-md">
+              <div class="form-floating">
+                  <input name="EventPrice" type="text"  class="form-control  form-control-lg" id="floatingInput" placeholder="مبلغ المشاركة">
+                  <label for="floatingInput">تكلفة المشاركة في الفعالية</label>
+              </div>
+          </div>
+        </div>
+        
+        <div class="row mb-3 g-2">
+          <div class="col-md">
+              <div class="form-floating mb-3">
+                  <input type="date" name="EventDate" class="form-control  form-control-lg" id="floatingInput" placeholder="تاريخ الفعالية">
+                  <label for="floatingInput">تاريخ الفعالية</label>
+              </div>
+          </div>
+          <div class="col-md">
+              <div class="form-floating mb-3">
+                  <input type="time" name="EventTime" class="form-control  form-control-lg" id="floatingInput" placeholder="توقيت الفعالية">
+                  <label for="floatingInput">توقيت الفعالية</label>
+              </div>
+          </div>
+        </div>
+        
+
+        
+        
+        <div class="container-fluid p-0 m-0">
+         
+        
+              <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+                  <button type="submit" class="btn btn-dark btn-lg">إضافة الفعالية</button>
+                  <button type="reset" class="btn btn-light btn-lg " style="margin-right: 5px;">تفريغ الحقول</button>
+              </div>
+                      
+              
+        
+        </div>
+        
+        <div id="successMessage" style="display: none;">
+        <label>Form submitted successfully!</label>
+        </div>
+        </form>
+  </div>
+</div>
+
+
+
+</html>
+
+
+
+
+
+

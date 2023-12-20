@@ -1,0 +1,153 @@
+﻿
+@model Shubak_Website.Models.EventViewModel;
+
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+   }
+
+@using System.Security.Claims
+@{
+    UserModel userProfile = null;
+    var user = Context.User.Claims.FirstOrDefault(x => x.Type.Equals("UserProfile", StringComparison.OrdinalIgnoreCase))?.Value;
+    if (user != null)
+    {
+        userProfile = new();
+        userProfile = Newtonsoft.Json.JsonConvert.DeserializeObject<UserModel>(user);
+
+    }
+
+    ViewData["Title"] = "Home Page";
+
+var userToken = ViewData["UserToken"];
+var RemainingSeats = ViewData["RemainingSeats"];
+var SeatError = TempData["LargeNoOfSeat"];
+}
+
+        <div class="row">
+            <h3>@RemainingSeats | تبقت فقط</h3>
+            <div class="col-lg-8 text-end">
+
+                <div class="EventDetailsImage img-gradient thumbnail mt-4">
+                 
+
+                    <img src="@Model.EvImage" alt="Lights" style="width:100%" height="654.1">
+
+                    <div class="top-left">@Model.Target</div>
+                    <div class="top-right">@Model.EventType</div>
+                    <div class="bottom-right-title text-white">@Model.EventName</div>
+
+    
+                
+                </div>
+
+                <div class="mt-4">
+                    <h1>نبذه عن الفعالية</h1>
+                    <h5> @Model.AboutEvent</h5>
+                </div>
+              
+
+              <div class="row g-2">
+    
+    
+            </div>
+              </div>
+
+            <div class="mb-2 col-lg-4 mt-4">
+
+                <div class="TicketDetails  radius sticky-top p-4">
+                    <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="SubmitForm">
+                    
+                    <div class="d-flex">
+                        <div>
+                            <h1 class="color-white mb-4">تفاصيل التذكرة</h1>
+                        </div>
+
+                        <div class="me-auto">
+                           <h1><span class="badge bg-danger">@Model.EventPrice ر.ع</span></h1>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                        <div class="informationBox  p-2 mt-2">
+                            <i class="isax isax-clock"></i>  | <span> اسم الفعالية  </span> 
+                           
+                            <input class="form-control input-style text-end" name="EventName" ReadOnly="true" id="EventName" value="@Model.EventName" >
+                        </div>
+
+                        <div class="informationBox  p-2 mt-2">
+                            <i class="isax isax-clock"></i>  | <span> تاريخ الفعالية  </span> 
+                           
+    
+                            <input class="form-control input-style text-end"  type="datetime" name="EventDate" ReadOnly="true" id="EventDate" value="@Model.EventDate" >
+                        </div>
+
+                        <div class="informationBox text-end p-2 mt-2">
+                            <i class="isax isax-clock"></i>  | <span>  توقيت الفعالية  </span> 
+                           
+    
+                            <input class="form-control input-style text-end" type="datetime" name="EventTime" ReadOnly="true" id="EventTime" value="@Model.EventTime" >
+                        </div>
+                        <div class="informationBox text-end p-2 mt-2">
+                            <i class="isax isax-clock"></i>  | <span> مكان الفعالية  </span> 
+                           
+    
+                            <input class="form-control input-style text-end"  name="EventPlace" ReadOnly="true" id="EventPlace" value="@Model.EventPlace" >
+                        </div>
+
+                    <h5 class="color-white mt-4">نوع التذكرة</h5>
+        
+        
+                    <div class="TicketPrice mt-4 p-4">
+                        <div class="d-flex">
+        
+                            <div>
+                             <h4>تذكرة عادية</h4>
+                            </div>
+        
+                            <div class="me-auto">
+                                <input class="form-control input-style" name="TicketPrice" ReadOnly="true" id="TicketPrice" value="@Model.EventPrice" >
+    
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <div class="TicketCount mt-4 p-4">
+                        <div class="d-flex">
+        
+                            <div>
+                             <h4 class="color-white">حدد عدد التذاكر</h4>
+                            </div>
+        
+                            <div class="me-auto">
+                                <div class="number">
+                                    <span class="minus">-</span>
+                                    <input name="TicketCount"  id="TicketCount" type="text" value="1"/>
+                                    <span class="plus">+</span>
+                                </div>
+    
+                            </div>
+                        </div>
+                    </div>
+                    <h6 class="text-danger">@SeatError</h6>
+            
+                    <input type="text" hidden name="EventType" value="@Model.EventType">
+                    <input type="text" hidden name="UserId" value="@userToken">
+                    <input class="form-control" name="EventId" ReadOnly="true" id="EventId" value="@Model.Id" hidden> 
+                    <button type="submit" class="btn form-control btn-lg btn-PrimeColor mt-5">احصل على التذكرة</button>
+                    
+        
+                </form>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+    <div class="col-lg-4 ">
+
+    </div>

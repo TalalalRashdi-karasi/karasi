@@ -1,0 +1,128 @@
+
+  @model Tuple<IEnumerable<EventViewModel>, IEnumerable<TicketModel>>;
+@{
+
+  Layout = "~/Views/Shared/_AdminLayout.cshtml";
+ }
+ 
+
+@using System.Security.Claims
+@{
+    UserModel userProfile = null;
+    var user = Context.User.Claims.FirstOrDefault(x => x.Type.Equals("UserProfile", StringComparison.OrdinalIgnoreCase))?.Value;
+    if (user != null)
+    {
+        userProfile = new();
+        userProfile = Newtonsoft.Json.JsonConvert.DeserializeObject<UserModel>(user);
+
+    }
+
+   
+}
+
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+
+<div class="card mt-3">
+  <div class="card-body">
+      <h3 class="card-title mt-3">
+         قائمة المشتركين
+      </h3>
+      <hr>
+     
+      <div class="row">
+        <div class="col">
+          <select id="categoryFilter" class="form-select form-select-lg mb-3 " aria-label=".form-select-lg example">
+            @foreach(var eventList in Model.Item1){
+              <option value="@eventList.Id">@eventList.EventName</option>
+            }
+
+          </select>
+        </div>
+
+        <div class="col-auto text-start">
+          <button class="btn btn-dark btn-lg"><i class="isax isax-document-download ms-2 "></i>تصدير القائمة</button>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <table id="itemTable"  class="table">
+          <thead>
+            <tr>
+              <th scope="col">العدد</th>
+              <th scope="col">الأسم</th>
+              <th scope="col">الجنس</th>
+              <th scope="col">رقم الهاتف</th>
+              <th scope="col">عدد التذاكر</th>
+              <th scope="col">البريد الإلكتروني</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach(var memberList in Model.Item2){
+
+            
+            <tr data-category="@memberList.EventId">
+              <th scope="row">1</th>
+              <td>@memberList.FirstName</td>
+              <td>ذكر</td>
+              <td>949349393</td>
+              <td>@memberList.TicketCount</td>
+              <td>@memberList.Email</td>
+            </tr>
+          }
+          </tbody>
+        </table>
+      </div>
+
+
+
+
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">تعديل تفاصيل الفعالية</h5>
+ 
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
+        <button type="button" class="btn btn-primary">حفظ التعديلات</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Vertically centered modal -->
+<div class="modal fade" id="RemoveModel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="RemoveModel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">حذف الفعالية</h5>
+ 
+      </div>
+      <div class="modal-body">
+       هل تريد حذف الفالية نهائياً
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">لا</button>
+        <button type="button" class="btn btn-primary">نعم </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</html>
+

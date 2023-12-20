@@ -1,0 +1,64 @@
+﻿@{
+    ViewData["Title"] = "Event Details";
+}
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Shubak</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Shubak_Website.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/iconsax/style.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/bootstrap-icons/bootstrap-icons.css"/>
+</head>
+<body>
+   
+    <header>
+            <div class="m-1 p-4">
+                <div class="row">
+                   
+                        <div class="d-flex">
+
+                            <div class="SiteLogo">
+                                <h5>EVENTTICKET</h5>
+                            </div>
+                         
+                            <div class="ms-auto text-end">
+                                <a class="loginLink"  asp-area="" asp-controller="Account" asp-action="Login">
+                                <h5>مرحبا ، سجل دخولك</h5>
+                                </a>
+
+                                <a class="registerLink"  asp-area="" asp-controller="account" asp-action="register">
+                                <h6 >او انشئ حساب جديد</h6>
+                                </a>
+                            </div>
+                      </div>
+                </div>
+
+
+            </div>
+    </header>
+
+        <div class="container-fluid">
+            <main role="main">
+                @RenderBody()
+            </main>
+        </div>
+
+
+
+    <footer class="border-top footer mt-5  footer-style  text-muted">
+        <div class="container">
+            &copy; 2023 - Shubak_Website - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+   
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

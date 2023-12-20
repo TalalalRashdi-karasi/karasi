@@ -1,0 +1,165 @@
+﻿@model TicketModel;
+@using System.Security.Claims
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    UserModel userProfile = null;
+    var user = Context.User.Claims.FirstOrDefault(x => x.Type.Equals("UserProfile", StringComparison.OrdinalIgnoreCase))?.Value;
+    if (user != null)
+    {
+        userProfile = new();
+        userProfile = Newtonsoft.Json.JsonConvert.DeserializeObject<UserModel>(user);
+
+    }
+
+    ViewData["Title"] = "Ticket Details";
+   var UserID =  ViewData["UserToken"];
+   var UserNme = ViewData["ShowFirstName"];
+   var UserEmail = ViewData["UserEmil"];
+
+    
+}
+
+
+    <div class="container">
+        <div class="row">
+            <div class="mb-2 col-lg-4 mt-4">
+                <div class="TicketDetails p-4  radius ">
+                    <form method="post" enctype="multipart/form-data" asp-controller="Ticket" asp-action="SetNewTicket">
+                        <input value="@UserID" hidden name="UserId">
+                        <input value="@UserEmail" hidden name="Email">
+                        <input value="@UserNme" hidden name="Firstname" >
+                        <input value="@Model.EventId" hidden name="EventId">
+                        <input value="@Model.TicketCount" hidden name="TicketCount">
+                        <input value="@Model.TicketPrice" hidden name="TicketPrice">
+                    <div class="TicketTypeCard p-3">
+                        
+                    <div class="d-flex">
+                        <div class="me-auto">
+                       
+                          <h6 class="EventTypeStyle">@Model.EventType</h6>
+                            <input value="@Model.EventType" hidden   name="EventType">
+                          
+                            
+                        </div>
+
+                    </div>
+                    <h1 class="mt-3">@Model.EventName</h1>
+                    <input  hidden value="@Model.EventName" name="EventName">
+
+                </div>
+                        <div class="informationBox  p-2 mt-2">
+                            <i class="isax isax-clock"></i>  | <span> تاريخ الفعالية  </span> 
+                           
+        
+                            <input class="form-control input-style text-end"  type="datetime" name="EventDate" ReadOnly="true" id="EventDate" value="@Model.EventDate" >
+                        </div>
+        
+                        <div class="informationBox text-end p-2 mt-2">
+                            <i class="isax isax-clock"></i>  | <span>  توقيت الفعالية  </span> 
+                           
+        
+                            <input class="form-control input-style text-end" type="datetime" name="EventTime" ReadOnly="true" id="EventTime" value="@Model.EventTime" >
+                        </div>
+                        <div class="informationBox text-end p-2 mt-2">
+                            <i class="isax isax-clock"></i>  | <span> مكان الفعالية  </span> 
+                           
+        
+                            <input class="form-control input-style text-end"  name="EventPlace" ReadOnly="true" id="EventPlace" value="@Model.EventPlace" >
+                        </div>
+        
+                    <h6 class="color-white mt-4">نوع التذكرة</h6>
+        
+                    <div class="TicketPrice mt-4 p-4">
+                        <div class="d-flex">
+        
+                            <div>
+                             <h4>تذكرة عادية</h4>
+                            </div>
+        
+                        </div>
+                    </div>
+                    <h5>@ViewBag.LargeNoOfSeat</h5>
+                    <div class="TicketCount mt-4 p-4">
+                        <div class="d-flex">
+        
+                            <div>
+                             <h4>عدد التذاكر </h4>
+                            </div>
+        
+                            <div class="me-auto">
+                                <h4>@Model.TicketCount</h4>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <button type="submit" class="btn form-control btn-lg btn-PrimeColor mt-5"> 30 ر.ع | ادفع الأن  </button>
+    
+                </form>
+                </div>
+            </div>
+        
+            <div class="mb-2 col-lg-8 mt-4">
+                <div class="TicketDetails  radius  p-4">
+                  <h2>بيانات المستخدم</h2>
+                  <hr>
+    
+                    <h5>طلال الراشدي</h5>
+                    <h6>dr.usb3@gmail.com</h6>
+    
+                </div>
+                <button type="submit" class="btn form-control btn-lg btn-PrimeColor mt-5"> 30 ر.ع | ادفع الأن  </button>
+    
+
+                <div class="mb-2 colmt-4">
+                    <div class="TicketDetails  radius  p-4">
+                      <h2>بيانات المستخدم</h2>
+                      <hr>
+        
+                      <div class="form-floating mb-3">
+                            
+                        <input type="text" name="Firstname" class="form-control form-control-lg" id="floatingInput"
+                            placeholder="ahmed">
+                        <label for="Firstname">الاسم</label>
+                    </div>
+                    
+                    <div class="form-floating mb-3">
+                    
+                        <input type="email" name="Email" class="form-control form-control-lg" id="floatingInput"
+                            placeholder="name@example.com">
+                        <label for="floatingInput"> البريد الإلكتروني</label>
+                    </div>
+                    <div class="form-floating mb-5">
+                        <input type="password" name="Password" class="form-control form-control-lg" id="floatingPassword"
+                            placeholder="Password">
+                        <label for="Password">الرقم السري</label>
+                    </div>
+        
+                    <hr>
+        
+                
+                    <h5>اذا كان لديك حساب <a href="#">قم بتسجيل الدخول</a></h5>
+        
+                    </div>
+                    <button type="submit" class="btn form-control btn-lg btn-PrimeColor mt-5"> 30 ر.ع | ادفع الأن  </button>
+        
+        
+                </div>
+            
+    
+            </div>
+        
+
+        
+
+        
+        </div>
+    </div>
+    
+
+
+
+
+
+
+

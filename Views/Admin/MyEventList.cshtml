@@ -1,0 +1,100 @@
+@model IEnumerable<EventViewModel>;
+@{
+
+  Layout = "~/Views/Shared/_AdminLayout.cshtml";
+ }
+
+
+ @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@using System.Security.Claims
+@{
+    UserModel userProfile = null;
+    var user = Context.User.Claims.FirstOrDefault(x => x.Type.Equals("UserProfile", StringComparison.OrdinalIgnoreCase))?.Value;
+    if (user != null)
+    {
+        userProfile = new();
+        userProfile = Newtonsoft.Json.JsonConvert.DeserializeObject<UserModel>(user);
+
+    }
+
+    var UserID = ViewData["UserTokenForAdminPage"];
+     
+}
+
+<!DOCTYPE html>
+
+<html lang="ar" dir="rtl">
+
+<div class="row">
+<div class="col-lg-4">
+  <div class="card mt-3">
+    <div class="card-body">
+        <h3 class="card-title mt-3">
+           قائمة الفعاليات
+        </h3>
+        <hr>
+       <h1>@UserID</h1>
+        <input value="@UserID" name="UID">
+  
+        @foreach(var eventList in Model){
+
+
+
+
+
+
+     
+       
+        <div class="card mb-3 p-2 w-100" >
+          <div class="row g-0">
+  
+            <div class="col">
+              <div class="card-body">
+            <div class="row">
+              <div class="col-auto">
+                <img src="/assets/qr.png" width="100">
+              </div>
+              <div class="col">
+                <input type="text" hidden id="eventId" value="@eventList.Id" />
+                <button  class="loadPartialViewButton btn-light btn " data-eventid="@eventList.Id">@eventList.EventName</button>
+                
+                <!-- <h4>@Html.ActionLink(@eventList.EventName, "GetEventById", "Admin", new { EvID = @eventList.Id }, null)</h4> -->
+              </div>
+              <div class="col text-start">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  <div class="isax isax-arrow-left"></div>
+                 
+                </div>
+              </div>
+  
+            </div>
+                </div>
+
+            </div>
+  
+          </div>
+        </div>
+  
+
+  
+  
+      }
+  
+  
+    </div>
+  </div>
+  
+</div>
+
+<div class="col-lg-8">
+
+
+  <div id="partialViewContainer"></div>
+
+</div>
+</div>
+
+</html>
+
+

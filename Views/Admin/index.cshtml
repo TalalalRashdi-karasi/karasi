@@ -1,0 +1,86 @@
+
+
+@{
+
+ Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+
+
+    <div class="col-sm-12 my-auto">
+        <i class="isax isax-setting"></i>
+        <h1>مرحبا بك في لوحة التحكم</h1>
+        
+    </div>
+
+
+    
+    
+</div>
+
+
+
+<!-- <div class="contaner p-5">
+<div class="row bg-light manage-bar p-3">
+  <h4 class="mb-4">Manage events easily</h4>  
+<div class="col-auto">
+    <div class="ad-card p-4">
+        <img src="/assets/icons/AddEvent-icon.svg" width="50px">
+        <h4>Add new event</h4>
+    </div>
+</div>
+
+
+<div class="col-auto">
+    <div class="ad-card p-4">
+        <img src="/assets/icons/AttendanceManagement-icon.svg" width="50px">
+        <h4>Attendance management</h4>
+    </div>
+    </div>
+
+</div>
+</div> -->
+
+@section scripts {
+
+         
+  
+        
+        
+ 
+        
+ 
+
+    <!-- <script>
+    $(document).ready(function () {
+        $("#AddNewEvent").submit(function (event) {
+            event.preventDefault(); // Prevent default form submission
+    
+            var formData = $(this).serialize(); // Serialize the form data
+    
+            $.ajax({
+                url: "/Admin/AddNewEvent", // Replace with your controller and action URL
+                type: "POST",
+                data: formData,
+                success: function (result) {
+                    // Handle the success response
+                    if (result.success) {
+                        $("#successMessage").text(result.message).show();
+                        // Optionally, you can reset the form
+                        $("#AddNewEvent")[0].reset();
+                    } else {
+                        // Handle the case when the server indicates a failure
+                        console.log(result.message);
+                    }
+                },
+                error: function (error) {
+                    // Handle the error response
+                    console.log(error);
+                }
+            });
+        });
+    });
+    </script> -->
+    
+    }

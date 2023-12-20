@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/Shubak_Website.props" />
+</Project>

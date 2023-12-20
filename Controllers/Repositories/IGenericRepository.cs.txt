@@ -1,0 +1,16 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace Shubak_Website.Repositories
+{
+    public interface IGenericRepository<T> where T : class
+    {
+        
+        Task<IEnumerable<T>> GetByIdAsync(int EvID);
+        Task<IReadOnlyList<T>> GetAllAsync();
+        Task<int> AddAsync(T entity);
+        Task<int> UpdateAsync(T entity);
+        Task<int> DeleteAsync(int id);
+
+    }
+}

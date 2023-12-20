@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "*.cshtml": "html"
+      },
+      "liveServer.settings.CustomBrowser": "chrome",
+      "cSpell.words": [
+        "addevent"
+      ],
+      "liveServer.settings.multiRootWorkspaceName": "Shubak_Website_v4"
+}
