@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     restart: always
     environment:
-      # - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Development
       # - ASPNETCORE_URLS=http://+:80
       - ConnectionStrings__DefaultConnection=server=mysql;port=3306;database=eventom;user=root;password=12345678
     depends_on:
