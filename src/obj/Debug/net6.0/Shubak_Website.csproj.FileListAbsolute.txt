@@ -2057,8 +2057,6 @@ D:/Shubak_v1/Shubak_Website/bin/Debug/net6.0/runtimes/win/lib/netcoreapp3.0/Syst
 /Users/talal/Documents/nRepo/ticketApp/src/bin/Debug/net6.0/refs/Microsoft.Extensions.Configuration.KeyPerFile.dll
 /Users/talal/Documents/nRepo/ticketApp/src/bin/Debug/net6.0/refs/Microsoft.Extensions.Configuration.UserSecrets.dll
 /Users/talal/Documents/nRepo/ticketApp/src/bin/Debug/net6.0/refs/Microsoft.Extensions.Configuration.Xml.dll
-/Users/talal/Documents/nRepo/ticketApp/src/bin/Debug/net6.0/refs/Microsoft.Extensions.DependencyInjection.Abstractions.dll
-/Users/talal/Documents/nRepo/ticketApp/src/bin/Debug/net6.0/refs/Microsoft.Extensions.DependencyInjection.dll
 /Users/talal/Documents/nRepo/ticketApp/src/bin/Debug/net6.0/refs/Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
 /Users/talal/Documents/nRepo/ticketApp/src/bin/Debug/net6.0/refs/Microsoft.Extensions.Diagnostics.HealthChecks.dll
 /Users/talal/Documents/nRepo/ticketApp/src/bin/Debug/net6.0/refs/Microsoft.Extensions.Features.dll
@@ -2381,3 +2379,5 @@ D:/Shubak_v1/Shubak_Website/bin/Debug/net6.0/runtimes/win/lib/netcoreapp3.0/Syst
 /Users/talal/Documents/nRepo/ticketApp/src/obj/Debug/net6.0/Shubak_Website.pdb
 /Users/talal/Documents/nRepo/ticketApp/src/obj/Debug/net6.0/Shubak_Website.genruntimeconfig.cache
 /Users/talal/Documents/nRepo/ticketApp/src/obj/Debug/net6.0/ref/Shubak_Website.dll
+/Users/talal/Documents/nRepo/ticketApp/src/bin/Debug/net6.0/Microsoft.Extensions.DependencyInjection.dll
+/Users/talal/Documents/nRepo/ticketApp/src/bin/Debug/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll

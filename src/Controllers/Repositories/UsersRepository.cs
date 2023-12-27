@@ -48,7 +48,7 @@ namespace Shubak_Website.Repositories
                     entertainmentevents = userModel.Entertainmentevents,
                     userType = userModel.UserType,
                     sex = userModel.Sex,
-                    emil = userModel.Email
+                    email = userModel.Email
 
                 },
                 commandType: CommandType.StoredProcedure

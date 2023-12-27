@@ -1,6 +1,6 @@
 
 using Microsoft.AspNetCore.Authentication.Cookies;
-
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.CookiePolicy;
@@ -19,10 +19,7 @@ using Recombee.ApiClient.Bindings;
 using Recombee.ApiClient.Util;
 using Firebase.Auth;
 using Microsoft.Extensions.Configuration;
-
-
-
-
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -47,11 +44,18 @@ builder.Services.AddMvc().AddRazorPagesOptions(options =>
             options.Conventions.AuthorizeFolder("/");
             options.Conventions.AllowAnonymousToPage("/Home/Index");
         });
+
+
+
 builder.Services.AddAuthorization(options =>
 {
     // Define your policies here
-    options.AddPolicy("RequireAdmin", policy => policy.RequireClaim("userType", "true"));
+    options.AddPolicy("Company", policy => policy.RequireClaim("userType", "true"));
+  
 });
+
+
+
 builder.Services.Configure<CookiePolicyOptions>(options =>
         {
             options.CheckConsentNeeded = context => true;
@@ -80,6 +84,9 @@ app.UseCookiePolicy(new CookiePolicyOptions
     MinimumSameSitePolicy = SameSiteMode.None,
     Secure = CookieSecurePolicy.Always
 });
+
+ 
+
 
 app.UseSession();
 // app.UseHttpsRedirection();

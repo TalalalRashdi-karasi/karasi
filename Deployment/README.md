@@ -8,6 +8,9 @@
     scp -r Deployment root@45.76.36.193:/root
     ```
 
+ssh-copy-id -i ~/.ssh/id_rsa.pub root@45.76.36.193
+password: 
+q6T@smq_qJr!At2n
 
 ## Run docker-compose remotely
 
@@ -18,6 +21,8 @@ docker context create remote_ticket --docker host=ssh://root@45.76.36.193
 
 # change docker context to remote_ticket
 docker context use remote_ticket
+
+docker ps
 
 # run docker-compose
 docker-compose -f Deployment/docker-compose.yml up -d

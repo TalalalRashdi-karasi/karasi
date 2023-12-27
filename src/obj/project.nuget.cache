@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "QF4gvAUTsALof9wOt4d/6Maeiv3ntbpsasz+9Uss3zwvHz8kFYJVhBbH9blgtALFWBhnhF4Rz3hrFPVpjwSnjA==",
+  "dgSpecHash": "rT3evXYOrb61ZfygyuWHK7DHaKaABBFGSSssTt4hNzmTY9KuoCR4lFY5Zprgya8T82tue7Vey+oKAWBxMic/Nw==",
   "success": true,
   "projectFilePath": "/Users/talal/Documents/nRepo/ticketApp/src/Shubak_Website.csproj",
   "expectedPackageFiles": [
@@ -47,7 +47,8 @@
     "/Users/talal/.nuget/packages/microsoft.extensions.configuration/2.2.0/microsoft.extensions.configuration.2.2.0.nupkg.sha512",
     "/Users/talal/.nuget/packages/microsoft.extensions.configuration.abstractions/2.2.0/microsoft.extensions.configuration.abstractions.2.2.0.nupkg.sha512",
     "/Users/talal/.nuget/packages/microsoft.extensions.configuration.binder/2.2.0/microsoft.extensions.configuration.binder.2.2.0.nupkg.sha512",
-    "/Users/talal/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/2.2.0/microsoft.extensions.dependencyinjection.abstractions.2.2.0.nupkg.sha512",
+    "/Users/talal/.nuget/packages/microsoft.extensions.dependencyinjection/8.0.0/microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
+    "/Users/talal/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.0/microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
     "/Users/talal/.nuget/packages/microsoft.extensions.dependencymodel/6.0.0/microsoft.extensions.dependencymodel.6.0.0.nupkg.sha512",
     "/Users/talal/.nuget/packages/microsoft.extensions.fileproviders.abstractions/2.2.0/microsoft.extensions.fileproviders.abstractions.2.2.0.nupkg.sha512",
     "/Users/talal/.nuget/packages/microsoft.extensions.hosting.abstractions/2.2.0/microsoft.extensions.hosting.abstractions.2.2.0.nupkg.sha512",

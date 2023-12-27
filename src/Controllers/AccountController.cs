@@ -16,7 +16,7 @@ using Firebase.Auth;
 using IdentityServer4.Extensions;
 using System.Reflection;
 using Microsoft.Extensions.Logging;
-
+using System.Globalization;
 
 
 
@@ -41,13 +41,24 @@ namespace Shubak_Website.Controllers
 
 public IActionResult Register()
 {
+
+        // Set the culture to Arabic
+        CultureInfo.CurrentCulture = new CultureInfo("ar");
+        CultureInfo.CurrentUICulture = new CultureInfo("ar");
    return View();
 }
 
 
 [HttpPost]
+[ValidateAntiForgeryToken]
 public async Task<IActionResult> Register(UserModel userModel)
 {
+
+        if(ModelState.IsValid){
+
+            return View();
+        }
+    
          try
         {
             var firebaseToken = await _auth.SignUpWithEmailAndPasswordAsync(userModel.Email, userModel.Password);

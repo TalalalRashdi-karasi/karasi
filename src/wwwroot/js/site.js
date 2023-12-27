@@ -75,26 +75,81 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $("#SignUpForm").submit(function (event) {
-        event.preventDefault(); // Prevent default form submission
-        var formData = $(this).serialize(); // Serialize the form data
-        $.ajax({
-            url: "/Account/register", // Replace with your controller and action URL
-            type: "POST",
-            data: formData,
-            success: function (result) {     
-    // Optionally, you can reset the form
-    $("#SignUpForm")[0].reset();
-                // Handle the success response
-                console.log(result);
-                window.location = "/Home/Index";
-            },
-            error: function (error) {
-                // Handle the error response
-                console.log(error);
-            }
-        });
+        // Prevent default form submission
+        event.preventDefault();
+
+        
+        // Perform client-side validation
+        if (validateForm()) {
+            var formData = $(this).serialize(); // Serialize the form data
+            $.ajax({
+                url: "/Account/register", // Replace with your controller and action URL
+                type: "POST",
+                data: formData,
+                success: function (result) {
+                    // Optionally, you can reset the form
+                    $("#SignUpForm")[0].reset();
+                    // Handle the success response
+                    console.log(result);
+                    window.location = "/Home/Index";
+                },
+                error: function (error) {
+                    // Handle the error response
+                    console.log(error);
+                }
+            });
+        }
+    });
+
+    function validateForm() {
+        // Get form input values
+        var usernameField = $("#Firstname");
+        var passwordField = $("#Password");
+        var EmailField = $("#Email");
+        var UserTypeField = $("#UserType");
+        var SexField = $("#Sex");
+
+
+                // Get values from the elements
+                var username = usernameField.val();
+                var password = passwordField.val();
+                var Email = EmailField.val();
+                var Sex = SexField.val();
+                var UserType = UserTypeField.val();
+        
+        
+        
+        // Perform validation checks
+        if (username.trim() === "" || password.trim() === "" || Email.trim() === "" || Sex.trim() === ""  ) {
+
+            usernameField.css("border", "1px solid red");
+            passwordField.css("border","1px solid red");
+            EmailField.css("border","1px solid red");
+            UserTypeField.css("border","1px solid red");
+            SexField.css("border","1px solid red");
+            return false;
+        }
+
+
+
+
+        
+
+        // Additional validation logic can be added here
+
+        // If all validation checks pass, return true
+        return true;
+    }
+
+
+       // Remove the red border when the user starts typing in an input field
+       $("#Firstname, #Password, #Email, #UserType, #Sex").on("input", function () {
+        $(this).css("border", "");
     });
 });
+
+
+
 
 $(document).ready(function () {
 

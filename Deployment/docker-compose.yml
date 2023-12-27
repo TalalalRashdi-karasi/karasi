@@ -7,9 +7,10 @@ services:
       dockerfile: Dockerfile
     restart: always
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      MYSQL_ROOT_HOST: '%'
+      ASPNETCORE_ENVIRONMENT: Development
       # - ASPNETCORE_URLS=http://+:80
-      - ConnectionStrings__DefaultConnection=server=mysql;port=3306;database=eventom;user=root;password=12345678
+      ConnectionStrings__DefaultConnection: server=mysql;port=3306;database=eventom;user=root;password=12345678
     depends_on:
       - mysql
     networks:
@@ -33,6 +34,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: 12345678
+      MYSQL_ROOT_HOST: 127.0.0.1
     ports:
       - "3306:3306"
     volumes:
