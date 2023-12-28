@@ -29,7 +29,7 @@
                         </span>
                     </label>
                 </div>
-
+                <span style="color: red;">@Html.ValidationMessageFor(model => model.UserType) </span> 
                 <div class="col mt-3 mb-3">
                     <label style="width:100%;">
                         <input class="radio-input" id="UserType" value="Personal" type="radio" name="UserType">
@@ -42,7 +42,7 @@
                         </span>
                     </label>
                 </div>
-
+                
                 <div class="form-floating mb-3">
                 
                     <input type="text" id="Firstname" name="Firstname" class="form-control form-control-lg" id="floatingInput"

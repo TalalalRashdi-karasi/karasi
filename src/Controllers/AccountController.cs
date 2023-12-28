@@ -147,6 +147,26 @@ public async Task<IActionResult> Register(UserModel userModel)
       
    }
 
+
+public IActionResult Resetpassword(){
+
+
+    return View();
+}
+
+   public  IActionResult ResetAccountpassword( string Email){
+
+
+
+            var resetPass =  _auth.SendPasswordResetEmailAsync(Email);
+     
+
+       
+
+
+     return RedirectToAction("Resetpassword");
+   }
+
     }
 
 

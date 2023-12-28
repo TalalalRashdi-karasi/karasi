@@ -24,17 +24,19 @@ namespace Shubak_Website.Models
         public string UID {get; set;}
 
         
-        [Required(ErrorMessage = "لم تقبل بإدخال الاسم  ")]
+        [Required(ErrorMessage = "لم تقم بإدخال الاسم  ")]
         public string? Firstname { get; set; } 
 
         public bool? Artisticevents { get; set; } 
         public bool? Sportsevents { get; set; }
         public bool? Scientificevents { get; set; }
         public bool? Entertainmentevents { get; set; }
+
+         [Required(ErrorMessage = "لم تقم بتحديد نوع الحساب")]
          public string? UserType { get; set; }
 
 
-        [Required(ErrorMessage = "لم تقبل بإدخال الجنس  ")]
+        [Required(ErrorMessage = "لم تقم بإدخال الجنس  ")]
          public string? Sex {get; set;}
         
         
