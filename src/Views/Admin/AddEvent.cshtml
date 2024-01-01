@@ -55,7 +55,8 @@
         <div class="row  g-2">
         <div class="mb-3">
           <label for="formFile" class="form-label">الإعلان التسويقي للفعالية </label>
-          <input  class="form-control" type="file" name="EvImage">
+          <img id="displayed-image" class="UploadImageAction" alt="Uploaded Image">
+          <input   class="form-control" type="file" name="EvImage" id="upload-input" onchange="displayImage()">
         
           
         </div>

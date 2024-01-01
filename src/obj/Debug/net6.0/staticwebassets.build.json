@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "v1lV/qPCVT72kyLE3JB8KdudH4uOAN4QIGLYy3UZUvU=",
+  "Hash": "iFBcFrj1nbB+XiwS22fQNZDto5Vc76l0WFpj0PuyIkE=",
   "Source": "Shubak_Website",
   "BasePath": "_content/Shubak_Website",
   "Mode": "Default",
@@ -1105,6 +1105,23 @@
       "OriginalItemSpec": "wwwroot/assets/m3s.png"
     },
     {
+      "Identity": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/mesh-gradient.png",
+      "SourceId": "Shubak_Website",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/",
+      "BasePath": "_content/Shubak_Website",
+      "RelativePath": "assets/mesh-gradient.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/mesh-gradient.png"
+    },
+    {
       "Identity": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/noise.svg",
       "SourceId": "Shubak_Website",
       "SourceType": "Discovered",
@@ -1171,6 +1188,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/assets/ShubakControlPanelLogo.svg"
+    },
+    {
+      "Identity": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/undraw_graduation_re_gthn.svg",
+      "SourceId": "Shubak_Website",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/",
+      "BasePath": "_content/Shubak_Website",
+      "RelativePath": "assets/undraw_graduation_re_gthn.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/undraw_graduation_re_gthn.svg"
     },
     {
       "Identity": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/css/site.css",

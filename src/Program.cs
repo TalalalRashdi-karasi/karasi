@@ -21,6 +21,8 @@ using Firebase.Auth;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+
+
 var builder = WebApplication.CreateBuilder(args);
 
     builder.Services.AddMvc().AddSessionStateTempDataProvider();
@@ -44,6 +46,7 @@ builder.Services.AddMvc().AddRazorPagesOptions(options =>
             options.Conventions.AuthorizeFolder("/");
             options.Conventions.AllowAnonymousToPage("/Home/Index");
         });
+
 
 
 
@@ -84,6 +87,7 @@ app.UseCookiePolicy(new CookiePolicyOptions
     MinimumSameSitePolicy = SameSiteMode.None,
     Secure = CookieSecurePolicy.Always
 });
+
 
  
 

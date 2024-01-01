@@ -4,7 +4,34 @@
 // Write your JavaScript code.
 
 
+
+
+     // Your JavaScript code here
+     function displayImage(){
+        const input = document.getElementById("upload-input");
+        const file = input.files[0];
+        
+        if(file){
+            const reader = new FileReader();
+            reader.onload = function(event){
+                const imageDataUrl = event.target.result;
+                updateImageSrc(imageDataUrl);
+            };
+            reader.onerror = function(error){
+                console.error("Error reading the file:", error);
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+    
+    function updateImageSrc(imageDataUrl){
+        const displayedImage = document.getElementById("displayed-image");
+        displayedImage.src = imageDataUrl;
+    }
+
 $(document).ready(function () {
+
+
 
 
 

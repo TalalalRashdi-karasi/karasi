@@ -154,20 +154,22 @@ public IActionResult Resetpassword(){
     return View();
 }
 
+public IActionResult ResetSeccessfuly(){
+
+
+    return View();
+}
+
    public  IActionResult ResetAccountpassword( string Email){
-
-
 
             var resetPass =  _auth.SendPasswordResetEmailAsync(Email);
      
-
-       
-
-
-     return RedirectToAction("Resetpassword");
+     return RedirectToAction("ResetSeccessfuly");
    }
 
-    }
+
+}
+
 
 
     

@@ -14,6 +14,7 @@ using Microsoft.Data.SqlClient;
 using System.Xml.Schema;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 
 namespace Shubak_Website.Controllers;
@@ -28,8 +29,13 @@ public class HomeController : Controller
     private readonly TicketsRepository _TicketsRepository;
     private readonly ILogger<HomeController> _logger;
 
-    public HomeController(ILogger<HomeController> logger,IUsersRepository iusersRepository, FirebaseAuthService auth, EventsRepository eventsRepository, TicketsRepository TicketsRepository )
+    
+
+    public HomeController( ILogger<HomeController> logger,IUsersRepository iusersRepository, FirebaseAuthService auth, EventsRepository eventsRepository, TicketsRepository TicketsRepository )
     {   
+
+        
+       
         _auth = auth;
         _iusersRepository = iusersRepository;
         _TicketsRepository = TicketsRepository;
@@ -41,6 +47,8 @@ public class HomeController : Controller
     [HttpGet]
     public async Task<IActionResult> Index()
     {
+
+        
 
         var toUSer =  HttpContext.Session.GetString("_UserToken");
         ViewData["UserToken"]= toUSer;
@@ -180,4 +188,8 @@ public class HomeController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+}
+
+public class ApplicationUser
+{
 }

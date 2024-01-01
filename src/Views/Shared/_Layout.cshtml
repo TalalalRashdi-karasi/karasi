@@ -132,33 +132,34 @@ userProfile = Newtonsoft.Json.JsonConvert.DeserializeObject<UserModel>(user);
         </div>
     </div>
         <div class="container-fluid">
-            <main role="main">
-                @RenderBody()
-            </main>
+    
+                <main role="main">
+                    @RenderBody()
+                </main>
+       
+            <footer  class="border-top  mt-5  footer-style  ">
+                <div class="container">
+    
+                    <div class="d-flex">
+    
+                        <div>
+                            <a style="text-decoration: none;" class="d-inline-block text-white mx-4 " asp-area="" asp-controller="Home" asp-action="Privacy">سياسية الاستخدام</a>
+                            <a style="text-decoration: none;" class="d-inline-block text-white" asp-area="" asp-controller="Home" asp-action="Privacy">من نحن ؟</a>
+                        </div>
+    
+                        <div class="me-auto">
+                            <h6>&copy; 2023 - Shubak Website -</h6>
+                        </div>
+    
+                    </div>
+                    
+    
+                  
+                </div>
+            </footer>
         </div>
 
-        <footer class="border-top footer mt-5  footer-style  ">
 
-
-            <div class="container">
-
-                <div class="d-flex">
-
-                    <div>
-                        <a style="text-decoration: none;" class="d-inline-block text-white mx-4 " asp-area="" asp-controller="Home" asp-action="Privacy">سياسية الاستخدام</a>
-                        <a style="text-decoration: none;" class="d-inline-block text-white" asp-area="" asp-controller="Home" asp-action="Privacy">من نحن ؟</a>
-                    </div>
-
-                    <div class="me-auto">
-                        <h6>&copy; 2023 - Shubak Website -</h6>
-                    </div>
-
-                </div>
-                
-
-              
-            </div>
-        </footer>
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

@@ -32,6 +32,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvYWNjb3VudC9SZXNldHBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/talal/Documents/nRepo/ticketApp/src/Views/account/ResetSeccessfuly.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvYWNjb3VudC9SZXNldFNlY2Nlc3NmdWx5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/talal/Documents/nRepo/ticketApp/src/Views/Admin/AddEvent.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQWRkRXZlbnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

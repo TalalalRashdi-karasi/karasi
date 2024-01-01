@@ -261,12 +261,20 @@
       "PackagePath": "staticwebassets/assets/m3s.png"
     },
     {
+      "Id": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/mesh-gradient.png",
+      "PackagePath": "staticwebassets/assets/mesh-gradient.png"
+    },
+    {
       "Id": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/noise.svg",
       "PackagePath": "staticwebassets/assets/noise.svg"
     },
     {
       "Id": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/qr.png",
       "PackagePath": "staticwebassets/assets/qr.png"
+    },
+    {
+      "Id": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/undraw_graduation_re_gthn.svg",
+      "PackagePath": "staticwebassets/assets/undraw_graduation_re_gthn.svg"
     },
     {
       "Id": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/css/site.css",
