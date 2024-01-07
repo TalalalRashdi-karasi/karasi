@@ -25,8 +25,8 @@ using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-    builder.Services.AddMvc().AddSessionStateTempDataProvider();
-    builder.Services.AddSession();
+builder.Services.AddMvc().AddSessionStateTempDataProvider();
+builder.Services.AddSession();
 
 builder.Services.AddControllersWithViews();
 
@@ -41,20 +41,22 @@ builder.Services.AddRazorPages()
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddSession();
 builder.Services.AddAuthorization();
+
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = new PathString("/Account/Login");
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(15.0);
+        options.SlidingExpiration = true;
+    });
+
 builder.Services.AddMvc().AddRazorPagesOptions(options =>
         {
             options.Conventions.AuthorizeFolder("/");
             options.Conventions.AllowAnonymousToPage("/Home/Index");
-        });
-
-
-
-
-builder.Services.AddAuthorization(options =>
-{
-    // Define your policies here
-    options.AddPolicy("Company", policy => policy.RequireClaim("userType", "true"));
-  
+        
+        
 });
 
 
@@ -81,26 +83,25 @@ if (!app.Environment.IsDevelopment())
     // app.UseHsts();
 }
 
+
+
+
+
+app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseSession();
+// app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
+app.UseAuthorization();
+app.MapDefaultControllerRoute();
+
 // Use cookie middleware
 app.UseCookiePolicy(new CookiePolicyOptions
 {
     MinimumSameSitePolicy = SameSiteMode.None,
     Secure = CookieSecurePolicy.Always
 });
-
-
- 
-
-
-app.UseSession();
-// app.UseHttpsRedirection();
-app.UseStaticFiles();
-
-app.UseRouting();
-app.UseAuthorization();
-
-app.MapDefaultControllerRoute();
-
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

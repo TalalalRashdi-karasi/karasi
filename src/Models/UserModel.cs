@@ -33,7 +33,7 @@ namespace Shubak_Website.Models
         public bool? Entertainmentevents { get; set; }
 
          [Required(ErrorMessage = "لم تقم بتحديد نوع الحساب")]
-         public string? UserType { get; set; }
+         public string UserType { get; set; }
 
 
         [Required(ErrorMessage = "لم تقم بإدخال الجنس  ")]

@@ -726,17 +726,24 @@ background-position: center;
 
 .footer-style{
 
-  background-color: #262626;
+
   width: 100%;
 
-  color: white;
+  color: rgb(27, 27, 27);
 }
 
 
 footer{
 
-  margin-top: auto;
+margin-top: auto;
+display: flex;
   height: 300px;
+  justify-content: center;
+}
+
+.CildFooter{
+width: 100%;
+  align-self: center;
 }
 
 .eventBgStyle{
