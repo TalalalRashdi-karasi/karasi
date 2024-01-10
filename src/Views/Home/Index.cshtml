@@ -69,6 +69,14 @@
 
     @foreach(var ev in Model){
 
+
+      
+
+      if( ev.EventType == "ورشة عمل"){
+
+        <h1>@ev.EventName</h1>
+
+      }
    
     <div class="mb-2 col-md-4 my-2 d-flex">
         <div class="EventDetailsImage">
