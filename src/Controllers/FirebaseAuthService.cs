@@ -54,6 +54,15 @@ namespace Shubak_Website.Controllers
     }
 
 
+    public async Task<string> SendPasswordResetEmailAsync(string Email){
+
+
+           var result =  _auth.SendPasswordResetEmailAsync(Email);
+
+            return null;
+    }
+
+
 
     }
 }

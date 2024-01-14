@@ -1,16 +1,7 @@
 ﻿@model TicketModel;
 @using System.Security.Claims
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
 
-    UserModel userProfile = null;
-    var user = Context.User.Claims.FirstOrDefault(x => x.Type.Equals("UserProfile", StringComparison.OrdinalIgnoreCase))?.Value;
-    if (user != null)
-    {
-        userProfile = new();
-        userProfile = Newtonsoft.Json.JsonConvert.DeserializeObject<UserModel>(user);
-
-    }
 
     ViewData["Title"] = "Ticket Details";
    var UserID =  ViewData["UserToken"];

@@ -1,281 +1,132 @@
-﻿
-@model IEnumerable<EventViewModel>;
-
-    
+﻿@model IEnumerable<EventViewModel>;
+   
 @{
   
     ViewData["Title"] = "Home Page";
+
+
+    var test = ViewData["UserProfile"] as IEnumerable<UserModel>;
+
+
 }
 
 
-<!-- Last Seats Start -->
-<!-- <div class="row">
 
-    <div class="eventBgStyle">
-
-    <div class="d-flex">
-
-        <div class="EvetTitle">
-            <h3> <span><img src="~/assets/chair.svg" width="30"></span> Last seat</h3>
-            <h6 class="Subtitle-color "> Don't miss the last seat</h6>
-
-        </div>
-        <div class="ms-auto">
-            <h6> <a type="button">Show All <i class="bi bi-arrow-right"></i></a> </h6>
-        </div>
+  <div class="row m-3 mt-5">
+    <div class="col-12 text-center ">
+      <div class="row headBanar ">
+          <div class="col  my-auto">
+              <h1 class="EvetTitle mb-4">منصة بيع التذاكر و إدارة الفعاليات </h1>
+              <h4 class="Evet-sub-Title" >احصل على تذكرتك للفعاليات القادمة</h4>
+              <a asp-action="index" asp-controller="Admin" class="btn text-white bg-dark">او انشئ تذاكر لفعاليتك القادمة</a>
+          </div>
+      </div>
     </div>
+  </div>
 
-
-    <div class="row ">
-        <div class="col-lg-12 overflow-scroll">
-            <div class="d-flex flex-row flex-nowrap row gx-1 ">
-
-                <div class="col-lg-5  mt-4">
-                    <div class="card  mb-3 border-0 LastSeat-carBg">
-                        <div class="row p-2 g-0">
-                            <div class="col-md-4">
-                                <picture>
-                                    <source srcset="/assets/ev1.jpeg" type="image/svg+xml">
-                                    <img src="/assets/ev1.jpeg" class="img-fluid img-thumbnail" alt="...">
-                                </picture>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <div class="d-flex mb-2 ">
-                                        <div class="EventType">
-                                            <h6><i class="isax isax-musicnote mx-2"></i>Music event</h6>
-                                        </div>
-                                        <div class="ms-auto">
-                                            <h6 class="badge rounded-pill bg-danger p-2"> <i
-                                                    class="isax isax-people mx-2"></i>Remaining 4</h6>
-                                        </div>
-                                    </div>
-                                    <h4 class="card-title">Music event with stubbed people </h4>
-                                    <p class="card-text"><small class="text-muted">On Monday 12/3/2023 </small></p>
-                                    <div class="btn btn-Bayaticket">
-                                        <div class="d-flex bd-highlight ">
-                                            <div class="p-2 flex-grow-1 bd-highlight text-start text-white"><i
-                                                    class="isax isax-tag-2"></i> 12
-                                                OMR</div>
-                                            <div class="p-2 bd-highlight text-white">|</div>
-                                            <div class="p-2 bd-highlight text-white"><i class="isax isax-ticket"></i>
-                                                Get a
-                                                ticket</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer text-end LastSeat-carFooterBg  border-0">
-                                    <a type="button"><small class="Readmorelabl">Read more about this event</small> <i
-                                            class="bi bi-arrow-right"></i> </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-lg-5 mt-4">
-                    <div class="card  mb-3 border-0 LastSeat-carBg">
-                        <div class="row p-2 g-0">
-                            <div class="col-md-4">
-                                <picture>
-                                    <source srcset="/assets/ev2.jpeg" type="image/svg+xml">
-                                    <img src="/assets/ev2.jpeg" class="img-fluid img-thumbnail" alt="...">
-                                </picture>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <div class="d-flex mb-2 ">
-                                        <div class="EventType">
-                                            <h6><i class="isax isax-musicnote mx-2"></i>Music event</h6>
-                                        </div>
-                                        <div class="ms-auto">
-                                            <h6 class="badge rounded-pill bg-danger p-2"> <i
-                                                    class="isax isax-people mx-2"></i>Remaining 4</h6>
-                                        </div>
-                                    </div>
-                                    <h4 class="card-title">Music event with stubbed people </h4>
-                                    <p class="card-text"><small class="text-muted">On Monday 12/3/2023 </small></p>
-                                    <div class="btn btn-Bayaticket">
-                                        <div class="d-flex bd-highlight ">
-                                            <div class="p-2 flex-grow-1 bd-highlight text-start text-white"><i
-                                                    class="isax isax-tag-2"></i> 12
-                                                OMR</div>
-                                            <div class="p-2 bd-highlight text-white">|</div>
-                                            <div class="p-2 bd-highlight text-white"><i class="isax isax-ticket"></i>
-                                                Get a
-                                                ticket</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer text-end LastSeat-carFooterBg  border-0">
-                                    <a type="button"><small class="Readmorelabl">Read more about this event</small> <i
-                                            class="bi bi-arrow-right"></i> </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-5 mt-4">
-                    <div class="card  mb-3 border-0 LastSeat-carBg">
-                        <div class="row p-2 g-0">
-                            <div class="col-md-4">
-                                <picture>
-                                    <source srcset="/assets/ev4.jpeg" type="image/svg+xml">
-                                    <img src="/assets/ev4.jpeg" class="img-fluid img-thumbnail" alt="...">
-                                </picture>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <div class="d-flex mb-2 ">
-                                        <div class="EventType">
-                                            <h6><i class="isax isax-musicnote mx-2"></i>Music event</h6>
-                                        </div>
-                                        <div class="ms-auto">
-                                            <h6 class="badge rounded-pill bg-danger p-2"> <i
-                                                    class="isax isax-people mx-2"></i>Remaining 4</h6>
-                                        </div>
-                                    </div>
-                                    <h4 class="card-title">Music event with stubbed people </h4>
-                                    <p class="card-text"><small class="text-muted">On Monday 12/3/2023 </small></p>
-                                    <div class="btn btn-Bayaticket">
-                                        <div class="d-flex bd-highlight ">
-
-                                            <div class="p-2 flex-grow-1 bd-highlight text-start text-white"><i
-                                                    class="isax isax-tag-2"></i> 12
-                                                OMR</div>
-                                            <div class="p-2 bd-highlight text-white">|</div>
-                                            <div class="p-2 bd-highlight text-white"><i class="isax isax-ticket"></i>
-                                                Get a
-                                                ticket</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer text-end LastSeat-carFooterBg  border-0">
-                                    <a type="button"><small class="Readmorelabl">Read more about this event</small> <i
-                                            class="bi bi-arrow-right"></i> </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-lg-5 mt-4">
-                    <div class="card  mb-3 border-0 LastSeat-carBg">
-                        <div class="row p-2 g-0">
-                            <div class="col-md-4">
-                                <picture>
-                                    <source srcset="/assets/imageH1.jpeg" type="image/svg+xml">
-                                    <img src="/assets/imageH1.jpeg" class="img-fluid img-thumbnail" alt="...">
-                                </picture>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <div class="d-flex mb-2 ">
-                                        <div class="EventType">
-                                            <h6><i class="isax isax-musicnote mx-2"></i>Music event</h6>
-                                        </div>
-                                        <div class="ms-auto">
-                                            <h6 class="badge rounded-pill bg-danger p-2"> <i
-                                                    class="isax isax-people mx-2"></i>Remaining 4</h6>
-                                        </div>
-                                    </div>
-                                    <h4 class="card-title">Music event with stubbed people </h4>
-                                    <p class="card-text"><small class="text-muted">On Monday 12/3/2023 </small></p>
-                                    <div class="btn btn-Bayaticket">
-                                        <div class="d-flex bd-highlight ">
-                                            <div class="p-2 flex-grow-1 bd-highlight text-start text-white"><i
-                                                    class="isax isax-tag-2"></i> 12
-                                                OMR</div>
-                                            <div class="p-2 bd-highlight text-white">|</div>
-                                            <div class="p-2 bd-highlight text-white"><i class="isax isax-ticket"></i>
-                                                Get a
-                                                ticket</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer text-end LastSeat-carFooterBg  border-0">
-                                    <a type="button"><small class="Readmorelabl">Read more about this event</small> <i
-                                            class="bi bi-arrow-right"></i> </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+          <div class="row m-1 mt-4">
+            <div class="d-flex">
+              <div class="ms-auto">
+                <h3 class="EvetTitle text-end"> الفعاليات القادمة</h3>
+                <h6 class="Subtitle-color text-end ">استكشف المزيد من الفعاليات و عيش التجربة</h6>
+              </div>
             </div>
+            <div class="col-12">
+              <select class="form-select form-select-lg" aria-label="Default select example">
+                <option selected>استعرض حسب التصنيف</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+          </div>
 
 
+
+    <div class="row m-3">
+      <div class="d-flex mb-4">
+        <h3 class="EvetTitle">الفعاليات الفنية</h3>
+        <div class="me-auto text-start"> 
+            <a href="#" class="">استكشف المزيد </a>
         </div>
+      </div>
     </div>
 
 
-    </div>
-</div> -->
-<!-- Last Seats end -->
 
 
 
-<div class="row m-3 mt-5">
+      <div class="row ShowStyle">
+        @foreach(var ev in Model){
+          if( ev.EventType == "فعالية فنية"){
 
-  <div class="col-12 text-center headBanar">
-
-    <div class="row">
-        <div class="col">
-            <img class="mt-3" src="/assets/appleWallet.png">
+        <div class="mb-2 col-auto">
+          <div class="EventDetailsImage">
+              <div class="top-left m-2">@ev.EventType</div>
+              <div class="top-right m-2">@ev.SeatCount | مقعد</div>
+              <div class=" AdVCard-style">
+                <a href="@Url.Action("EventDetails","Home", new {id = ev.Id })">   
+                <div class="image-style">
+          
+                    <!-- <img src="@ev.EvImage" alt="Lights" style="width:100%"> -->
+                      <img src="@ev.EvImage" alt="Lights" style="width:100%" >
+                      
+                
+                </div>
+              </a>
+                  <hr class="text-dark">
+                    <div class="caption mt-2">
+                      <div class="row">
+                        <div class="col-lg-10 col-9 text-end ">
+                          <h3 class="text-black pe-3 mb-3">@ev.EventName</h3>
+                          <div class="d-flex p-3">
+                              <h6  class=" d-inline-block place-style" style="font-weight:normal">المكان و الزمان : مركز الشباب</h6>
+                              <h6 class=" d-inline-block place-style me-3">١٣ اكتوبر ٢٠٢٣ ٥:٤٠ م </h6>
+                          </div>
+                         
+                        </div>
+                        <div class="col-lg-2 col-3">
+                      </div>
+                      </div>
+                    </div>
+                </div>
+          </div>
         </div>
-        <div class="col  align-items-center ">
-            <h1 class="EvetTitle">منصة بيع التذاكر و إدارة الفعاليات </h1>
-            <h4 class="EvetTitle">احصل على تذكرتك للفعاليات القادمة</h4>
-            <a asp-action="index" asp-controller="Admin" class="btn text-white bg-dark">او انشئ تذاكر لفعاليتك القادمة</a>
+
+
+          }
+        }
+      </div>
+
+      <div class="row m-3">
+        <div class="d-flex mb-4">
+          <h3 class="EvetTitle">فعاليات رياضية</h3>
+          <div class="me-auto text-start"> 
+              <a href="#" class="">استكشف المزيد </a>
+          </div>
         </div>
-    </div>
+       </div>
+    
+     @foreach(var ev in Model){
+      if( ev.EventType == "فعالية رياضية"){
+    
+        <div class="row">
 
 
-
-  </div>
-</div>
-
-<div class="row m-1 mt-0">
-  <div class="d-flex">
-  
-    <div class="ms-auto">
-
-      <h3 class="EvetTitle text-end"> الفعاليات القادمة</h3>
-      <h6 class="Subtitle-color text-end ">استكشف المزيد من الفعاليات و عيش التجربة</h6>
-
-
-    </div>
-  </div>
-  <div class="col-12">
-    <select class="form-select form-select-lg" aria-label="Default select example">
-      <option selected>استعرض حسب التصنيف</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </select>
-
-  </div>
-</div>
-
-
-  <div class="row  mt-4 m-1">
-
-    @foreach(var ev in Model){
-
-   
-    <div class="mb-2 col-md-4">
+    <div class="mb-2 col-md-4 my-2 d-flex">
         <div class="EventDetailsImage">
             
             <div class="top-left mt-2">@ev.EventType</div>
             <div class="top-right mt-2">@ev.SeatCount | مقعد</div>
-            <div class="thumbnail AdVCard-style">
+            <div class="AdVCard-style">
                 
                 <a href="@Url.Action("EventDetails","Home", new {id = ev.Id })">
+                  <div class="image-style">
                   <!-- <img src="@ev.EvImage" alt="Lights" style="width:100%"> -->
-                    <img src="@ev.EvImage" alt="Lights" style="width:100%" height="654.1">
+
+                  <img src="@ev.EvImage" alt="Lights" style="width:100%" >
+                  </div>
+
                     
                 </a>
                 <hr class="text-dark">
@@ -299,12 +150,126 @@
         </div>
 
     </div>
+           </div>
+    
+      }
+     }
+    
+     <div class="row m-3">
+      <div class="d-flex mb-4">
+        <h3 class="EvetTitle">ورش عمل</h3>
+        <div class="me-auto text-start"> 
+            <a href="#" class="">استكشف المزيد </a>
+        </div>
+      </div>
+     </div>
 
+
+      @foreach(var ev in Model){
+      if( ev.EventType == "ورشة عمل"){
+
+        <div class="row">
+          <div class="mb-2 col-md-4 my-2 d-flex">
+            <div class="EventDetailsImage">
+                
+                <div class="top-left mt-2">@ev.EventType</div>
+                <div class="top-right mt-2">@ev.SeatCount | مقعد</div>
+                <div class="AdVCard-style">
+                    
+                    <a href="@Url.Action("EventDetails","Home", new {id = ev.Id })">
   
-}
+                      <div class="image-style">
+                      <!-- <img src="@ev.EvImage" alt="Lights" style="width:100%"> -->
+                        <img src="@ev.EvImage" alt="Lights" style="width:100%" >
+                        </div>
+                    </a>
+                    <hr class="text-dark">
+                      <div class="caption mt-2">
+                        <div class="row">
+                          <div class="col-lg-10 col-9 text-end ">
+                            <div class="d-flex p-3">
+                                <h6  class=" d-inline-block place-style" style="font-weight:normal">المكان و الزمان : مركز الشباب</h6>
+                                <h6 class=" d-inline-block place-style me-3">١٣ اكتوبر ٢٠٢٣ ٥:٤٠ م </h6>
+                            </div>
+                            <h3 class="text-black pe-3 mb-3">@ev.EventName</h3>
+                          </div>
+                          <div class="col-lg-2 col-3">
+                        
+                         
+                        </div>
+                        </div>
+                      </div>
+                  
+                  </div>
+            </div>
+    
+        </div>
+    
+        </div>
 
 
-  </div>
+      }
+    }
+
+
+    <div class="row m-3">
+      <div class="d-flex mb-4">
+        <h3 class="EvetTitle"> فعاليات علمية</h3>
+        <div class="me-auto text-start"> 
+            <a href="#" class="">استكشف المزيد </a>
+        </div>
+      </div>
+    </div>
+
+
+      @foreach(var ev in Model){
+      if( ev.EventType == "فعالية علمية"){
+
+     
+     <div class="row">
+      <div class="mb-2 col-md-4 my-2 d-flex">
+        <div class="EventDetailsImage">
+            
+            <div class="top-left mt-2">@ev.EventType</div>
+            <div class="top-right mt-2">@ev.SeatCount | مقعد</div>
+            <div class=" AdVCard-style">
+             
+                <a href="@Url.Action("EventDetails","Home", new {id = ev.Id })">
+                  <div class="image-style">
+                  <!-- <img src="@ev.EvImage" alt="Lights" style="width:100%"> -->
+                    <img src="@ev.EvImage" alt="Lights" style="width:100%" >
+                    </div>
+
+                </a>
+                <hr class="text-dark">
+                  <div class="caption mt-2">
+                    <div class="row">
+                      <div class="col-lg-10 col-9 text-end ">
+                        <div class="d-flex p-3">
+                            <h6  class=" d-inline-block place-style" style="font-weight:normal">المكان و الزمان : مركز الشباب</h6>
+                            <h6 class=" d-inline-block place-style me-3">١٣ اكتوبر ٢٠٢٣ ٥:٤٠ م </h6>
+                        </div>
+                        <h3 class="text-black pe-3 mb-3">@ev.EventName</h3>
+                      </div>
+                      <div class="col-lg-2 col-3">
+                    
+                     
+                    </div>
+                    </div>
+                  </div>
+              
+              </div>
+        </div>
+
+    </div>
+
+     </div>
+
+
+      }
+    }
+  
+
 
 
 @section scripts {

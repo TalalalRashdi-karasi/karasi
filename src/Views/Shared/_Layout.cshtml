@@ -1,18 +1,23 @@
 ﻿@using System.Security.Claims
 @{
-UserModel userProfile = null;
-var user = Context.User.Claims.FirstOrDefault(x => x.Type.Equals("UserProfile",
-StringComparison.OrdinalIgnoreCase))?.Value;
-if (user != null)
-{
-userProfile = new();
-userProfile = Newtonsoft.Json.JsonConvert.DeserializeObject<UserModel>(user);
-    ViewData["UserProfile"] = userProfile;
-
+ 
+	var userProfileClaim = Context.User.Claims.FirstOrDefault(x => x.Type.Equals("UserProfile", StringComparison.OrdinalIgnoreCase))?.Value;
+    var isAdminClaim = Context.User.Claims.FirstOrDefault(x => x.Type.Equals("Company", StringComparison.OrdinalIgnoreCase))?.Value;
+    
+    var userProfile = new UserModel();
+	var isAdmin = false;
+	
+	if (userProfileClaim != null)
+	{
+		userProfile = Newtonsoft.Json.JsonConvert.DeserializeObject<UserModel>(userProfileClaim);
+		ViewData["UserProfile"] = userProfile;
+	}
+	
+	if (isAdminClaim != null)
+    {
+        isAdmin = bool.Parse(isAdminClaim as string);
     }
-
-    <!-- var UserTicket =  ViewData["userCardTicket"] as IEnumerable<TicketModel>; -->
-    }
+}
     <!DOCTYPE html>
     <html lang="ar" dir="rtl">
 
@@ -60,13 +65,9 @@ userProfile = Newtonsoft.Json.JsonConvert.DeserializeObject<UserModel>(user);
                           }
                     </div>
 
-                  
-
-
-                
                 <div class="me-auto p-2 bd-highlight">
                     <a asp-controller="Home" asp-action="index">
-                        <img width="130" src="/assets/Shubak-logo.svg">
+                       <h3>كراسي</h3>
                     </a>
                   
                 </div>
@@ -132,33 +133,42 @@ userProfile = Newtonsoft.Json.JsonConvert.DeserializeObject<UserModel>(user);
         </div>
     </div>
         <div class="container-fluid">
-            <main role="main">
-                @RenderBody()
-            </main>
-        </div>
+    
+                <main role="main">
+                    @RenderBody()
+                </main>
+       
+            <footer  class="mt-5 mb-2 bg-light footer-style  border-raduis ">
 
-        <footer class="border-top footer mt-5  footer-style  ">
 
-
-            <div class="container">
-
-                <div class="d-flex">
-
-                    <div>
-                        <a style="text-decoration: none;" class="d-inline-block text-white mx-4 " asp-area="" asp-controller="Home" asp-action="Privacy">سياسية الاستخدام</a>
-                        <a style="text-decoration: none;" class="d-inline-block text-white" asp-area="" asp-controller="Home" asp-action="Privacy">من نحن ؟</a>
-                    </div>
-
-                    <div class="me-auto">
-                        <h6>&copy; 2023 - Shubak Website -</h6>
+                <div class="CildFooter ">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <h3>الهوية</h3>
+                                <a style="text-decoration: none;" class="d-inline-block" asp-area="" asp-controller="Home" asp-action="Privacy">سياسية الاستخدام</a>
+                                <a style="text-decoration: none;" class="d-inline-block mx-3" asp-area="" asp-controller="Home" asp-action="Privacy">من نحن ؟</a>
+                            </div>
+                            <div class="col text-start">
+                            <div>كراسي</div>
+                            <h6>&copy; 2023 - Shubak Website -</h6>
+                                   
+                            </div>
+    
+                            
+                        </div>
                     </div>
 
                 </div>
-                
 
-              
-            </div>
-        </footer>
+
+    
+                  
+
+            </footer>
+        </div>
+
+
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
