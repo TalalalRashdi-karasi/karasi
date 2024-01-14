@@ -17,8 +17,7 @@
 
     }
 
-    ViewData["Title"] = "Home Page";
-
+ViewData["Title"] = "Home Page";
 var userToken = ViewData["UserToken"];
 var RemainingSeats = ViewData["RemainingSeats"];
 var SeatError = TempData["LargeNoOfSeat"];
@@ -30,15 +29,10 @@ var SeatError = TempData["LargeNoOfSeat"];
 
                 <div class="EventDetailsImage img-gradient  mt-4">
                  
-
                     <img src="@Model.EvImage" alt="Lights" style="width:100%">
-
                     <div class="top-left">@Model.Target</div>
                     <div class="top-right">@Model.EventType</div>
                     <div class="bottom-right-title text-white">@Model.EventName</div>
-
-    
-                
                 </div>
 
                 <div class="mt-4">
@@ -138,7 +132,6 @@ var SeatError = TempData["LargeNoOfSeat"];
                     <input class="form-control" name="EventId" ReadOnly="true" id="EventId" value="@Model.Id" hidden> 
                     <button type="submit" class="btn form-control btn-lg btn-PrimeColor mt-5">احصل على التذكرة</button>
                     
-        
                 </form>
                 </div>
             </div>
