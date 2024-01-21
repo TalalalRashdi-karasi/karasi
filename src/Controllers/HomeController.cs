@@ -24,22 +24,26 @@ public class HomeController : Controller
 
      private readonly FirebaseAuthService _auth;
      
-     private readonly IUsersRepository _iusersRepository;
+    private readonly IUsersRepository _iusersRepository;
     private readonly EventsRepository _eventsRepository;
     private readonly TicketsRepository _TicketsRepository;
+
+    private readonly CalendarService _CalendarService;
     private readonly ILogger<HomeController> _logger;
 
     
 
-    public HomeController( ILogger<HomeController> logger,IUsersRepository iusersRepository, FirebaseAuthService auth, EventsRepository eventsRepository, TicketsRepository TicketsRepository )
+    public HomeController( ILogger<HomeController> logger, CalendarService calendarService ,IUsersRepository iusersRepository, FirebaseAuthService auth, EventsRepository eventsRepository, TicketsRepository TicketsRepository )
     {   
 
         
        
         _auth = auth;
+        _CalendarService = calendarService;
         _iusersRepository = iusersRepository;
         _TicketsRepository = TicketsRepository;
         _eventsRepository = eventsRepository;
+
         _logger = logger;
     }
 
@@ -156,8 +160,9 @@ public class HomeController : Controller
          var  NoOfRemainingSeats =  totalSeats.RemainingSeats;
          var  NoOfTicket = ticketModel.TicketCount;
 
+        var NewPrice = NoOfTicket * ticketModel.TicketPrice;
 
-
+             ViewData["NewPrice"] = NewPrice;
          var toUSer =  HttpContext.Session.GetString("_UserToken");
         ViewData["UserToken"]= toUSer ?? "";
         if(toUSer != null){
@@ -170,6 +175,10 @@ public class HomeController : Controller
           ViewData["ShowFirstName"] =  firstName ?? "" ;
           
         }
+
+        var DateTest = "2022-01-18 15:45:00" ; 
+
+        _CalendarService.SendCalendarInvite("dr.usb3@gmail.com", "New Ticket", "hii", DateTime.ParseExact(DateTest ,"yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture) ,DateTime.ParseExact(DateTest ,"yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture) , "Oman");
 
 
         return View(ticketModel);
@@ -190,6 +199,3 @@ public class HomeController : Controller
     }
 }
 
-public class ApplicationUser
-{
-}

@@ -35,12 +35,16 @@ builder.Services.AddSingleton<ShubakContext>();
 builder.Services.AddSingleton<TicketsRepository>();
 builder.Services.AddSingleton<EventsRepository>();
 builder.Services.AddSingleton<FirebaseAuthService>();
+builder.Services.AddSingleton<CalendarService>();
 builder.Services.AddSingleton<IUsersRepository , UsersRepository>();
 builder.Services.AddRazorPages()
                 .AddRazorRuntimeCompilation();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddSession();
 builder.Services.AddAuthorization();
+
+
+
 
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -59,6 +63,17 @@ builder.Services.AddMvc().AddRazorPagesOptions(options =>
         
 });
 
+   builder.Services.AddAuthorization(options =>
+    {
+        options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
+        // Add more policies as needed
+    });
+
+
+
+
+
+
 
 
 builder.Services.Configure<CookiePolicyOptions>(options =>
@@ -72,6 +87,7 @@ builder.Services.Configure<CookiePolicyOptions>(options =>
 
 
 var app = builder.Build();
+
 
 
 
