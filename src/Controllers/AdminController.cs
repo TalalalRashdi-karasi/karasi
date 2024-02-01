@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Shubak_Website.Models;
 using Shubak_Website.Repositories;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace Shubak_Website.Controllers;
@@ -34,7 +35,7 @@ public class AdminController : Controller
     }
 
 
-
+    [Authorize(Policy = "Company")]
     public  async Task<IActionResult> Index()
     {
 

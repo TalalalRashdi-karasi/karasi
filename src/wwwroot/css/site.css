@@ -903,15 +903,28 @@ width: 100%;
   position: relative;
   text-align: center;
   color: white;
+  height: 400px;
+  display: flex;
+  gap: 20px;
 
+}
 
+.HomeEventDetailsImage {
 
-  
+  position: relative;
+  text-align: center;
+  color: white;
+  display: flex;
+  gap: 20px;
+
 }
 
 .EventDetailsImage img{
 
 border-radius: 15px;
+object-fit: cover;
+
+
 }
 
 /* Top left text */

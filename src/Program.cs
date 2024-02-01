@@ -20,6 +20,8 @@ using Recombee.ApiClient.Util;
 using Firebase.Auth;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Authentication;
 
 
 
@@ -27,11 +29,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddMvc().AddSessionStateTempDataProvider();
 builder.Services.AddSession();
-
 builder.Services.AddControllersWithViews();
-
 builder.Services.AddSingleton<ShubakContext>();
- 
 builder.Services.AddSingleton<TicketsRepository>();
 builder.Services.AddSingleton<EventsRepository>();
 builder.Services.AddSingleton<FirebaseAuthService>();
@@ -46,15 +45,6 @@ builder.Services.AddAuthorization();
 
 
 
-
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(options =>
-    {
-        options.LoginPath = new PathString("/Account/Login");
-        options.ExpireTimeSpan = TimeSpan.FromMinutes(15.0);
-        options.SlidingExpiration = true;
-    });
-
 builder.Services.AddMvc().AddRazorPagesOptions(options =>
         {
             options.Conventions.AuthorizeFolder("/");
@@ -63,25 +53,7 @@ builder.Services.AddMvc().AddRazorPagesOptions(options =>
         
 });
 
-   builder.Services.AddAuthorization(options =>
-    {
-        options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
-        // Add more policies as needed
-    });
 
-
-
-
-
-
-
-
-builder.Services.Configure<CookiePolicyOptions>(options =>
-        {
-            options.CheckConsentNeeded = context => true;
-            options.MinimumSameSitePolicy = SameSiteMode.None;
-            options.Secure = CookieSecurePolicy.Always;
-        });
 
 
 

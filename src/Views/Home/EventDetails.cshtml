@@ -21,10 +21,14 @@ ViewData["Title"] = "Home Page";
 var userToken = ViewData["UserToken"];
 var RemainingSeats = ViewData["RemainingSeats"];
 var SeatError = TempData["LargeNoOfSeat"];
+
+
 }
 
+
+
         <div class="row">
-            <h3>@RemainingSeats | تبقت فقط</h3>
+            
             <div class="col-lg-8 text-end">
 
                 <div class="EventDetailsImage img-gradient  mt-4">
@@ -55,6 +59,7 @@ var SeatError = TempData["LargeNoOfSeat"];
                     <div class="d-flex">
                         <div>
                             <h1 class="color-white mb-4">تفاصيل التذكرة</h1>
+                            <h6> عدد المقاعد المتبقية |  <span class="badge bg-warning">@(( (int) RemainingSeats <= -1 ) ? "نفذت المقاعد" :  RemainingSeats )</span>   </h6>
                         </div>
 
                         <div class="me-auto">

@@ -6,7 +6,7 @@ using Firebase.Auth;
 
 namespace Shubak_Website.Context;
 
-public class ShubakContext
+public class ShubakContext 
 {
     private readonly IConfiguration _configuration;
     private readonly string _connectionString;

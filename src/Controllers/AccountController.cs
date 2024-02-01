@@ -96,8 +96,7 @@ public async Task<IActionResult> Register(UserModel userModel)
     public async Task<IActionResult> Login(UserModel loginModel)
     {
 
-    _logger.LogInformation("Executing {Action} {Parameters}", nameof(Login), JsonConvert.SerializeObject(loginModel));
-
+        
 
 
         if(ModelState.IsValid){
@@ -107,18 +106,26 @@ public async Task<IActionResult> Register(UserModel userModel)
 
          try
         {
+
+            loginModel.UserType = "Company";
+            var claims = new List<Claim>
+            {
+            // Other claims...
+             new Claim("UserType", loginModel.UserType),
+            };
+
+            var identity = new ClaimsIdentity(claims, "custom");
+            var principal = new ClaimsPrincipal(identity);
+
+
             var firebaseToken = await _auth.SignInWithEmailAndPasswordAsync(loginModel.Email, loginModel.Password);
 
             var UserInformation = await _iusersRepository.GetUserInformationByUID(firebaseToken);
-                
+            ViewData["UserInformation"] = UserInformation;
             var token = firebaseToken;
             if (token != null){
                
                 HttpContext.Session.SetString("_UserToken", token);
-
-        await SignInUser(loginModel, true);
-
-        _logger.LogInformation("User [{Email}] logged in at {DateTime}.", loginModel.Email, DateTime.UtcNow);
 
                 return RedirectToAction("Index", "Home" );
             }else{
@@ -145,63 +152,14 @@ public async Task<IActionResult> Register(UserModel userModel)
 
 
 
-
-    private async Task SignInUser(UserModel logininfo, bool isPersistent)
-{
-         
-
-    var json = JsonConvert.SerializeObject(logininfo);
-
-    var claims = new List<Claim>
-    {
-        new Claim(ClaimTypes.Name, logininfo.Email),
-        new Claim(ClaimTypes.Role, logininfo.UserType),
-        new Claim("UserProfile", json.ToString()),
-        new Claim("Company", logininfo.UserType == "Company" ? "true" : "false"),
-    };
-
-    var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-    var authProperties = new AuthenticationProperties
-    {
-        //AllowRefresh = <bool>,
-        // Refreshing the authentication session should be allowed.
-
-        IssuedUtc = DateTimeOffset.UtcNow,
-        // The time at which the authentication ticket was issued.
-
-        ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(15),
-        // The time at which the authentication ticket expires. A 
-        // value set here overrides the ExpireTimeSpan option of 
-        // CookieAuthenticationOptions set with AddCookie.
-
-        IsPersistent = isPersistent,
-        // Whether the authentication session is persisted across 
-        // multiple requests. When used with cookies, controls
-        // whether the cookie's lifetime is absolute (matching the
-        // lifetime of the authentication ticket) or session-based.
-
-        //RedirectUri = <string>
-        // The full path or absolute URI to be used as an http 
-        // redirect response value.
-    };
-
-    await HttpContext.SignInAsync(
-        CookieAuthenticationDefaults.AuthenticationScheme,
-        new ClaimsPrincipal(claimsIdentity),
-        authProperties);
-}
-
-
-
-
-    [HttpPost]
+   [HttpPost]
+   [HttpGet]
    public IActionResult Logout()
    {
 
-    
-
       // Sign out the user
         HttpContext.Session.Remove("_UserToken");
+        
         
         // Redirect to the home page or any other desired page
         return RedirectToAction("Index", "Home");
