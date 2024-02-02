@@ -36,6 +36,7 @@ services:
 
   certbot:
     image: certbot/certbot:v2.8.0
+    restart: always
     volumes:
       - /root/certbot/conf/:/etc/letsencrypt/:rw
       - /root/certbot/www:/var/www/certbot/:rw
@@ -50,7 +51,7 @@ services:
   
   mysql:
     image: mysql:8.2.0
-    command: '--default-authentication-plugin=mysql_native_password'
+    command: --default-authentication-plugin=mysql_native_password --bind-address=0.0.0.0
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: 12345678
@@ -58,7 +59,10 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - db-data:/var/lib/mysql
+      - db-data:/var/lib/mysql:rw
+      - /root/mysql:/etc/mysql/conf.d:rw
+      - /root/mysql-init:/docker-entrypoint-initdb.d
+
 
     networks:
       - app-network
