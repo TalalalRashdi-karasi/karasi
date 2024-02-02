@@ -6,6 +6,7 @@ services:
       context: ../src/.
       dockerfile: Dockerfile
     restart: always
+
     volumes:
       - /root/data:/var/www/tickets/asset:rw
     environment:
@@ -49,15 +50,16 @@ services:
   
   mysql:
     image: mysql:8.2.0
-    command: ['--default-authentication-plugin=mysql_native_password', '--bind-address=0.0.0.0']
+    command: '--default-authentication-plugin=mysql_native_password'
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: 12345678
-      MYSQL_ROOT_HOST: 127.0.0.1
+      MYSQL_ROOT_HOST: '%'
     ports:
       - "3306:3306"
     volumes:
       - db-data:/var/lib/mysql
+
     networks:
       - app-network
 
