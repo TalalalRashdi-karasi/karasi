@@ -120,3 +120,10 @@ To connect to a MySQL server running inside a Docker container on a remote serve
    - Keep your software (SSH, Docker, MySQL) up to date to ensure you have the latest security patches.
 
 By following these steps, you should be able to securely connect to a MySQL server running inside a Docker container on a remote server using only SSH access.
+
+
+## LetsEncrypt
+
+```bash
+certonly --webroot --webroot-path=/var/www/certbot/ --email admin@karasi.om --agree-tos --no-eff-email -d karasi.om -v
+```

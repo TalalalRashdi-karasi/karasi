@@ -6,9 +6,11 @@ services:
       context: ../src/.
       dockerfile: Dockerfile
     restart: always
+    volumes:
+      - /root/data:/var/www/tickets/asset:rw
     environment:
       MYSQL_ROOT_HOST: '%'
-      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_ENVIRONMENT: Production
       # - ASPNETCORE_URLS=http://+:80
       ConnectionStrings__DefaultConnection: server=mysql;port=3306;database=eventom;user=root;password=12345678
     depends_on:
@@ -17,27 +19,37 @@ services:
       - app-network
 
   nginx:
-    image: nginx:latest
+    image: nginx:1.25.3
     restart: always
     ports:
       - "80:80"
+      - "443:443" # Added for HTTPS
     volumes:
-      - /root/nginx.conf:/etc/nginx/nginx.conf:ro
-      - /root/certbot/www/:/var/www/certbot/:ro
+      - /root/conf/nginx.conf:/etc/nginx/nginx.conf:ro
+      - /root/certbot/www:/var/www/certbot/:ro
+      - /root/certbot/conf/:/etc/nginx/ssl/:ro
     depends_on:
       - dotnetapp
     networks:
       - app-network
 
   certbot:
-    image: certbot/certbot:latest
+    image: certbot/certbot:v2.8.0
     volumes:
-      - /root/certbot/www/:/var/www/certbot/:rw
-      - /root/certbot/conf/:/etc/letsencrypt/:rw 
+      - /root/certbot/conf/:/etc/letsencrypt/:rw
+      - /root/certbot/www:/var/www/certbot/:rw
+    depends_on:
+      - nginx
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do if [ ! -e /etc/letsencrypt/live/karasi.om/fullchain.pem ]; then certbot certonly --webroot --webroot-path=/var/www/certbot/ --email admin@karasi.om --agree-tos --no-eff-email -d karasi.om -v; fi; certbot renew; sleep 12h & wait $${!}; done;'"
 
+    # command: certonly --webroot --webroot-path=/var/www/certbot/ --email admin@karasi.om --agree-tos --no-eff-email -d karasi.om --renew -v
+ 
+  #   certbot certonly --webroot --webroot-path=/etc/letsencrypt --email admin@karasi.om --agree-tos --no-eff-email --staging -d karasi.om
+
+  
   mysql:
     image: mysql:8.2.0
-    command: --default-authentication-plugin=mysql_native_password
+    command: ['--default-authentication-plugin=mysql_native_password', '--bind-address=0.0.0.0']
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: 12345678
@@ -51,6 +63,7 @@ services:
 
 networks:
   app-network:
+    driver: bridge
 
 volumes:
   db-data:
