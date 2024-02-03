@@ -138,8 +138,7 @@ namespace Shubak_Website.Repositories
 
         public async Task<IEnumerable<TicketModel>> GetRemainingSeats(int? evId){
 
-            try
-            {
+
                 using var connection = _context.CreateConnection();
                 var result = await connection.QueryAsync<TicketModel>
                 (
@@ -153,13 +152,8 @@ namespace Shubak_Website.Repositories
 
                 return result;
 
-            }
-            catch (Exception ex)
-            {
-
-
-                throw;
-            }
+            
+            
 
         }
 

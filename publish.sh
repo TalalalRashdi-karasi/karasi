@@ -8,6 +8,8 @@ docker ps   # list running containers
 scp -r server/nginx root@45.76.36.193:/root   # copy new docker-compose
 scp -r server/mysql-init root@45.76.36.193:/root/mysql-init
 
+scp -r backup/  root@45.76.36.193:/root/backup
+
 # docker compose -f Deployment/docker-compose.yml pull
 # docker compose -f Deployment/docker-compose.yml up -d --no-deps --build mysql
 docker compose -f Deployment/docker-compose.yml up -d   # running docker

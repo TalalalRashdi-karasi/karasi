@@ -42,16 +42,18 @@
                         </span>
                     </label>
                 </div>
+
+
                 
-                <div class="form-floating mb-3">
+                <div class="form-floating custom-class mb-3" >
                 
-                    <input type="text" id="Firstname" name="Firstname" class="form-control form-control-lg" id="floatingInput"
+                    <input type="text" id="Firstname" name="Firstname" class="form-control  form-control-lg" id="floatingInput"
                         placeholder="ahmed">
                     <label for="Firstname">اسمك </label>
                     <span style="color: red;">@Html.ValidationMessageFor(model => model.Firstname) </span>   
                 </div>
                
-                <div id="Sex" class="form-floating mb-3">
+                <div id="Sex" class="form-floating custom-class mb-3">
                           <select name="Sex"  class="form-select " id="floatingSelectGrid" aria-label="Floating label select example">
                             <option value="">حدد</option>
                             <option value="1">ذكر</option>
@@ -61,14 +63,14 @@
                           <span style="color: red;">@Html.ValidationMessageFor(model => model.Sex) </span> 
                 </div>
                 
-                <div class="form-floating mb-3">
+                <div class="form-floating custom-class mb-3">
                 
                     <input type="email" id="Email" name="Email" class="form-control form-control-lg" id="floatingInput"
                         placeholder="name@example.com">
                     <label for="floatingInput">بريدك الإلكتروني</label>
                     <span style="color: red;">@Html.ValidationMessageFor(model => model.Email) </span> 
                 </div>
-                <div class="form-floating">
+                <div class="form-floating custom-class">
                     <input type="password"  name="Password" class="form-control form-control-lg" id="floatingPassword"
                         placeholder="Password">
                     <label for="Password">الرقم السري</label>

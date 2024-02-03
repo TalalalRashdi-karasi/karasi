@@ -1093,7 +1093,7 @@ span {cursor:pointer; }
 input{
   height:34px;
   width: 100px;
-  text-align: center;
+  text-align: right;
   font-size: 26px;
   border:1px solid #ddd;
   border-radius:4px;
@@ -1325,4 +1325,16 @@ background-image: linear-gradient(60deg, #96deda 0%, #50c9c3 100%);
   flex-direction: row;
   flex-wrap: nowrap;
   overflow: scroll;
+}
+
+
+.form-floating.custom-class>label {
+  top: 0;
+  right: 0;
+  transform-origin: 100% 0;
+  transition: opacity .1s ease-in-out,transform .1s ease-in-out;
+}
+.form-floating.custom-class>.form-control-plaintext~label, .form-floating.custom-class>.form-control:focus~label, .form-floating>.form-control:not(:placeholder-shown)~label, .form-floating>.form-select~label {
+  opacity: .65;
+  transform: scale(.85) translateY(-0.5rem) translateX(-0.15rem);
 }

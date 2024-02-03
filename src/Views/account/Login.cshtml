@@ -29,15 +29,17 @@
                 @Html.AntiForgeryToken()
 
                 @Html.ValidationSummary(true)
-                <div class="form-floating mb-3">
+                <div class="form-floating custom-class mb-3">
                         
-                    <input type="email" asp-for="Email" class="form-control form-control-lg " placeholder="البريد الإلكتروني" id="floatingInput" required>
+                    <input type="email" asp-for="Email" class="form-control form-control-lg " placeholder="البريد الالكتروني" id="floatingInput" required>
                     <label for="floatingInput" >البريد الالكتروني</label>
                 </div>
 
-                <div class="form-floating mb-3">
+                
+
+                <div class="form-floating custom-class mb-3">
                         
-                    <input type="password" asp-for="Password" class="form-control form-control-lg" id="floatingInput"  required>
+                    <input type="password" asp-for="Password" placeholder="الرقم السري" class="form-control form-control-lg" id="floatingInput"  required>
                     <label  for="floatingInput">الرقم السري</label>
                 </div>
             

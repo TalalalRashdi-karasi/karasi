@@ -127,3 +127,6 @@ By following these steps, you should be able to securely connect to a MySQL serv
 ```bash
 certonly --webroot --webroot-path=/var/www/certbot/ --email admin@karasi.om --agree-tos --no-eff-email -d karasi.om -v
 ```
+
+
+ mysqldump -u root -p12345678 eventom --routines > eventom.dump
