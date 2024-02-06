@@ -217,9 +217,35 @@ namespace Shubak_Website.Repositories
                 throw;
 
             }
+        }
 
 
 
+
+        public async Task<IEnumerable<EventViewModel>> GetEventsByEventType( string EvId){
+
+            try
+            {
+                using var connection = _context.CreateConnection();
+                var result = await connection.QueryAsync<EventDto>
+                (
+                    "GetEventsByEventType",
+                    new
+                    {
+                        EvId
+                    },
+                    commandType: CommandType.StoredProcedure
+                );
+
+                return result.Select(x => x.MapToViewModel()).ToList();
+
+            }
+            catch (Exception ex)
+            {
+
+
+                throw;
+            }
 
         }
 

@@ -176,9 +176,9 @@ public class HomeController : Controller
           
         }
 
-        var DateTest = "2022-01-18 15:45:00" ; 
+       var DateTest = "2022-01-18 15:45:00" ; 
 
-        _CalendarService.SendCalendarInvite("dr.usb3@gmail.com", "New Ticket", "hii", DateTime.ParseExact(DateTest ,"yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture) ,DateTime.ParseExact(DateTest ,"yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture) , "Oman");
+       _CalendarService.SendCalendarInvite("dr.usb3@gmail.com", "منصة كراسي", "شكراً لك", DateTime.ParseExact(DateTest ,"yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture) ,DateTime.ParseExact(DateTest ,"yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture) , "Oman");
 
 
         return View(ticketModel);
@@ -196,6 +196,19 @@ public class HomeController : Controller
     public IActionResult Error()
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }
+
+
+    public async  Task<IActionResult>  MoreEvent( string eventType){
+
+
+       var EventByType =   _eventsRepository.GetEventsByEventType(eventType);
+
+
+
+
+        return View(EventByType);
+
     }
 }
 
