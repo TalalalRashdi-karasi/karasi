@@ -65,6 +65,10 @@
       "PackagePath": "staticwebassets/assets/ITF_barcode.svg"
     },
     {
+      "Id": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/KarasiLogo.svg",
+      "PackagePath": "staticwebassets/assets/KarasiLogo.svg"
+    },
+    {
       "Id": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/Shubak-logo.svg",
       "PackagePath": "staticwebassets/assets/Shubak-logo.svg"
     },

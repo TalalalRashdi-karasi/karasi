@@ -114,6 +114,17 @@ grid-template-rows: 1fr auto;
   background-position: center;
 }
 
+
+.headBanar-MoreEvent{
+
+
+  border-radius: 15px;
+  height: 20vh;
+  background-color: #faf3eb;
+  overflow: hidden;
+  background-position: center;
+}
+
 .headBanar img{
   object-fit: cover; 
 }

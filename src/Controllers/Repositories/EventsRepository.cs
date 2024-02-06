@@ -222,7 +222,7 @@ namespace Shubak_Website.Repositories
 
 
 
-        public async Task<IEnumerable<EventViewModel>> GetEventsByEventType( string EvId){
+        public async Task<IEnumerable<EventViewModel>> GetEventsByEventType( string EvType){
 
             try
             {
@@ -232,7 +232,7 @@ namespace Shubak_Website.Repositories
                     "GetEventsByEventType",
                     new
                     {
-                        EvId
+                        EvType
                     },
                     commandType: CommandType.StoredProcedure
                 );

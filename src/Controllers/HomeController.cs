@@ -199,14 +199,13 @@ public class HomeController : Controller
     }
 
 
-    public async  Task<IActionResult>  MoreEvent( string eventType){
+    public async  Task<IActionResult>  MoreEvent( string id){
 
 
-       var EventByType =   _eventsRepository.GetEventsByEventType(eventType);
+       var EventByType = await  _eventsRepository.GetEventsByEventType(id);
 
 
-
-
+       
         return View(EventByType);
 
     }
