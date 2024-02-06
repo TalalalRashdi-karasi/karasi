@@ -12,6 +12,10 @@ if ! docker context inspect $DOCKER_CONTEXT > /dev/null 2>&1; then
 fi
 docker context use $DOCKER_CONTEXT 
 
+
+# remove unused images
+docker system prune -af
+
 # Build the dotnetapp Docker image
 docker compose -f $COMPOSE_FILE_PATH build $SERVICE_NAME
 
