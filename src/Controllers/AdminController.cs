@@ -35,7 +35,7 @@ public class AdminController : Controller
     }
 
 
-    [Authorize(Policy = "Company")]
+   [Authorize(Policy = "AdminPolicy")]
     public  async Task<IActionResult> Index()
     {
 

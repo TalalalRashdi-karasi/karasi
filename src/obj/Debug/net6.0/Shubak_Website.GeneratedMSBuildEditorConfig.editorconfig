@@ -12,9 +12,13 @@ build_property.RootNamespace = Shubak_Website
 build_property.ProjectDir = /Users/talal/Documents/nRepo/ticketApp/src/
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
-build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = /Users/talal/Documents/nRepo/ticketApp/src
 build_property._RazorSourceGeneratorDebug = 
+
+[/Users/talal/Documents/nRepo/ticketApp/src/Views/account/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvYWNjb3VudC9BY2Nlc3NEZW5pZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/talal/Documents/nRepo/ticketApp/src/Views/account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvYWNjb3VudC9Mb2dpbi5jc2h0bWw=

@@ -107,21 +107,39 @@ public async Task<IActionResult> Register(UserModel userModel)
          try
         {
 
-            loginModel.UserType = "Company";
-            var claims = new List<Claim>
-            {
-            // Other claims...
-             new Claim("UserType", loginModel.UserType),
-            };
-
-            var identity = new ClaimsIdentity(claims, "custom");
-            var principal = new ClaimsPrincipal(identity);
 
 
             var firebaseToken = await _auth.SignInWithEmailAndPasswordAsync(loginModel.Email, loginModel.Password);
 
             var UserInformation = await _iusersRepository.GetUserInformationByUID(firebaseToken);
             ViewData["UserInformation"] = UserInformation;
+
+
+        var claims = new List<Claim>
+        {
+             new Claim(ClaimTypes.Name, UserInformation.Firstname!),
+                new Claim(ClaimTypes.Email, UserInformation.Email),
+            // Add more claims as needed
+        };
+
+            // Add UserType claim
+        if (UserInformation.UserType == "Company")
+            {
+                claims.Add(new Claim("UserType", "Company"));
+        }
+
+        var claimsIdentity = new ClaimsIdentity(claims, "MyCookie");
+
+        var authProperties = new AuthenticationProperties
+        {
+            // Add expiration, etc. as needed
+        };
+
+        await HttpContext.SignInAsync("CookieAuthentication",
+            new ClaimsPrincipal(claimsIdentity), authProperties);
+
+
+
             var token = firebaseToken;
             if (token != null){
                
@@ -188,7 +206,15 @@ public IActionResult ResetSeccessfuly(){
    }
 
 
+    public IActionResult AccessDenied(){
+
+
+         return View();
+    }
+
 }
+
+
 
 
 

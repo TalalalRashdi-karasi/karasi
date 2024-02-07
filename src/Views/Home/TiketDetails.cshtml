@@ -8,6 +8,7 @@
    var UserNme = ViewData["ShowFirstName"];
    var UserEmail = ViewData["UserEmil"];
    var NewPrice = ViewData["NewPrice"];
+   var r = ViewData["RemainingSeats"]; 
 
     
 }
@@ -19,11 +20,12 @@
                 <div class="TicketDetails p-4  radius ">
                     <form method="post" enctype="multipart/form-data" asp-controller="Ticket" asp-action="SetNewTicket">
                         <input value="@UserID" hidden name="UserId">
-                        <input value="@UserEmail" hidden name="Email">
+                        <input value="@UserEmail"  name="Email">
                         <input value="@UserNme" hidden name="Firstname" >
                         <input value="@Model.EventId" hidden name="EventId">
                         <input value="@Model.TicketCount" hidden name="TicketCount">
                         <input value="@Model.TicketPrice" hidden name="TicketPrice">
+                        <input value="2" name="RemainingSeats">
                     <div class="TicketTypeCard p-3">
                         
                     <div class="d-flex">

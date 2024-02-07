@@ -125,13 +125,15 @@ public class HomeController : Controller
          var  NoOfTicket = ticketModel.TicketCount;
 
 
+
         var toUSer =  HttpContext.Session.GetString("_UserToken");
         ViewData["UserToken"]= toUSer  ?? "";
 
          var mainUSer =  await _iusersRepository.GetUserInformationByUID(toUSer);
           var firstName =  mainUSer?.Firstname  ?? "" ;
+          var UMail = mainUSer?.Email ?? "";
           ViewData["ShowFirstName"] = firstName  ?? "";
-
+        ViewData["ShowUserEmail"] = UMail ?? "";
                   
         if(  NoOfTicket >  NoOfRemainingSeats ){
 
@@ -176,9 +178,9 @@ public class HomeController : Controller
           
         }
 
-       var DateTest = "2022-01-18 15:45:00" ; 
+    //    var DateTest = "2022-01-18 15:45:00" ; 
 
-       _CalendarService.SendCalendarInvite("dr.usb3@gmail.com", "منصة كراسي", "شكراً لك", DateTime.ParseExact(DateTest ,"yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture) ,DateTime.ParseExact(DateTest ,"yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture) , "Oman");
+    //    _CalendarService.SendCalendarInvite("dr.usb3@gmail.com", "منصة كراسي", "شكراً لك", DateTime.ParseExact(DateTest ,"yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture) ,DateTime.ParseExact(DateTest ,"yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture) , "Oman");
 
 
         return View(ticketModel);

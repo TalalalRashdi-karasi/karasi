@@ -133,9 +133,6 @@ namespace Shubak_Website.Repositories
 
         }
 
-
-
-
         public async Task<IEnumerable<TicketModel>> GetRemainingSeats(int? evId){
 
 

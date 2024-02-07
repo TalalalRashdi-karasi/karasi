@@ -43,7 +43,19 @@ builder.Services.AddSession();
 builder.Services.AddAuthorization();
 
 
+  builder.Services.AddAuthentication("CookieAuthentication")
+        .AddCookie("CookieAuthentication", config =>
+        {
+            config.Cookie.Name = "MyCookie";
+            config.LoginPath = "/account/login";
+            config.AccessDeniedPath = "/account/AccessDenied";
+        });
 
+    builder.Services.AddAuthorization(options =>
+    {
+        options.AddPolicy("AdminPolicy", policy =>
+            policy.RequireClaim("UserType", "Company"));
+    });
 
 builder.Services.AddMvc().AddRazorPagesOptions(options =>
         {
@@ -90,8 +102,21 @@ app.UseCookiePolicy(new CookiePolicyOptions
     MinimumSameSitePolicy = SameSiteMode.None,
     Secure = CookieSecurePolicy.Always
 });
+
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "accessDenied",
+        pattern: "/account/accessdenied",
+        defaults: new { controller = "Account", action = "AccessDenied" }
+    );
+
+    // Other endpoint mappings
+});
 app.Run();
