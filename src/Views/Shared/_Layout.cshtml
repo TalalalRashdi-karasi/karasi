@@ -1,7 +1,8 @@
 ﻿@using System.Security.Claims
+@using Microsoft.AspNetCore.Authorization
 @{
  
-	var userProfileClaim = Context.User.Claims.FirstOrDefault(x => x.Type.Equals("UserProfile", StringComparison.OrdinalIgnoreCase))?.Value;
+	<!-- var userProfileClaim = Context.User.Claims.FirstOrDefault(x => x.Type.Equals("UserModel", StringComparison.OrdinalIgnoreCase))?.Value;
     var isAdminClaim = Context.User.Claims.FirstOrDefault(x => x.Type.Equals("Company", StringComparison.OrdinalIgnoreCase))?.Value;
     
     var userProfile = new UserModel();
@@ -16,7 +17,35 @@
 	if (isAdminClaim != null)
     {
         isAdmin = bool.Parse(isAdminClaim as string);
+    } -->
+}
+
+
+@if (User.Identity.IsAuthenticated)
+{
+    <p>User is authenticated.</p>
+    
+    @if (User.IsInRole("Admin"))
+    {
+        <p>User is an admin.</p>
     }
+    else
+    {
+        <p>User is not an admin.</p>
+    }
+    
+    @if (User.Claims.Any(c => c.Type == "UserType" && c.Value == "Company"))
+    {
+        <p>User is a company user.</p>
+    }
+    else
+    {
+        <p>User is not a company user.</p>
+    }
+}
+else
+{
+    <p>User is not authenticated.</p>
 }
     <!DOCTYPE html>
     <html lang="ar" dir="rtl">
@@ -40,9 +69,13 @@
         
         <div class="container-fluid">
             <div class="d-flex p-2 bd-highlight mt-2 bg-light border-raduis">
-
+                <div>
+                    <img src="/assets/icons/icons8-face-smile-64.png" width="45">
+                </div>
 
                     <div class="col-auto text-end">
+
+
                         @if( Token != null)
                         {
                             <a class="loginLink" asp-area="" asp-controller="Account" asp-action="Login">
@@ -81,57 +114,7 @@
 
     <body>
 
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
-        aria-labelledby="offcanvasRightLabel">
-        <div class="offcanvas-header">
-            <h1 id="offcanvasRightLabel">القائمة الرئيسية </h1>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
-                aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
 
-            @if(userProfile != null)
-            {
-            <ul class="masterMenu">
-                <li>
-                    <a asp-area="" value="1" asp-controller="Admin" asp-action="index">
-                        <button class="btn btn-light btn-lg w-100"><i class="isax isax-ticket-2 "></i> | إنشاء تذاكر
-                            للفعالية</button>
-                    </a>
-                </li>
-
-            </ul>
-
-            }else{
-
-            <li>
-                <a asp-area="" asp-controller="account" asp-action="register">
-                    <button class=""><i class="isax isax-ticket-2 "></i> | إنشاء حساب
-                        جديد</button>
-                </a>
-            </li>
-
-            <li>
-                <a asp-area="" asp-controller="Account" asp-action="Login">
-                    <button class=""><i class="isax isax-ticket-2 "></i> | تسجيل دخول</button>
-                </a>
-            </li>
-
-            }
-
-            <hr>
-
-            @if(userProfile != null)
-            {
-                <a asp-area="" asp-controller="Account" asp-action="Logout">
-                    <button class="btn btn-dark btn-lg w-100"><i class="isax isax-ticket-2 "></i> |
-                        تسجيل الخروج</button>
-                </a>
-            }
-
-
-        </div>
-    </div>
         <div class="container-fluid">
     
                 <main role="main">

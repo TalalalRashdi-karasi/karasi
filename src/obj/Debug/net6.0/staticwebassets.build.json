@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "YIOoa/xkyPULyCW2yNe4VVaIHUf/cMGI/Jufrq+3vW4=",
+  "Hash": "Dl/GMqFFhvmLL5CGyIIEsx+HRpkl7gLIOP5eoT4qCHQ=",
   "Source": "Shubak_Website",
   "BasePath": "_content/Shubak_Website",
   "Mode": "Default",
@@ -1052,6 +1052,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/assets/icons/AttendanceManagement-icon.svg"
+    },
+    {
+      "Identity": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/icons/icons8-face-smile-64.png",
+      "SourceId": "Shubak_Website",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/",
+      "BasePath": "_content/Shubak_Website",
+      "RelativePath": "assets/icons/icons8-face-smile-64.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/icons/icons8-face-smile-64.png"
+    },
+    {
+      "Identity": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/icons/icons8-waitress-50.png",
+      "SourceId": "Shubak_Website",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/",
+      "BasePath": "_content/Shubak_Website",
+      "RelativePath": "assets/icons/icons8-waitress-50.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/icons/icons8-waitress-50.png"
     },
     {
       "Identity": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/imageH1.jpeg",

@@ -118,7 +118,8 @@ public async Task<IActionResult> Register(UserModel userModel)
         var claims = new List<Claim>
         {
              new Claim(ClaimTypes.Name, UserInformation.Firstname!),
-                new Claim(ClaimTypes.Email, UserInformation.Email),
+            new Claim(ClaimTypes.Email, UserInformation.Email),
+            new Claim(ClaimTypes.GroupSid , UserInformation.UserType),
             // Add more claims as needed
         };
 

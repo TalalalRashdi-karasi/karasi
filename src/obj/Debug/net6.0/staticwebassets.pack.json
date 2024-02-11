@@ -257,6 +257,14 @@
       "PackagePath": "staticwebassets/assets/icons/AttendanceManagement-icon.svg"
     },
     {
+      "Id": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/icons/icons8-face-smile-64.png",
+      "PackagePath": "staticwebassets/assets/icons/icons8-face-smile-64.png"
+    },
+    {
+      "Id": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/icons/icons8-waitress-50.png",
+      "PackagePath": "staticwebassets/assets/icons/icons8-waitress-50.png"
+    },
+    {
       "Id": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/imageH1.jpeg",
       "PackagePath": "staticwebassets/assets/imageH1.jpeg"
     },
