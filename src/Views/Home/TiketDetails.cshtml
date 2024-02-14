@@ -1,5 +1,11 @@
 ﻿@model TicketModel;
 @using System.Security.Claims
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Authentication.Cookies
+
+
+
+
 @{
 
 
@@ -94,52 +100,62 @@
             </div>
         
             <div class="mb-2 col-lg-8 mt-4">
-                <div class="TicketDetails  radius  p-4">
-                  <h2>بيانات المستخدم</h2>
-                  <hr>
-    
-                    <h5>طلال الراشدي</h5>
-                    <h6>dr.usb3@gmail.com</h6>
-    
-                </div>
-                <button type="submit" class="btn form-control btn-lg btn-PrimeColor mt-5"> @NewPrice ر.ع | ادفع الأن  </button>
-    
 
-                <div class="mb-2 colmt-4">
-                    <div class="TicketDetails  radius  p-4">
-                      <h2>بيانات المستخدم</h2>
-                      <hr>
-        
-                      <div class="form-floating mb-3">
-                            
-                        <input type="text" name="Firstname" class="form-control form-control-lg" id="floatingInput"
-                            placeholder="ahmed">
-                        <label for="Firstname">الاسم</label>
-                    </div>
-                    
-                    <div class="form-floating mb-3">
-                    
-                        <input type="email" name="Email" class="form-control form-control-lg" id="floatingInput"
-                            placeholder="name@example.com">
-                        <label for="floatingInput"> البريد الإلكتروني</label>
-                    </div>
-                    <div class="form-floating mb-5">
-                        <input type="password" name="Password" class="form-control form-control-lg" id="floatingPassword"
-                            placeholder="Password">
-                        <label for="Password">الرقم السري</label>
-                    </div>
-        
-                    <hr>
-        
+                @if (User.Identity.IsAuthenticated)
+                    {
+
+                        <div class="TicketDetails  radius  p-4">
+                            <h2>بيانات المستخدم</h2>
+                            <hr>
+              
+                              <h5>طلال الراشدي</h5>
+                              <h6>dr.usb3@gmail.com</h6>
+              
+                          </div>
+                          <button type="submit" class="btn form-control btn-lg btn-PrimeColor mt-5"> @NewPrice ر.ع | ادفع الأن  </button>
+              
+                    }else{
+
+                        <div class="mb-2 colmt-4">
+                            <div class="TicketDetails  radius  p-4">
+                              <h2>بيانات المستخدم</h2>
+                              <hr>
                 
-                    <h5>اذا كان لديك حساب <a href="#">قم بتسجيل الدخول</a></h5>
-        
-                    </div>
-                    <button type="submit" class="btn form-control btn-lg btn-PrimeColor mt-5"> @NewPrice ر.ع | ادفع الأن  </button>
-        
-        
-                </div>
-            
+                              <div class="form-floating mb-3">
+                                    
+                                <input type="text" name="Firstname" class="form-control form-control-lg" id="floatingInput"
+                                    placeholder="ahmed">
+                                <label for="Firstname">الاسم</label>
+                            </div>
+                            
+                            <div class="form-floating mb-3">
+                            
+                                <input type="email" name="Email" class="form-control form-control-lg" id="floatingInput"
+                                    placeholder="name@example.com">
+                                <label for="floatingInput"> البريد الإلكتروني</label>
+                            </div>
+                            <div class="form-floating mb-5">
+                                <input type="password" name="Password" class="form-control form-control-lg" id="floatingPassword"
+                                    placeholder="Password">
+                                <label for="Password">الرقم السري</label>
+                            </div>
+                
+                            <hr>
+                
+                        
+                            <h5>اذا كان لديك حساب <a href="#">قم بتسجيل الدخول</a></h5>
+                
+                            </div>
+                            <button type="submit" class="btn form-control btn-lg btn-PrimeColor mt-5"> @NewPrice ر.ع | ادفع الأن  </button>
+                
+                
+                        </div>
+                    
+
+                    }
+
+
+
     
             </div>
         

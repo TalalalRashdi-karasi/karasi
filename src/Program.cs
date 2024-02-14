@@ -22,12 +22,30 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Authentication;
-
+using System.Security.Claims;
+using System.Text;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddMvc().AddSessionStateTempDataProvider();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+        .AddCookie(config =>
+        {
+            config.Cookie.Name = "MyCookie";
+            config.LoginPath = "/account/login";
+            config.AccessDeniedPath = "/account/AccessDenied";
+            config.ExpireTimeSpan = TimeSpan.FromMinutes(15.0);
+            config.SlidingExpiration = true;
+        });
+
+builder.Services.AddMvc()
+    .AddSessionStateTempDataProvider()
+    .AddRazorPagesOptions(options =>
+        {
+            options.Conventions.AuthorizeFolder("/");
+            options.Conventions.AllowAnonymousToPage("/Home/Index");
+        });
+
 builder.Services.AddSession();
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<ShubakContext>();
@@ -36,26 +54,24 @@ builder.Services.AddSingleton<EventsRepository>();
 builder.Services.AddSingleton<FirebaseAuthService>();
 builder.Services.AddSingleton<CalendarService>();
 builder.Services.AddSingleton<IUsersRepository , UsersRepository>();
+
 builder.Services.AddRazorPages()
                 .AddRazorRuntimeCompilation();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddSession();
-builder.Services.AddAuthorization();
 
+builder.Services.Configure<CookiePolicyOptions>(options =>
+{
+    options.CheckConsentNeeded = context => true;
+    options.MinimumSameSitePolicy = SameSiteMode.None;
+    options.Secure = CookieSecurePolicy.Always;
+});
 
-  builder.Services.AddAuthentication("CookieAuthentication")
-        .AddCookie("CookieAuthentication", config =>
-        {
-            config.Cookie.Name = "MyCookie";
-            config.LoginPath = "/account/login";
-            config.AccessDeniedPath = "/account/AccessDenied";
-        });
-
-    builder.Services.AddAuthorization(options =>
-    {
-        options.AddPolicy("AdminPolicy", policy =>
-            policy.RequireClaim("UserType", "Company"));
-    });
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminPolicy", policy =>
+        policy.RequireClaim("UserType", "Company"));
+});
 
 builder.Services.AddMvc().AddRazorPagesOptions(options =>
         {
@@ -65,35 +81,15 @@ builder.Services.AddMvc().AddRazorPagesOptions(options =>
         
 });
 
-
-
-
-
-
 var app = builder.Build();
 
-
-
-
-// Configure the HTTP request pipeline.
-// if (!app.Environment.IsDevelopment())
-// {
-//     app.UseExceptionHandler("/Home/Error");
-//     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-//     // app.UseHsts();
-// }
-
-
-
-
-
 app.UseHttpsRedirection();
-app.UseAuthentication();
-app.UseSession();
-// app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+app.UseAuthentication();
 app.UseAuthorization();
+app.UseSession();
+// app.UseHttpsRedirection();
 app.MapDefaultControllerRoute();
 
 // Use cookie middleware
@@ -103,20 +99,45 @@ app.UseCookiePolicy(new CookiePolicyOptions
     Secure = CookieSecurePolicy.Always
 });
 
-
-app.MapControllerRoute(
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-
-app.UseEndpoints(endpoints =>
-{
     endpoints.MapControllerRoute(
         name: "accessDenied",
         pattern: "/account/accessdenied",
         defaults: new { controller = "Account", action = "AccessDenied" }
     );
 
-    // Other endpoint mappings
+    endpoints.MapControllerRoute(
+        name: "logout",
+        pattern: "/account/logout",
+        defaults: new { controller = "Account", action = "Logout" }
+    );
+    
+    endpoints.MapRazorPages();
+});
+
+app.Use(async (context, next) =>
+{
+    var contentSecurityPolicy = new StringBuilder();
+    var googleJs = "https://www.googletagmanager.com https://www.google-analytics.com https://www.google.com/ https://www.gstatic.com/";
+
+    contentSecurityPolicy.Append("default-src https: 'self' 'unsafe-inline';");
+    contentSecurityPolicy.Append($"script-src 'self' 'unsafe-inline' {googleJs};");
+    contentSecurityPolicy.Append("img-src 'self' data: https: https://www.google-analytics.com;");
+    contentSecurityPolicy.Append("style-src 'self' 'unsafe-inline' ;");
+    contentSecurityPolicy.Append("media-src 'self' https: data: ;");
+    context.Response.Headers.Add("Content-Security-Policy", contentSecurityPolicy.ToString());
+    context.Response.Headers.Add("X-Xss-Protection", "1; mode=block");
+    context.Response.Headers.Add("X-Content-Type-Options", "nosniff");
+    context.Response.Headers.Add("Referrer-Policy", "no-referrer");
+    context.Response.Headers.Add("X-Frame-Options", "DENY");
+
+    context.Response.Headers.Add("Feature-Policy", "geolocation 'none';midi 'none';sync-xhr 'none';microphone 'none';camera 'none';magnetometer 'none';gyroscope 'none';fullscreen 'self';payment 'none';");
+
+    await next.Invoke();
 });
 app.Run();

@@ -119,7 +119,7 @@ public class HomeController : Controller
         var EventID = ticketModel.EventId;
         
          var RemainingSeats = await _TicketsRepository.GetRemainingSeats(EventID);
-         var  totalSeats =    RemainingSeats.First();
+         var  totalSeats = RemainingSeats.First();
 
          var  NoOfRemainingSeats =  totalSeats.RemainingSeats;
          var  NoOfTicket = ticketModel.TicketCount;

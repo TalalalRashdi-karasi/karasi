@@ -17,6 +17,7 @@ using IdentityServer4.Extensions;
 using System.Reflection;
 using Microsoft.Extensions.Logging;
 using System.Globalization;
+using Microsoft.AspNetCore.Identity;
 
 
 
@@ -29,12 +30,13 @@ namespace Shubak_Website.Controllers
         private readonly FirebaseAuthService _auth;
         private readonly IUsersRepository _iusersRepository;
         private readonly ILogger<AccountController> _logger;
+         //private readonly SignInManager<UserModel> _signInManager;
 
-
-        public AccountController( FirebaseAuthService auth, IUsersRepository iusersRepository,ILogger<AccountController> logger)
-
+        public AccountController( 
+            FirebaseAuthService auth, 
+            IUsersRepository iusersRepository,ILogger<AccountController> logger)
         {
-           _auth = auth;
+            _auth = auth;
             _iusersRepository = iusersRepository;
             _logger = logger;
         }
@@ -42,7 +44,6 @@ namespace Shubak_Website.Controllers
 
 public IActionResult Register()
 {
-
         // Set the culture to Arabic
         CultureInfo.CurrentCulture = new CultureInfo("ar");
         CultureInfo.CurrentUICulture = new CultureInfo("ar");
@@ -84,11 +85,15 @@ public async Task<IActionResult> Register(UserModel userModel)
 
 
    [HttpGet]
+   public IActionResult Login()
+   {
+        /*if (this.User.Identity.IsAuthenticated)
+        {*/
+            // Home Page.
+            return View();
+        /*}
 
-   public IActionResult Login(){
-
-
-      return View();
+        return RedirectToAction("Login", "Account");*/
    }
 
     [HttpPost]
@@ -117,9 +122,9 @@ public async Task<IActionResult> Register(UserModel userModel)
 
         var claims = new List<Claim>
         {
-             new Claim(ClaimTypes.Name, UserInformation.Firstname!),
-            new Claim(ClaimTypes.Email, UserInformation.Email),
-            new Claim(ClaimTypes.GroupSid , UserInformation.UserType),
+            new (ClaimTypes.Name, UserInformation.Firstname!),
+            new (ClaimTypes.Email, UserInformation.Email),
+            new (ClaimTypes.GroupSid , UserInformation.UserType),
             // Add more claims as needed
         };
 
@@ -133,11 +138,32 @@ public async Task<IActionResult> Register(UserModel userModel)
 
         var authProperties = new AuthenticationProperties
         {
-            // Add expiration, etc. as needed
+            //AllowRefresh = <bool>,
+// Refreshing the authentication session should be allowed.
+
+IssuedUtc = DateTimeOffset.UtcNow,
+// The time at which the authentication ticket was issued.
+
+ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(15),
+// The time at which the authentication ticket expires. A 
+// value set here overrides the ExpireTimeSpan option of 
+// CookieAuthenticationOptions set with AddCookie.
+
+IsPersistent = true,
+// Whether the authentication session is persisted across 
+// multiple requests. When used with cookies, controls
+// whether the cookie's lifetime is absolute (matching the
+// lifetime of the authentication ticket) or session-based.
+
+//RedirectUri = <string>
+// The full path or absolute URI to be used as an http 
+// redirect response value.
         };
 
-        await HttpContext.SignInAsync("CookieAuthentication",
-            new ClaimsPrincipal(claimsIdentity), authProperties);
+        await HttpContext.SignInAsync(
+            CookieAuthenticationDefaults.AuthenticationScheme,
+            new ClaimsPrincipal(claimsIdentity), 
+            authProperties);
 
 
 
@@ -164,27 +190,33 @@ public async Task<IActionResult> Register(UserModel userModel)
             TempData["ErrorMessage"] = "البريد الإلكتروني او الرقم السري غير صحيح ";
             return View();
         }
+    }
 
-        
+     [HttpPost]
+     [HttpGet]
+    public async Task<IActionResult> Logout()
+    {
+        // Clear the existing external cookie
+        await HttpContext.SignOutAsync(
+            CookieAuthenticationDefaults.AuthenticationScheme);
+
+        return RedirectToAction("Index", "Home");
     }
 
 
+//    [HttpPost]
+//     [ValidateAntiForgeryToken]
+//    public async  Task<IActionResult> LogoutConfirmed()
+//    {
 
-
-   [HttpPost]
-   [HttpGet]
-   public IActionResult Logout()
-   {
-
-      // Sign out the user
-        HttpContext.Session.Remove("_UserToken");
-        
-        
-        // Redirect to the home page or any other desired page
-        return RedirectToAction("Index", "Home");
+//       // Sign out the user
+//     // Perform sign out
+//         await _signInManager.SignOutAsync();
+//         // Redirect to the home page or any other desired page
+//         return RedirectToAction("Index", "Home");
 
       
-   }
+//    }
 
 
 public IActionResult Resetpassword(){

@@ -1,24 +1,7 @@
 ﻿@using System.Security.Claims
 @using Microsoft.AspNetCore.Authorization
-@{
- 
-	<!-- var userProfileClaim = Context.User.Claims.FirstOrDefault(x => x.Type.Equals("UserModel", StringComparison.OrdinalIgnoreCase))?.Value;
-    var isAdminClaim = Context.User.Claims.FirstOrDefault(x => x.Type.Equals("Company", StringComparison.OrdinalIgnoreCase))?.Value;
-    
-    var userProfile = new UserModel();
-	var isAdmin = false;
-	
-	if (userProfileClaim != null)
-	{
-		userProfile = Newtonsoft.Json.JsonConvert.DeserializeObject<UserModel>(userProfileClaim);
-		ViewData["UserProfile"] = userProfile;
-	}
-	
-	if (isAdminClaim != null)
-    {
-        isAdmin = bool.Parse(isAdminClaim as string);
-    } -->
-}
+@using Microsoft.AspNetCore.Authentication.Cookies
+
 
 
 @if (User.Identity.IsAuthenticated)
@@ -76,18 +59,25 @@ else
                     <div class="col-auto text-end">
 
 
-                        @if( Token != null)
+                        @if (User.Identity.IsAuthenticated)
                         {
+
+
                             <a class="loginLink" asp-area="" asp-controller="Account" asp-action="Login">
-                                <h5>مرحبا ، @ViewData["ShowFirstName"]</h5>  
+                                <h5>مرحبا ، @User.Identity.Name!</h5>  
                             </a>
 
                             <a class="registerLink" asp-area="" asp-controller="Account" asp-action="Logout">
                                 <h6>تسجيل خروج</h6>
                             </a>
+
+
+
                         }
                         else{
 
+
+                           
                             <a class="loginLink" asp-area="" asp-controller="Account" asp-action="Login">
                                 <h5>تسجيل الدخول</h5>  
                             </a>
