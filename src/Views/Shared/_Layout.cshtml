@@ -3,33 +3,6 @@
 @using Microsoft.AspNetCore.Authentication.Cookies
 
 
-
-@if (User.Identity.IsAuthenticated)
-{
-    <p>User is authenticated.</p>
-    
-    @if (User.IsInRole("Admin"))
-    {
-        <p>User is an admin.</p>
-    }
-    else
-    {
-        <p>User is not an admin.</p>
-    }
-    
-    @if (User.Claims.Any(c => c.Type == "UserType" && c.Value == "Company"))
-    {
-        <p>User is a company user.</p>
-    }
-    else
-    {
-        <p>User is not a company user.</p>
-    }
-}
-else
-{
-    <p>User is not authenticated.</p>
-}
     <!DOCTYPE html>
     <html lang="ar" dir="rtl">
 

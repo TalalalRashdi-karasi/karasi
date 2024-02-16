@@ -26,12 +26,11 @@
                 <div class="TicketDetails p-4  radius ">
                     <form method="post" enctype="multipart/form-data" asp-controller="Ticket" asp-action="SetNewTicket">
                         <input value="@UserID" hidden name="UserId">
-                        <input value="@UserEmail"  name="Email">
+                        <input value="@UserEmail" hidden  name="Email">
                         <input value="@UserNme" hidden name="Firstname" >
                         <input value="@Model.EventId" hidden name="EventId">
                         <input value="@Model.TicketCount" hidden name="TicketCount">
                         <input value="@Model.TicketPrice" hidden name="TicketPrice">
-                        <input value="2" name="RemainingSeats">
                     <div class="TicketTypeCard p-3">
                         
                     <div class="d-flex">
@@ -92,9 +91,14 @@
                             </div>
                         </div>
                     </div>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
                    
-                    <button type="submit" class="btn form-control btn-lg btn-PrimeColor mt-5"> @NewPrice ر.ع | ادفع الأن  </button>
+                        <button type="submit" class="btn form-control btn-lg btn-PrimeColor mt-5"> @NewPrice ر.ع | ادفع الأن  </button>
     
+                    }
+
                 </form>
                 </div>
             </div>
@@ -108,8 +112,8 @@
                             <h2>بيانات المستخدم</h2>
                             <hr>
               
-                              <h5>طلال الراشدي</h5>
-                              <h6>dr.usb3@gmail.com</h6>
+                              <h5>@User.Identity.Name</h5>
+                              <h6>@User.Identity.Email</h6>
               
                           </div>
                           <button type="submit" class="btn form-control btn-lg btn-PrimeColor mt-5"> @NewPrice ر.ع | ادفع الأن  </button>
@@ -140,14 +144,17 @@
                                 <label for="Password">الرقم السري</label>
                             </div>
                 
+                            <button type="submit" class="btn form-control btn-lg btn-PrimeColor mt-5"> إنشاء حساب </button>
+                
+
                             <hr>
                 
                         
+                         
                             <h5>اذا كان لديك حساب <a href="#">قم بتسجيل الدخول</a></h5>
                 
                             </div>
-                            <button type="submit" class="btn form-control btn-lg btn-PrimeColor mt-5"> @NewPrice ر.ع | ادفع الأن  </button>
-                
+
                 
                         </div>
                     

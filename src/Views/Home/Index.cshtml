@@ -1,4 +1,8 @@
 ﻿@model IEnumerable<EventViewModel>;
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Authentication.Cookies
+
    
   @{
     
@@ -18,7 +22,16 @@
             <div class="col  my-auto">
                 <h1 class="EvetTitle mb-4">منصة بيع التذاكر و إدارة الفعاليات </h1>
                 <h4 class="Evet-sub-Title" >احصل على تذكرتك للفعاليات القادمة</h4>
-                <a asp-action="index" asp-controller="Admin" class="btn text-white bg-dark">او انشئ تذاكر لفعاليتك القادمة</a>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+
+                @if (User.Claims.Any(c => c.Type == "UserType" && c.Value == "Company"))
+                {
+                  <a asp-action="index" asp-controller="Admin" class="btn text-white bg-dark">او انشئ تذاكر لفعاليتك القادمة</a>
+             
+                }
+              }
             </div>
         </div>
       </div>

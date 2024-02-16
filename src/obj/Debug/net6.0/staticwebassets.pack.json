@@ -129,32 +129,60 @@
       "PackagePath": "staticwebassets/assets/fonts/.DS_Store"
     },
     {
-      "Id": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/fonts/IBMPlexSansArabic-Bold.ttf",
-      "PackagePath": "staticwebassets/assets/fonts/IBMPlexSansArabic-Bold.ttf"
+      "Id": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/fonts/IBMPlexSansArabic-Bold.woff",
+      "PackagePath": "staticwebassets/assets/fonts/IBMPlexSansArabic-Bold.woff"
     },
     {
-      "Id": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/fonts/IBMPlexSansArabic-ExtraLight.ttf",
-      "PackagePath": "staticwebassets/assets/fonts/IBMPlexSansArabic-ExtraLight.ttf"
+      "Id": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/fonts/IBMPlexSansArabic-Bold.woff2",
+      "PackagePath": "staticwebassets/assets/fonts/IBMPlexSansArabic-Bold.woff2"
     },
     {
-      "Id": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/fonts/IBMPlexSansArabic-Light.ttf",
-      "PackagePath": "staticwebassets/assets/fonts/IBMPlexSansArabic-Light.ttf"
+      "Id": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/fonts/IBMPlexSansArabic-ExtraLight.woff",
+      "PackagePath": "staticwebassets/assets/fonts/IBMPlexSansArabic-ExtraLight.woff"
     },
     {
-      "Id": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/fonts/IBMPlexSansArabic-Medium.ttf",
-      "PackagePath": "staticwebassets/assets/fonts/IBMPlexSansArabic-Medium.ttf"
+      "Id": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/fonts/IBMPlexSansArabic-ExtraLight.woff2",
+      "PackagePath": "staticwebassets/assets/fonts/IBMPlexSansArabic-ExtraLight.woff2"
     },
     {
-      "Id": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/fonts/IBMPlexSansArabic-Regular.ttf",
-      "PackagePath": "staticwebassets/assets/fonts/IBMPlexSansArabic-Regular.ttf"
+      "Id": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/fonts/IBMPlexSansArabic-Light.woff",
+      "PackagePath": "staticwebassets/assets/fonts/IBMPlexSansArabic-Light.woff"
     },
     {
-      "Id": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/fonts/IBMPlexSansArabic-SemiBold.ttf",
-      "PackagePath": "staticwebassets/assets/fonts/IBMPlexSansArabic-SemiBold.ttf"
+      "Id": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/fonts/IBMPlexSansArabic-Light.woff2",
+      "PackagePath": "staticwebassets/assets/fonts/IBMPlexSansArabic-Light.woff2"
     },
     {
-      "Id": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/fonts/IBMPlexSansArabic-Thin.ttf",
-      "PackagePath": "staticwebassets/assets/fonts/IBMPlexSansArabic-Thin.ttf"
+      "Id": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/fonts/IBMPlexSansArabic-Medium.woff",
+      "PackagePath": "staticwebassets/assets/fonts/IBMPlexSansArabic-Medium.woff"
+    },
+    {
+      "Id": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/fonts/IBMPlexSansArabic-Medium.woff2",
+      "PackagePath": "staticwebassets/assets/fonts/IBMPlexSansArabic-Medium.woff2"
+    },
+    {
+      "Id": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/fonts/IBMPlexSansArabic-Regular.woff",
+      "PackagePath": "staticwebassets/assets/fonts/IBMPlexSansArabic-Regular.woff"
+    },
+    {
+      "Id": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/fonts/IBMPlexSansArabic-Regular.woff2",
+      "PackagePath": "staticwebassets/assets/fonts/IBMPlexSansArabic-Regular.woff2"
+    },
+    {
+      "Id": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/fonts/IBMPlexSansArabic-SemiBold.woff",
+      "PackagePath": "staticwebassets/assets/fonts/IBMPlexSansArabic-SemiBold.woff"
+    },
+    {
+      "Id": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/fonts/IBMPlexSansArabic-SemiBold.woff2",
+      "PackagePath": "staticwebassets/assets/fonts/IBMPlexSansArabic-SemiBold.woff2"
+    },
+    {
+      "Id": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/fonts/IBMPlexSansArabic-Thin.woff",
+      "PackagePath": "staticwebassets/assets/fonts/IBMPlexSansArabic-Thin.woff"
+    },
+    {
+      "Id": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/fonts/IBMPlexSansArabic-Thin.woff2",
+      "PackagePath": "staticwebassets/assets/fonts/IBMPlexSansArabic-Thin.woff2"
     },
     {
       "Id": "/Users/talal/Documents/nRepo/ticketApp/src/wwwroot/assets/fonts/Poppins-Black.ttf",
