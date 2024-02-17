@@ -113,25 +113,20 @@
                             <hr>
               
                               <h5>@User.Identity.Name</h5>
-                              <h6>@User.Identity.Email</h6>
+                              <h6></h6>
               
                           </div>
                           <button type="submit" class="btn form-control btn-lg btn-PrimeColor mt-5"> @NewPrice ر.ع | ادفع الأن  </button>
               
                     }else{
 
+                        <form>
+                            
+                     
                         <div class="mb-2 colmt-4">
                             <div class="TicketDetails  radius  p-4">
-                              <h2>بيانات المستخدم</h2>
+                              <h2>تسجيل الدخول</h2>
                               <hr>
-                
-                              <div class="form-floating mb-3">
-                                    
-                                <input type="text" name="Firstname" class="form-control form-control-lg" id="floatingInput"
-                                    placeholder="ahmed">
-                                <label for="Firstname">الاسم</label>
-                            </div>
-                            
                             <div class="form-floating mb-3">
                             
                                 <input type="email" name="Email" class="form-control form-control-lg" id="floatingInput"
@@ -144,20 +139,20 @@
                                 <label for="Password">الرقم السري</label>
                             </div>
                 
-                            <button type="submit" class="btn form-control btn-lg btn-PrimeColor mt-5"> إنشاء حساب </button>
+                            <button type="submit" class="btn form-control btn-lg btn-PrimeColor mt-5">  تسجيل الدخول </button>
                 
 
                             <hr>
                 
                         
-                         
-                            <h5>اذا كان لديك حساب <a href="#">قم بتسجيل الدخول</a></h5>
+                         <h5> او إذا كنت لا تمتلك حساب في منصة كراسي</h5>
+                            <h5><a href="#">  إنشاء حساب مجاناً الآن</a></h5>
                 
                             </div>
 
                 
                         </div>
-                    
+                    </form>
 
                     }
 
