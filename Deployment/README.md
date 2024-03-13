@@ -42,11 +42,13 @@ docker cp Deployment/eventom_bk.sql fb9f3ef4926a:eventom_bk.sql
 # create mysql db
 CREATE DATABASE eventom;
 
+docker exec -i 1167dbcb1555 mysql -u root --password=12345678 -e "CREATE DATABASE eventom;"
 
-docker exec -i fb9f3ef4926a /usr/bin/mysql -u root --password=12345678 eventom < eventom_bk.sql
+
+docker exec -i 1167dbcb1555 /usr/bin/mysql -u root --password=12345678 eventom < eventom_bk.sql
 
 # check connection
-docker exec -it fb9f3ef4926a /bin/bash
+docker exec -it 1167dbcb1555 /bin/bash
 
 # connect to db
 /usr/bin/mysql -u root --password=12345678 eventom
