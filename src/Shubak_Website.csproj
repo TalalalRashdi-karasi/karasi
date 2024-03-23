@@ -22,5 +22,6 @@
     <PackageReference Include="Ical.Net.NetCore" Version="4.1.11"/>
     <PackageReference Include="MimeKit" Version="4.3.0"/>
     <PackageReference Include="NETCore.MailKit" Version="2.1.0"/>
+    <PackageReference Include="ThawaniPaySDK" Version="1.1.7"/>
   </ItemGroup>
 </Project>

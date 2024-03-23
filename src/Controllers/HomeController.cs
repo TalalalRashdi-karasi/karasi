@@ -95,7 +95,10 @@ public class HomeController : Controller
     public async Task<IActionResult> EventDetails(int id)
     {
         var RemainingSeats = await _TicketsRepository.GetRemainingSeats(id);
+
+ 
          var totalSeats =    RemainingSeats.First();
+
          ViewData["RemainingSeats"] = totalSeats.RemainingSeats;
 
          string? data = TempData["LargeNoOfSeat"] as string;

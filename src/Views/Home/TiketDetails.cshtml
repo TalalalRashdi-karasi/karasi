@@ -127,26 +127,16 @@
                             <div class="TicketDetails  radius  p-4">
                               <h2>تسجيل الدخول</h2>
                               <hr>
-                            <div class="form-floating mb-3">
-                            
-                                <input type="email" name="Email" class="form-control form-control-lg" id="floatingInput"
-                                    placeholder="name@example.com">
-                                <label for="floatingInput"> البريد الإلكتروني</label>
-                            </div>
-                            <div class="form-floating mb-5">
-                                <input type="password" name="Password" class="form-control form-control-lg" id="floatingPassword"
-                                    placeholder="Password">
-                                <label for="Password">الرقم السري</label>
-                            </div>
-                
-                            <button type="submit" class="btn form-control btn-lg btn-PrimeColor mt-5">  تسجيل الدخول </button>
+
+                              <h5 class="LogInToAccountBtn"><a asp-action="Login" asp-controller="Account">تسجيل الدخول</a></h5>
                 
 
-                            <hr>
+                            <hr class="hr1">
                 
                         
-                         <h5> او إذا كنت لا تمتلك حساب في منصة كراسي</h5>
-                            <h5><a href="#">  إنشاء حساب مجاناً الآن</a></h5>
+                         <h6 style="text-align: center;" class="mb-4">  إذا كنت لا تمتلك حساب في منصة كراسي</h6>
+
+                            <h5 class="CreateAccountBtn"><a asp-action="Register" asp-controller="Account">  إنشاء حساب مجاناً الآن</a></h5>
                 
                             </div>
 
