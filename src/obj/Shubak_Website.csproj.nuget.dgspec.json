@@ -1,29 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "/Users/talal/Documents/nRepo/ticketApp/src/Shubak_Website.csproj": {}
+    "/Users/saidal-souti/Documents/repos/ticketApp/src/Shubak_Website.csproj": {}
   },
   "projects": {
-    "/Users/talal/Documents/nRepo/ticketApp/src/Shubak_Website.csproj": {
+    "/Users/saidal-souti/Documents/repos/ticketApp/src/Shubak_Website.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/talal/Documents/nRepo/ticketApp/src/Shubak_Website.csproj",
+        "projectUniqueName": "/Users/saidal-souti/Documents/repos/ticketApp/src/Shubak_Website.csproj",
         "projectName": "Shubak_Website",
-        "projectPath": "/Users/talal/Documents/nRepo/ticketApp/src/Shubak_Website.csproj",
-        "packagesPath": "/Users/talal/.nuget/packages/",
-        "outputPath": "/Users/talal/Documents/nRepo/ticketApp/src/obj/",
+        "projectPath": "/Users/saidal-souti/Documents/repos/ticketApp/src/Shubak_Website.csproj",
+        "packagesPath": "/Users/saidal-souti/.nuget/packages/",
+        "outputPath": "/Users/saidal-souti/Documents/repos/ticketApp/src/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "/Users/talal/.nuget/NuGet/NuGet.Config"
+          "/Users/saidal-souti/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/sdk/7.0.306/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -36,6 +32,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -130,7 +131,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.306/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.203/RuntimeIdentifierGraph.json"
         }
       }
     }
