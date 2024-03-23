@@ -45,7 +45,8 @@ CREATE DATABASE eventom;
 docker exec -i 1167dbcb1555 mysql -u root --password=12345678 -e "CREATE DATABASE eventom;"
 
 
-docker exec -i 1167dbcb1555 /usr/bin/mysql -u root --password=12345678 eventom < eventom_bk.sql
+docker exec -i 1167dbcb1555 /usr/bin/mysql -u root --password=12345678 eventom < backup/eventom.dump
+```
 
 # check connection
 docker exec -it 1167dbcb1555 /bin/bash
@@ -141,4 +142,4 @@ certonly --webroot --webroot-path=/var/www/certbot/ --email admin@karasi.om --ag
 ```
 
 
- mysqldump -u root -p12345678 eventom --routines > eventom.dump
+mysqldump -u root -p12345678 --routines --triggers eventom > eventom.dump
