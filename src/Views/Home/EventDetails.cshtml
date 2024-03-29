@@ -59,40 +59,41 @@ var SeatError = TempData["LargeNoOfSeat"];
                     <div class="d-flex">
                         <div>
                             <h1 class="color-white mb-4">تفاصيل التذكرة</h1>
-                            <h6> عدد المقاعد المتبقية |  <span class="badge bg-warning">@(( (int) RemainingSeats <= -1 ) ? "نفذت المقاعد" :  RemainingSeats )</span>   </h6>
+                            <h6> عدد المقاعد المتبقية |  <span class="badge bg-danger">@(( (int) RemainingSeats <= -1 ) ? "نفذت المقاعد" :  RemainingSeats )</span>   </h6>
                         </div>
 
                         <div class="me-auto">
-                           <h1><span class="badge bg-danger">@Model.EventPrice ر.ع</span></h1>
+                           <h3><span class="badge bg-badge-Brand-color-4">@Model.EventPrice ر.ع</span></h3>
                         </div>
                     </div>
 
                     <hr>
 
                         <div class="informationBox  p-2 mt-2">
-                            <i class="isax isax-clock"></i>  | <span> اسم الفعالية  </span> 
-                           
-                            <input class="form-control input-style text-end" name="EventName" ReadOnly="true" id="EventName" value="@Model.EventName" >
+                            <i class="isax isax-lamp-charge"></i>  | <span> اسم الفعالية  </span> 
+                           <h4 class="me-4">@Model.EventName</h4>
+                            <input class="form-control input-style text-end" hidden name="EventName" ReadOnly="true" id="EventName" value="@Model.EventName" >
                         </div>
 
                         <div class="informationBox  p-2 mt-2">
-                            <i class="isax isax-clock"></i>  | <span> تاريخ الفعالية  </span> 
+                            <i class="isax isax-calendar-tick"></i>  | <span> تاريخ الفعالية  </span> 
                            
-    
-                            <input class="form-control input-style text-end"  type="datetime" name="EventDate" ReadOnly="true" id="EventDate" value="@Model.EventDate" >
+                            <h4 class="me-4">@Model.EventDate</h4>
+                            <input class="form-control input-style text-end" hidden  type="datetime" name="EventDate" ReadOnly="true" id="EventDate" value="@Model.EventDate" >
                         </div>
 
                         <div class="informationBox text-end p-2 mt-2">
                             <i class="isax isax-clock"></i>  | <span>  توقيت الفعالية  </span> 
-                           
+                            <h4 class="me-4">@Model.EventTime</h4>
     
-                            <input class="form-control input-style text-end" type="datetime" name="EventTime" ReadOnly="true" id="EventTime" value="@Model.EventTime" >
+                            <input class="form-control input-style text-end" hidden type="datetime" name="EventTime" ReadOnly="true" id="EventTime" value="@Model.EventTime" >
                         </div>
                         <div class="informationBox text-end p-2 mt-2">
-                            <i class="isax isax-clock"></i>  | <span> مكان الفعالية  </span> 
+                            <i class="isax isax-map"></i>  | <span> مكان الفعالية  </span> 
                            
+                            <h4 class="me-4">@Model.EventPlace</h4>
     
-                            <input class="form-control input-style text-end"  name="EventPlace" ReadOnly="true" id="EventPlace" value="@Model.EventPlace" >
+                            <input class="form-control input-style text-end" hidden  name="EventPlace" ReadOnly="true" id="EventPlace" value="@Model.EventPlace" >
                         </div>
 
                     <h5 class="color-white mt-4">نوع التذكرة</h5>
@@ -106,7 +107,8 @@ var SeatError = TempData["LargeNoOfSeat"];
                             </div>
         
                             <div class="me-auto">
-                                <input class="form-control input-style" name="TicketPrice" ReadOnly="true" id="TicketPrice" value="@Model.EventPrice" >
+                                <h4 class="me-4">@Model.EventPrice ر.ع </h4>
+                                <input class="form-control input-style " hidden name="TicketPrice" ReadOnly="true" id="TicketPrice" value="@Model.EventPrice" >
     
                             </div>
                         </div>
@@ -135,7 +137,7 @@ var SeatError = TempData["LargeNoOfSeat"];
                     <input type="text" hidden name="EventType" value="@Model.EventType">
                     <input type="text" hidden name="UserId" value="@userToken">
                     <input class="form-control" name="EventId" ReadOnly="true" id="EventId" value="@Model.Id" hidden> 
-                    <button type="submit" class="btn form-control btn-lg btn-PrimeColor mt-5">احصل على التذكرة</button>
+                    <button type="submit" class="btn form-control btn-lg Get-Ticket-Btn mt-5">احصل على التذكرة</button>
                     
                 </form>
                 </div>
