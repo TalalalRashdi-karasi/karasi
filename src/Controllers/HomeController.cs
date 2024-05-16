@@ -214,5 +214,13 @@ public class HomeController : Controller
         return View(EventByType);
 
     }
+
+
+    public async Task<IActionResult> MyTicket(string UID){
+
+        
+
+        return View();
+    }
 }
 

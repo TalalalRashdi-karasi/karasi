@@ -133,7 +133,31 @@ namespace Shubak_Website.Repositories
 
         }
 
-        public async Task<IEnumerable<TicketModel>> GetRemainingSeats(int? evId){
+        public async Task<IEnumerable<TicketModel>> GetTicketByUserID(int? UID){
+
+
+                using var connection = _context.CreateConnection();
+                var result = await connection.QueryAsync<TicketModel>
+                (
+                    "GetUserTicket_ByUserID",
+                    new
+                    {
+                        UID
+                    },
+                    commandType: CommandType.StoredProcedure
+                );
+
+                return result;
+
+            
+            
+
+        }
+
+
+
+
+                public async Task<IEnumerable<TicketModel>> GetRemainingSeats(int? evId){
 
 
                 using var connection = _context.CreateConnection();

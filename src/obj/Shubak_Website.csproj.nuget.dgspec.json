@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/talal/Documents/nRepo/ticketApp/src/Shubak_Website.csproj": {}
+    "/Users/talal/ticketApp/src/Shubak_Website.csproj": {}
   },
   "projects": {
-    "/Users/talal/Documents/nRepo/ticketApp/src/Shubak_Website.csproj": {
+    "/Users/talal/ticketApp/src/Shubak_Website.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/talal/Documents/nRepo/ticketApp/src/Shubak_Website.csproj",
+        "projectUniqueName": "/Users/talal/ticketApp/src/Shubak_Website.csproj",
         "projectName": "Shubak_Website",
-        "projectPath": "/Users/talal/Documents/nRepo/ticketApp/src/Shubak_Website.csproj",
+        "projectPath": "/Users/talal/ticketApp/src/Shubak_Website.csproj",
         "packagesPath": "/Users/talal/.nuget/packages/",
-        "outputPath": "/Users/talal/Documents/nRepo/ticketApp/src/obj/",
+        "outputPath": "/Users/talal/ticketApp/src/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
