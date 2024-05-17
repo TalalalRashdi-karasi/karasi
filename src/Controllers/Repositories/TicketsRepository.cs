@@ -133,7 +133,7 @@ namespace Shubak_Website.Repositories
 
         }
 
-        public async Task<IEnumerable<TicketModel>> GetTicketByUserID(int? UID){
+        public async Task<IEnumerable<TicketModel>> GetTicketByUserID(string UID){
 
 
                 using var connection = _context.CreateConnection();

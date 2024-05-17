@@ -218,9 +218,10 @@ public class HomeController : Controller
 
     public async Task<IActionResult> MyTicket(string UID){
 
-        
 
-        return View();
+        var GetTicketByUserID = await _TicketsRepository.GetTicketByUserID(UID);
+
+        return View(GetTicketByUserID);
     }
 }
 
