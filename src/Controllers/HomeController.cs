@@ -22,7 +22,7 @@ namespace Shubak_Website.Controllers;
 public class HomeController : Controller
 {
 
-     private readonly FirebaseAuthService _auth;
+    private readonly FirebaseAuthService _auth;
      
     private readonly IUsersRepository _iusersRepository;
     private readonly EventsRepository _eventsRepository;
@@ -43,7 +43,6 @@ public class HomeController : Controller
         _iusersRepository = iusersRepository;
         _TicketsRepository = TicketsRepository;
         _eventsRepository = eventsRepository;
-
         _logger = logger;
     }
 
@@ -61,6 +60,7 @@ public class HomeController : Controller
           var mainUSer =  await _iusersRepository.GetUserInformationByUID(toUSer);
           var firstName =  mainUSer.Firstname;
           var id = mainUSer.UID;
+          
           ViewData["ShowFirstName"] = firstName;
           
         }
@@ -76,11 +76,6 @@ public class HomeController : Controller
     
 
 
-        // var result2 = userCardTicket
-        // .OrderByDescending(c => c.EventDate)
-        // .AsEnumerable();
-
-        // ViewData["userCardTicket"] = result2;
 
         return View(result);
     }
@@ -106,7 +101,7 @@ public class HomeController : Controller
         ViewData["UserToken"]= toUSer  ?? "";
 
          var mainUSer =  await _iusersRepository.GetUserInformationByUID(toUSer);
-         
+        
           var firstName =  mainUSer?.Firstname  ?? null ;
           ViewData["ShowFirstName"] = firstName  ?? null ;
 
@@ -216,12 +211,28 @@ public class HomeController : Controller
     }
 
 
-    public async Task<IActionResult> MyTicket(string UID){
+    public async Task<IActionResult> MyTicket(){
 
+        
+                var toUSer =  HttpContext.Session.GetString("_UserToken");
+        ViewData["UserToken"]= toUSer;
+        if(toUSer != null){
 
-        var GetTicketByUserID = await _TicketsRepository.GetTicketByUserID(UID);
+          var mainUSer =  await _iusersRepository.GetUserInformationByUID(toUSer);
+          var firstName =  mainUSer.Firstname;
+          var id = mainUSer.UID;
+          
+          ViewData["ShowFirstName"] = firstName;
 
-        return View(GetTicketByUserID);
+          var GetTicketByUserID = await _TicketsRepository.GetTicketByUserID(id);
+          
+
+          return View(GetTicketByUserID);
+        }else{
+
+            return View();
+        }
+
     }
 }
 

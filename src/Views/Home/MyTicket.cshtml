@@ -1,4 +1,4 @@
-﻿@model TicketModel;
+﻿@model IEnumerable<TicketModel>;
 @using System.Security.Claims
 @using Microsoft.AspNetCore.Authorization
 @using Microsoft.AspNetCore.Authentication.Cookies
@@ -20,11 +20,45 @@
 }
 
 
+<div class="container-fluid">
 
-<div class="container">
+    <div class="row mt-3">
 
-
+        <div class="col-12 text-center ">
+            <div class="row headBanar-MoreEvent ">
+                <div class="col  my-auto">
+                    <h1 class="EvetTitle mb-4"> قائمة التذاكر </h1>
+                    <h4 class="Evet-sub-Title"></h4>
+                </div>
+            </div>
+        </div>
+    </div>
     
+    
+
+    @foreach(var MyTicket in Model){
+
+
+        <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">@MyTicket.EventName</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">An item</li>
+              <li class="list-group-item">A second item</li>
+              <li class="list-group-item">A third item</li>
+            </ul>
+            <div class="card-body">
+              <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
+            </div>
+          </div>
+  
+
+    }
+
 
 </div>
 

@@ -119,6 +119,9 @@ public async Task<IActionResult> Register(UserModel userModel)
             var UserInformation = await _iusersRepository.GetUserInformationByUID(firebaseToken);
             ViewData["UserInformation"] = UserInformation;
 
+            var InformationModel = new UserInformationModel( UserInformation
+            .Email , UserInformation.UID);
+           
 
         var claims = new List<Claim>
         {
