@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Shubak_Website")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c058d4c16ca6c68cc6f202b7a6e690b040acb083")]
 [assembly: System.Reflection.AssemblyProductAttribute("Shubak_Website")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Shubak_Website")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
