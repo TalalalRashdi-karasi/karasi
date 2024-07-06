@@ -34,32 +34,122 @@
         </div>
     </div>
     
-    
-
-    @foreach(var MyTicket in Model){
 
 
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">@MyTicket.EventName</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">An item</li>
-              <li class="list-group-item">A second item</li>
-              <li class="list-group-item">A third item</li>
-            </ul>
-            <div class="card-body">
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-          </div>
+
+</div>
+
+
+
+
+<div class="container">
+
+
   
+  @foreach(var MyTicket in Model){
 
-    }
+
+    <div class="card mb-3" >
+      <div class="row g-0">
+        <div class="col-4">
+          <img src="~/assets/qr.png" width="200" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-8">
+          <div class="card-body">
+
+            <div class="d-flex">
+
+              <h5 class="card-title">@MyTicket.EventName</h5>
+
+              <div class="me-auto">
+                @MyTicket.TicketId
+              </div>
+
+            </div>
 
 
+              <div class="row mt-5">
+                <div class="col">
+                  <table class=" table-responsive">
+                    <tr>
+                        <td rowspan="3">
+                          <i class="isax isax-calendar-tick" style="font-size: 40px;"></i>
+                        </td>
+                        <td style="font-weight: bold;">عدد الكراسي</td>
+                    </tr>
+                    <tr>
+                      <td >
+                        @MyTicket.TicketCount
+                      </td>
+  
+                    </tr>
+                  </table>
+                 
+                </div>
+                <div class="col">
+  
+                  <table class="table-responsive">
+                    <tr>
+                        <td rowspan="3">
+                          <i class="isax isax-calendar-tick" style="font-size: 40px;"></i>
+                        </td>
+                        <td style="font-weight: bold;">التاريخ</td>
+                    </tr>
+                    <tr>
+                      <td  >
+                        @MyTicket.EventDate
+                      </td>
+  
+                    </tr>
+                  </table>
+                 
+                
+                </div>
+                <div class="col">
+                  <table class="table-responsive">
+                    <tr>
+                        <td rowspan="3">
+                          <i class="isax isax-clock" style="font-size: 40px;"></i>
+                        </td>
+                        <td style="font-weight: bold;">الوقت</td>
+                    </tr>
+                    <tr>
+                      <td  >
+                        @MyTicket.EventTime
+                      </td>
+  
+                    </tr>
+                  </table>
+                 
+                </div>
+                <div class="col">
+                  <table class="table-responsive">
+                    <tr>
+                        <td rowspan="3">
+                          <i class="isax isax-map" style="font-size: 40px;"></i>
+                        </td>
+                        <td style="font-weight: bold;">المكان</td>
+                    </tr>
+                    <tr>
+                      <td  >
+                        @MyTicket.EventPlace
+                      </td>
+  
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  }
 </div>
 
 

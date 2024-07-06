@@ -1,25 +1,29 @@
 {
   "format": 1,
   "restore": {
-    "/Users/saidal-souti/Documents/repos/ticketApp/src/Shubak_Website.csproj": {}
+    "/Users/talal/ticketApp/src/Shubak_Website.csproj": {}
   },
   "projects": {
-    "/Users/saidal-souti/Documents/repos/ticketApp/src/Shubak_Website.csproj": {
+    "/Users/talal/ticketApp/src/Shubak_Website.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/saidal-souti/Documents/repos/ticketApp/src/Shubak_Website.csproj",
+        "projectUniqueName": "/Users/talal/ticketApp/src/Shubak_Website.csproj",
         "projectName": "Shubak_Website",
-        "projectPath": "/Users/saidal-souti/Documents/repos/ticketApp/src/Shubak_Website.csproj",
-        "packagesPath": "/Users/saidal-souti/.nuget/packages/",
-        "outputPath": "/Users/saidal-souti/Documents/repos/ticketApp/src/obj/",
+        "projectPath": "/Users/talal/ticketApp/src/Shubak_Website.csproj",
+        "packagesPath": "/Users/talal/.nuget/packages/",
+        "outputPath": "/Users/talal/ticketApp/src/obj/",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/Users/saidal-souti/.nuget/NuGet/NuGet.Config"
+          "/Users/talal/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "/usr/local/share/dotnet/sdk/7.0.306/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -32,11 +36,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -127,20 +126,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Runtime.linux-x64",
-              "version": "[7.0.20, 7.0.20]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.linux-x64",
-              "version": "[7.0.20, 7.0.20]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Runtime.linux-x64",
-              "version": "[7.0.20, 7.0.20]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -149,12 +134,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.302/RuntimeIdentifierGraph.json"
-        }
-      },
-      "runtimes": {
-        "linux-x64": {
-          "#import": []
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.306/RuntimeIdentifierGraph.json"
         }
       }
     }
