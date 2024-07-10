@@ -60,6 +60,8 @@ builder.Services.AddRazorPages()
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddSession();
 
+builder.Services.AddHealthChecks();
+
 builder.Services.Configure<CookiePolicyOptions>(options =>
 {
     options.CheckConsentNeeded = context => true;
@@ -98,6 +100,9 @@ app.UseCookiePolicy(new CookiePolicyOptions
     MinimumSameSitePolicy = SameSiteMode.None,
     Secure = CookieSecurePolicy.Always
 });
+
+// add health check
+app.UseHealthChecks("/health");
 
 app.UseEndpoints(endpoints =>
 {

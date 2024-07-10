@@ -23,17 +23,24 @@ echo "Creating temporary directory on the EC2 instance..."
 # clear the temp_deploy directory
 ssh -i $EC2_KEY_PATH $EC2_USER@$EC2_HOST "rm -rf ~/temp_deploy"
 ssh -i $EC2_KEY_PATH $EC2_USER@$EC2_HOST "mkdir -p ~/temp_deploy"
+ssh -i $EC2_KEY_PATH $EC2_USER@$EC2_HOST "rm -rf ~/temp_conf"
+ssh -i $EC2_KEY_PATH $EC2_USER@$EC2_HOST "mkdir -p ~/temp_conf"
 
 # Copy the build output to the temporary directory on the EC2 instance
 echo "Copying build output to the EC2 instance..."
-rsync -avz -e "ssh -i $EC2_KEY_PATH" $BUILD_DIR/* $EC2_USER@$EC2_HOST:~/temp_deploy
+rsync -avz "ssh -i $EC2_KEY_PATH" $BUILD_DIR/* $EC2_USER@$EC2_HOST:~/temp_deploy
+echo "Copying nginx_template.conf to the EC2 instance..."
+rsync -avz -e "ssh -i $EC2_KEY_PATH" nginx_template.conf $EC2_USER@$EC2_HOST:~/temp_conf/nginx_template.conf
+
 
 # Create directories, install .NET SDK, Nginx, and configure them on the EC2 instance
 # Configure the EC2 instance
 echo "Configuring the EC2 instance..."
+
+
 ssh -i $EC2_KEY_PATH $EC2_USER@$EC2_HOST << EOF
 # Determine Ubuntu version
-UBUNTU_VERSION=$(. /etc/os-release; echo $VERSION_ID)
+UBUNTU_VERSION=$(lsb_release -rs)
 
 # Update package list and install .NET SDK if it's not installed
 if ! command -v dotnet &> /dev/null
@@ -62,28 +69,19 @@ fi
 sudo mkdir -p $REMOTE_APP_DIR
 sudo rsync -av ~/temp_deploy/ $REMOTE_APP_DIR
 
-# Create the Nginx configuration
-sudo tee $REMOTE_NGINX_CONFIG > /dev/null <<EOL
-server {
-    listen 80;
-    server_name karasi.om;
-
-    location / {
-        proxy_pass http://localhost:5001;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade \$http_upgrade;
-        proxy_set_header Connection "keep-alive";
-        proxy_set_header Host \$host;
-        proxy_cache_bypass \$http_upgrade;
-        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto \$scheme;
-    }
-}
-EOL
+# # Create the Nginx configuration
+# sudo tee $REMOTE_NGINX_CONFIG > /dev/null <<EOL
+# $(cat ~/temp_conf/nginx_template.conf)
+# EOL
 
 # Enable the Nginx configuration
 sudo ln -sf $REMOTE_NGINX_CONFIG $REMOTE_NGINX_CONFIG_LINK
 sudo systemctl restart nginx
+
+
+echo "Create $SERVICE_NAME service"
+sudo systemctl stop $SERVICE_NAME
+sudo systemctl disable $SERVICE_NAME
 
 # Create the systemd service file
 sudo tee $REMOTE_SERVICE_PATH > /dev/null <<EOL
@@ -93,20 +91,24 @@ After=network.target
 
 [Service]
 WorkingDirectory=$REMOTE_APP_DIR
-ExecStart=dotnet $REMOTE_APP_DIR/Shubak_Website.dll --urls=http://localhost:5001
+ExecStart=dotnet $REMOTE_APP_DIR/Shubak_Website.dll
 Restart=always
 RestartSec=10
 SyslogIdentifier=dotnet-$APP_NAME
 User=www-data
 Environment=ASPNETCORE_ENVIRONMENT=Production
+Environment=ASPNETCORE_URLS=http://localhost:5001
 
 [Install]
 WantedBy=multi-user.target
 EOL
 
-# Enable and start the systemd service
+# Enable and start the systemd service $SERVICE_NAME
 sudo systemctl enable $SERVICE_NAME
 sudo systemctl start $SERVICE_NAME
+
+# read logs
+# sudo journalctl -u $SERVICE_NAME -f
 
 echo "Configuration completed successfully."
 EOF
