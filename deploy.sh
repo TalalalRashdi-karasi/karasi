@@ -28,7 +28,7 @@ ssh -i $EC2_KEY_PATH $EC2_USER@$EC2_HOST "mkdir -p ~/temp_conf"
 
 # Copy the build output to the temporary directory on the EC2 instance
 echo "Copying build output to the EC2 instance..."
-rsync -avz "ssh -i $EC2_KEY_PATH" $BUILD_DIR/* $EC2_USER@$EC2_HOST:~/temp_deploy
+rsync -avz -e "ssh -i $EC2_KEY_PATH" $BUILD_DIR/* $EC2_USER@$EC2_HOST:~/temp_deploy
 echo "Copying nginx_template.conf to the EC2 instance..."
 rsync -avz -e "ssh -i $EC2_KEY_PATH" nginx_template.conf $EC2_USER@$EC2_HOST:~/temp_conf/nginx_template.conf
 

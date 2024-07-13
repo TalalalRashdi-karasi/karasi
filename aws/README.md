@@ -3,6 +3,12 @@
 ```sh
 chmod 400 LightsailDefaultKey-ap-southeast-1.pem
 ssh -i 'LightsailDefaultKey-ap-southeast-1.pem'  ubuntu@18.141.208.65 
+
+
+
+ssh -i /Users/talal/ticketApp/aws/LightsailDefaultKey-ap-southeast-1.pem ubuntu@18.141.208.65
+
+chmod 600 /Users/talal/ticketApp/aws/LightsailDefaultKey-ap-southeast-1.pem
 ```
 
 - show nginx log
@@ -14,6 +20,7 @@ sudo tail -f /var/log/nginx/access.log
 
 - password
 8gt0Q3SvWHcjEOT&hT}FkR+dfa6*ij^V
+
 
 
 ```ssh
