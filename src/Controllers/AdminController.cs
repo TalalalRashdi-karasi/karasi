@@ -131,7 +131,7 @@ public class AdminController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteEventById ( int eventId){
 
-
+        
 
         var delete = await _eventsRepository.DeleteEventById(eventId);
 

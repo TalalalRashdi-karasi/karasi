@@ -16,6 +16,24 @@
         <link rel="stylesheet" href="~/lib/iconsax/style.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/lib/bootstrap-icons/bootstrap-icons.css" />
 
+                <!-- Google tag (gtag.js) -->
+                <script async src="https://www.googletagmanager.com/gtag/js?id=G-FV8VGCCBS8"></script>
+                <script>
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                
+                  gtag('config', 'G-FV8VGCCBS8');
+                </script>
+
+        <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KMP8JKDZ');</script>
+    <!-- End Google Tag Manager -->
+
         <meta name="google-site-verification" content="kJj2l_am0CgWHAAvods0AA_dGJ7tmKF4AbvNAnoPuV4" />
 
         @{
@@ -50,7 +68,7 @@
 
                            
                             <a class="loginLink" asp-area="" asp-controller="Account" asp-action="Login">
-                                <h5>?تسجيل الدخول</h5>  
+                                <h5>تسجيل الدخول</h5>  
                             </a>
                         <a class="registerLink" asp-area="" asp-controller="Account" asp-action="Register">
                             <h6>او انشئ حساب جديد</h6>
@@ -76,7 +94,10 @@
 
     <body>
 
-
+        <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KMP8JKDZ"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
         <div class="container-fluid">
     
                 <main role="main">
@@ -112,6 +133,7 @@
 
             </footer>
         </div>
+
 
 
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
