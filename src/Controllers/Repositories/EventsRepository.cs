@@ -96,7 +96,7 @@ namespace Shubak_Website.Repositories
 
         public async Task<IReadOnlyList<EventViewModel>> GetAllAsync()
         {
-            var query = "select * from events";
+            var query = "GetAllEvent";
             using var connection = _context.CreateConnection();
             var result = await connection.QueryAsync<EventDto>
             (
@@ -108,7 +108,7 @@ namespace Shubak_Website.Repositories
 
         public async Task<IReadOnlyList<EventViewModel>> GetAllEventsAsync()
         {
-            var query = "select * from events";
+            var query = "GetAllEvent";
             using var connection = _context.CreateConnection();
             var result = await connection.QueryAsync<EventDto>
             (

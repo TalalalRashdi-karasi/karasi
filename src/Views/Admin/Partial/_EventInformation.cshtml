@@ -13,7 +13,6 @@
 
  
 <div class="card mt-3">
-
   <form asp-action="UpdateEvents" asp-controler="Admin" enctype="multipart/form-data" method="post">
   <div class="card-body">
     <div class="d-flex  bd-highlight mb-3">
@@ -24,6 +23,7 @@
         <button type="submit" class="btn btn-primary">تحديث </button>
         @foreach(var eventData in Model){
 
+          <input value="@eventData.Id" name="Id">
           if(@eventData.IsActive == 0){
 
             <button type="submit" name="IsActive" value="1" class="btn btn-dark">تفعيل</button>
@@ -32,11 +32,7 @@
           }
 
         }
-          
-        
-     
-            <input hidden name="Id" value="@evID">
-        
+
       </div>
     </div>
     <hr>
@@ -142,37 +138,24 @@
               </div>
             </div>
             
+
+
+
           }
-        }
-        
-            
-            <div id="successMessage" style="display: none;">
-            <label>Form submitted successfully!</label>
+
+          <div class="card-footer">
+            <div class="d-flex">
+              <div class="me-auto">
+                <button type="submit" asp-action="DeleteEventById" asp-controler="Admin" value="@eventData.Id" name="eventId"  class="btn btn-danger" enctype="multipart/form-data" method="post">حذف الفعالية</button>
+              </div>
             </div>
-
-
-    
-    
-
-
-
-
-
+          </div>
+        } 
   </div>
 
-<div class="card-footer">
-  <div class="d-flex">
-    <div class="me-auto">
-      <button type="submit" asp-action="DeleteEventById" asp-controler="Admin" value="3" name="eventId"  class="btn btn-danger" enctype="multipart/form-data" method="post">حذف الفعالية</button>
-    </div>
-  </div>
-</div>
+
 
   </form> 
-
-
-
-
 </div>
 
 
