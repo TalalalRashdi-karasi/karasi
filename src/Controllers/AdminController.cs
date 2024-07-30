@@ -10,24 +10,33 @@ using Shubak_Website.Models;
 using Shubak_Website.Repositories;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Authorization;
+using IdentityServer4.Validation;
+using ZXing.QrCode;
+using Shubak_Website.Context;
 
 
 namespace Shubak_Website.Controllers;
 
-public class AdminController : Controller
+public class AdminController : Controller 
 {
 
-   
+
+
+    private readonly QRCodeService _qrCodeService;
     private readonly EventsRepository _eventsRepository;
     private readonly TicketsRepository _ticketsRepository;
 
     private readonly ILogger<AdminController> _logger;
 
     public AdminController(
+       
+       QRCodeService qrCodeService,
         TicketsRepository ticketsRepository,
         EventsRepository eventsRepository,
         ILogger<AdminController> logger)
     {
+       
+       _qrCodeService = qrCodeService;
         _eventsRepository = eventsRepository;
         _ticketsRepository = ticketsRepository;
         _logger = logger;
@@ -107,6 +116,9 @@ public class AdminController : Controller
     public async Task<IActionResult> AddNewEvent([FromForm] EventFormModel addevent)
     {
 
+        var url = "www.google.com";
+
+        var QrCodeGet = _qrCodeService.GenerateQRCode(url);
 
         if (!ModelState.IsValid)
         {
@@ -116,6 +128,7 @@ public class AdminController : Controller
 
         }
         else
+        
         {
             await _eventsRepository.AddAsync(addevent.MapToDto());
 
@@ -131,7 +144,7 @@ public class AdminController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteEventById ( int eventId){
 
-        
+
 
         var delete = await _eventsRepository.DeleteEventById(eventId);
 

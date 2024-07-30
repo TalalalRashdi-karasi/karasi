@@ -53,6 +53,8 @@ builder.Services.AddSingleton<TicketsRepository>();
 builder.Services.AddSingleton<EventsRepository>();
 builder.Services.AddSingleton<FirebaseAuthService>();
 builder.Services.AddSingleton<CalendarService>();
+
+builder.Services.AddSingleton<QRCodeService>();
 builder.Services.AddSingleton<IUsersRepository , UsersRepository>();
 
 builder.Services.AddRazorPages()

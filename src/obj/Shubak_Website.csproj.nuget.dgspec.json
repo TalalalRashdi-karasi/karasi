@@ -102,6 +102,10 @@
               "target": "Package",
               "version": "[2.1.0, )"
             },
+            "QRCoder": {
+              "target": "Package",
+              "version": "[1.6.0, )"
+            },
             "Recombee.ApiClient": {
               "target": "Package",
               "version": "[4.1.0, )"
@@ -110,9 +114,17 @@
               "target": "Package",
               "version": "[6.6.2, )"
             },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[9.0.0-preview.6.24327.6, )"
+            },
             "ThawaniPaySDK": {
               "target": "Package",
               "version": "[1.1.7, )"
+            },
+            "ZXing.Net": {
+              "target": "Package",
+              "version": "[0.16.9, )"
             }
           },
           "imports": [
