@@ -1170,6 +1170,19 @@
           }
         }
       },
+      "Microsoft.IO.RecyclableMemoryStream/3.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Microsoft.IO.RecyclableMemoryStream.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.IO.RecyclableMemoryStream.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Net.Http.Headers/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -1872,6 +1885,45 @@
             "assetType": "native",
             "rid": "ubuntu.16.10-x64"
           }
+        }
+      },
+      "SixLabors.ImageSharp/3.1.5": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/SixLabors.ImageSharp.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/SixLabors.ImageSharp.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/_._": {}
+        }
+      },
+      "SixLabors.ImageSharp.Web/3.1.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.IO.RecyclableMemoryStream": "3.0.1",
+          "SixLabors.ImageSharp": "3.1.5"
+        },
+        "compile": {
+          "lib/net6.0/SixLabors.ImageSharp.Web.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/SixLabors.ImageSharp.Web.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ],
+        "build": {
+          "build/SixLabors.ImageSharp.Web.props": {}
         }
       },
       "Swashbuckle.AspNetCore/6.6.2": {
@@ -5086,6 +5138,24 @@
         "microsoft.identitymodel.tokens.nuspec"
       ]
     },
+    "Microsoft.IO.RecyclableMemoryStream/3.0.1": {
+      "sha512": "s/s20YTVY9r9TPfTrN5g8zPF1YhwxyqO6PxUkrYTGI2B+OGPe9AdajWZrLhFqXIvqIW23fnUE4+ztrUWNU1+9g==",
+      "type": "package",
+      "path": "microsoft.io.recyclablememorystream/3.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net6.0/Microsoft.IO.RecyclableMemoryStream.dll",
+        "lib/net6.0/Microsoft.IO.RecyclableMemoryStream.xml",
+        "lib/netstandard2.0/Microsoft.IO.RecyclableMemoryStream.dll",
+        "lib/netstandard2.0/Microsoft.IO.RecyclableMemoryStream.xml",
+        "lib/netstandard2.1/Microsoft.IO.RecyclableMemoryStream.dll",
+        "lib/netstandard2.1/Microsoft.IO.RecyclableMemoryStream.xml",
+        "microsoft.io.recyclablememorystream.3.0.1.nupkg.sha512",
+        "microsoft.io.recyclablememorystream.nuspec"
+      ]
+    },
     "Microsoft.Net.Http.Headers/2.2.0": {
       "sha512": "iZNkjYqlo8sIOI0bQfpsSoMTmB/kyvmV2h225ihyZT33aTp48ZpF6qYnXxzSXmHt8DpBAwBTX+1s1UFLbYfZKg==",
       "type": "package",
@@ -5995,6 +6065,38 @@
         "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
         "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.nuspec",
         "runtimes/ubuntu.16.10-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
+      ]
+    },
+    "SixLabors.ImageSharp/3.1.5": {
+      "sha512": "lNtlq7dSI/QEbYey+A0xn48z5w4XHSffF8222cC4F4YwTXfEImuiBavQcWjr49LThT/pRmtWJRcqA/PlL+eJ6g==",
+      "type": "package",
+      "path": "sixlabors.imagesharp/3.1.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "build/SixLabors.ImageSharp.props",
+        "lib/net6.0/SixLabors.ImageSharp.dll",
+        "lib/net6.0/SixLabors.ImageSharp.xml",
+        "sixlabors.imagesharp.128.png",
+        "sixlabors.imagesharp.3.1.5.nupkg.sha512",
+        "sixlabors.imagesharp.nuspec"
+      ]
+    },
+    "SixLabors.ImageSharp.Web/3.1.3": {
+      "sha512": "lk6y7QYcJKR0VZV8m//zJ3NZNdvXuyDSY/CpaL/Ps11v9iWt7KZUzAsNmOZpvGFDpsjFdPA0FNhHftRfUy696Q==",
+      "type": "package",
+      "path": "sixlabors.imagesharp.web/3.1.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "build/SixLabors.ImageSharp.Web.props",
+        "lib/net6.0/SixLabors.ImageSharp.Web.dll",
+        "lib/net6.0/SixLabors.ImageSharp.Web.xml",
+        "sixlabors.imagesharp.web.128.png",
+        "sixlabors.imagesharp.web.3.1.3.nupkg.sha512",
+        "sixlabors.imagesharp.web.nuspec"
       ]
     },
     "Swashbuckle.AspNetCore/6.6.2": {
@@ -10067,6 +10169,7 @@
       "NETCore.MailKit >= 2.1.0",
       "QRCoder >= 1.6.0",
       "Recombee.ApiClient >= 4.1.0",
+      "SixLabors.ImageSharp.Web >= 3.1.3",
       "Swashbuckle.AspNetCore >= 6.6.2",
       "System.Drawing.Common >= 9.0.0-preview.6.24327.6",
       "ThawaniPaySDK >= 1.1.7",
@@ -10182,6 +10285,10 @@
           "Recombee.ApiClient": {
             "target": "Package",
             "version": "[4.1.0, )"
+          },
+          "SixLabors.ImageSharp.Web": {
+            "target": "Package",
+            "version": "[3.1.3, )"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",

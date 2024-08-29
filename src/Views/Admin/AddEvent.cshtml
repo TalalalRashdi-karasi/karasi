@@ -30,7 +30,7 @@
 
   <div class="d-flex">
     <div>
-      <h6> تم إضافة الفعالية بنجاح</h6>
+      <h6> @ViewData["Done"]</h6>
       <h5>اسم الفعالية كامل هنا</h5>
     </div>
 
@@ -49,21 +49,23 @@
       <hr>
      
 
-      <form class=" justify-content-end" id="AddNewEvent" action="/Admin/AddNewEvent" enctype="multipart/form-data" method="post">
+      <form class=" justify-content-end" id="AddNewEvent" action="/Admin/AddEvent" enctype="multipart/form-data" method="post">
 
+          @Html.AntiForgeryToken()
         <input type="text" value="@UserToken" hidden name="UserId">
         <div class="row  g-2">
         <div class="mb-3">
           <label for="formFile" class="form-label">الإعلان التسويقي للفعالية </label>
           <img id="displayed-image" class="UploadImageAction" alt="Uploaded Image">
           <input   class="form-control" type="file" name="EvImage" id="upload-input" onchange="displayImage()">
-        
+           <span style="color: red;">@Html.ValidationMessageFor(model => model.EvImage) </span> 
           
         </div>
         <div class="row g-2">
           <div class="col-9">
             <div class="form-floating custom-class mb-3">
               <input type="text" name="EventName" class="form-control form-control-lg" id="floatingInput" placeholder="Event Name">
+               <span style="color: red;">@Html.ValidationMessageFor(model => model.EventName) </span> 
               <label for="floatingInput">اسم الفعالية </label>
             </div>
           </div>
@@ -79,12 +81,13 @@
               <label for="floatingSelectGrid">ما هو مجال الفعالية ؟</label>
             </div>
           </div>
-        
+         <span style="color: red;">@Html.ValidationMessageFor(model => model.EventType) </span> 
         </div>
           <div class="form-floating custom-class mb-3">
               <textarea name="AboutEvent" type="text" class="form-control " placeholder="اكتب عن الفعالية بشكل عام" id="floatingTextarea2" style="height: 200px"></textarea>
               <label for="floatingTextarea2">نبذه توضحية عن الفعالية </label>
             </div>
+             <span style="color: red;">@Html.ValidationMessageFor(model => model.AboutEvent) </span> 
         </div>
         
         <div class="row mb-3 g-2">
@@ -93,6 +96,7 @@
               <input name="SeatCount" type="number" class="form-control " id="floatingInputGrid" placeholder="عدد المقاعد" >
               <label for="floatingInputGrid">كم عدد المقاعد المتاحة ؟</label>
             </div>
+              <span style="color: red;">@Html.ValidationMessageFor(model => model.SeatCount) </span> 
           </div>
           
           <div class="col-md">
@@ -104,6 +108,7 @@
               </select>
               <label for="floatingSelectGrid">من الفيئة المستدفه ؟</label>
             </div>
+            <span style="color: red;">@Html.ValidationMessageFor(model => model.Target) </span> 
           </div>
         </div>
         
@@ -113,12 +118,14 @@
                   <input name="EventPlace" type="text"  class="form-control" id="floatingInput" placeholder="مكان الفعالية">
                   <label for="floatingInput">اين ستقام الفعالية ؟</label>
               </div>
+               <span style="color: red;">@Html.ValidationMessageFor(model => model.EventPlace) </span> 
           </div>
           <div class="col-md">
               <div class="form-floating custom-class">
                   <input name="EventPrice" type="text"  class="form-control  form-control-lg" id="floatingInput" placeholder="مبلغ المشاركة">
                   <label for="floatingInput">تكلفة المشاركة في الفعالية</label>
               </div>
+                 <span style="color: red;">@Html.ValidationMessageFor(model => model.EventPrice) </span> 
           </div>
         </div>
         
@@ -128,12 +135,14 @@
                   <input type="date" name="EventDate" class="form-control  form-control-lg" id="floatingInput" placeholder="تاريخ الفعالية">
                   <label for="floatingInput">تاريخ الفعالية</label>
               </div>
+               <span style="color: red;">@Html.ValidationMessageFor(model => model.EventDate) </span> 
           </div>
           <div class="col-md">
               <div class="form-floating mb-3 custom-class">
                   <input type="time" name="EventTime" class="form-control  form-control-lg" id="floatingInput" placeholder="توقيت الفعالية">
                   <label for="floatingInput">توقيت الفعالية</label>
               </div>
+                <span style="color: red;">@Html.ValidationMessageFor(model => model.EventTime) </span> 
           </div>
         </div>
         

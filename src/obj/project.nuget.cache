@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "DBnyw8SVBrk=",
+  "dgSpecHash": "zCarHvvsFkE=",
   "success": true,
   "projectFilePath": "/Users/talal/ticketApp/src/Shubak_Website.csproj",
   "expectedPackageFiles": [
@@ -67,6 +67,7 @@
     "/Users/talal/.nuget/packages/microsoft.identitymodel.protocols/6.35.0/microsoft.identitymodel.protocols.6.35.0.nupkg.sha512",
     "/Users/talal/.nuget/packages/microsoft.identitymodel.protocols.openidconnect/6.35.0/microsoft.identitymodel.protocols.openidconnect.6.35.0.nupkg.sha512",
     "/Users/talal/.nuget/packages/microsoft.identitymodel.tokens/6.35.0/microsoft.identitymodel.tokens.6.35.0.nupkg.sha512",
+    "/Users/talal/.nuget/packages/microsoft.io.recyclablememorystream/3.0.1/microsoft.io.recyclablememorystream.3.0.1.nupkg.sha512",
     "/Users/talal/.nuget/packages/microsoft.net.http.headers/2.2.0/microsoft.net.http.headers.2.2.0.nupkg.sha512",
     "/Users/talal/.nuget/packages/microsoft.netcore.jit/1.0.2/microsoft.netcore.jit.1.0.2.nupkg.sha512",
     "/Users/talal/.nuget/packages/microsoft.netcore.platforms/3.1.0/microsoft.netcore.platforms.3.1.0.nupkg.sha512",
@@ -115,6 +116,8 @@
     "/Users/talal/.nuget/packages/runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl/4.3.2/runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
     "/Users/talal/.nuget/packages/runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl/4.3.2/runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
     "/Users/talal/.nuget/packages/runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl/4.3.2/runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
+    "/Users/talal/.nuget/packages/sixlabors.imagesharp/3.1.5/sixlabors.imagesharp.3.1.5.nupkg.sha512",
+    "/Users/talal/.nuget/packages/sixlabors.imagesharp.web/3.1.3/sixlabors.imagesharp.web.3.1.3.nupkg.sha512",
     "/Users/talal/.nuget/packages/swashbuckle.aspnetcore/6.6.2/swashbuckle.aspnetcore.6.6.2.nupkg.sha512",
     "/Users/talal/.nuget/packages/swashbuckle.aspnetcore.swagger/6.6.2/swashbuckle.aspnetcore.swagger.6.6.2.nupkg.sha512",
     "/Users/talal/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.6.2/swashbuckle.aspnetcore.swaggergen.6.6.2.nupkg.sha512",

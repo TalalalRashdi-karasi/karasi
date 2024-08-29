@@ -3,7 +3,7 @@
 # Variables
 APP_NAME="karasi.om"
 PROJECT_PATH="src/Shubak_Website.csproj"
-BUILD_DIR="src/bin/Release/net7.0/linux-x64/publish"
+BUILD_DIR="src/bin/Release/net8.0/linux-x64/publish"
 EC2_USER="ubuntu"
 EC2_HOST="18.141.208.65"
 EC2_KEY_PATH="aws/LightsailDefaultKey-ap-southeast-1.pem"
@@ -12,7 +12,7 @@ REMOTE_NGINX_CONFIG="/etc/nginx/sites-available/$APP_NAME"
 REMOTE_NGINX_CONFIG_LINK="/etc/nginx/sites-enabled/$APP_NAME"
 SERVICE_NAME="karasi-om.service"
 REMOTE_SERVICE_PATH="/etc/systemd/system/$SERVICE_NAME"
-DOTNET_VERSION="7.0"
+DOTNET_VERSION="8.0"
 
 # Build the .NET Core application
 echo "Building the .NET Core application..."

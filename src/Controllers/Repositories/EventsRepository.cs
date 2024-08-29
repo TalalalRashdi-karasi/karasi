@@ -33,8 +33,8 @@ namespace Shubak_Website.Repositories
                 (
                 "AddEvent", new
                 {
-
-                    EvImage = entity.EvImage,
+                    entity.ImagePath,
+                   // entity.EvImage,
                      //entity.EvImage?.ConvertToByteArray(),
                     // entity.EvImage,
                     entity.EventName,
@@ -189,7 +189,7 @@ namespace Shubak_Website.Repositories
                 "ْUpdateEvent", new
                 {
 
-                    EvImage = entity.EvImage,
+                    //EvImage = entity.EvImage,
                      //entity.EvImage?.ConvertToByteArray(),
                     // entity.EvImage,
                     entity.EventName ,
@@ -203,6 +203,7 @@ namespace Shubak_Website.Repositories
                     entity.SeatCount,
                     entity.EventType,
                     entity.IsActive,
+                    entity.ImagePath,
                     entity.Id
                     
 

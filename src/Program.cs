@@ -38,6 +38,8 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
             config.SlidingExpiration = true;
         });
 
+
+
 builder.Services.AddMvc()
     .AddSessionStateTempDataProvider()
     .AddRazorPagesOptions(options =>
@@ -53,8 +55,6 @@ builder.Services.AddSingleton<TicketsRepository>();
 builder.Services.AddSingleton<EventsRepository>();
 builder.Services.AddSingleton<FirebaseAuthService>();
 builder.Services.AddSingleton<CalendarService>();
-
-builder.Services.AddSingleton<QRCodeService>();
 builder.Services.AddSingleton<IUsersRepository , UsersRepository>();
 
 builder.Services.AddRazorPages()
@@ -85,6 +85,7 @@ builder.Services.AddMvc().AddRazorPagesOptions(options =>
         
 });
 
+
 var app = builder.Build();
 
 app.UseHttpsRedirection();
@@ -102,6 +103,22 @@ app.UseCookiePolicy(new CookiePolicyOptions
     MinimumSameSitePolicy = SameSiteMode.None,
     Secure = CookieSecurePolicy.Always
 });
+
+// Configure middleware
+if (!app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage(); // Detailed errors in development
+}
+else
+{
+    app.UseExceptionHandler("/Home/Error"); // Generic error handler in production
+
+    // HSTS (HTTP Strict Transport Security) to enforce HTTPS
+    app.UseHsts();
+
+    // Optionally, configure a custom status code handler
+    app.UseStatusCodePagesWithReExecute("/Home/StatusCode", "?code={0}");
+}
 
 // add health check
 app.UseHealthChecks("/health");

@@ -45,39 +45,40 @@
             <div class="d-flex p-2 bd-highlight mt-2 bg-light border-raduis">
 
 
-                    <div class="col-auto text-end">
+                    <div class="col-auto text-end m-3">
 
 
                         @if (User.Identity.IsAuthenticated)
                         {
 
-
-                            <h5 class="loginLink">
-                                <h5>مرحبا، @User.Identity.Name</h5>  
-                            </h5>
-
-                            <a class="registerLink" asp-area="" asp-controller="Account" asp-action="Logout">
-                                <h6>تسجيل خروج</h6>
-                            </a>
-
-
+                         <button type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop" class="btn btn-light border">
+                                       مرحبا، @User.Identity.Name
+                          </button>
 
                         }
                         else{
 
 
-                           
-                            <a class="loginLink" asp-area="" asp-controller="Account" asp-action="Login">
-                                <h5>تسجيل الدخول</h5>  
-                            </a>
-                        <a class="registerLink" asp-area="" asp-controller="Account" asp-action="Register">
-                            <h6>او انشئ حساب جديد</h6>
-                        </a>
+                            <button class="btn border" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTopUser" aria-controls="offcanvasTop">
+                                <i class="isax isax-user"></i>
 
+                            </button>
                           }
-                    </div>
 
-                <div class="me-auto p-2 bd-highlight">
+                    @if (User.Claims.Any(c => c.Type == "UserType" && c.Value == "Company"))
+                {
+                  <a asp-action="index" asp-controller="Admin" class="btn text-white bg-dark ms-5">انشئ تذاكر مجاناً</a>
+             
+                }
+                    </div>
+                    
+
+
+                     <div class="me-auto p-2 bd-highlight">
+
+
+
+                        
                     <a asp-controller="Home" asp-action="index">
                       <img src="/assets/KarasiLogo.svg" width="49" height="49"></img> 
                    
@@ -88,8 +89,106 @@
         </div>
 
     }
+
+
+
+<div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTopUser" aria-labelledby="offcanvasTopLabel">
+  <div class="offcanvas-header">
+    <h5 id="offcanvasTopLabel">مرحبا بك في منصة كراسي</h5>
+
+
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+  <div class="row">
+        <div class="col-6">
+<div class="card mb-3" >
+
+
+      <div class="card-body">
+        <h5 class="card-title">لدي حساب </h5>
+        <p class="card-text">تسجيل الدخول يبقيك اقرب من الفعاليات </p>
+                                   <a class=" btn border loginLink" asp-area="" asp-controller="Account" asp-action="Login">
+                               تسجيل الدخول
+                            </a>
+      </div>
+
+
+</div>
+        </div>
+        <div class="col-6">
+<div class="card mb-3" >
+
+  
+      <div class="card-body">
+        <h5 class="card-title"> ليس لدي حساب  </h5>
+        <p class="card-text">ببساطة لتتمكن من نشر الفعاليات و شراء التذاكر </p>
+                               <a class=" btn registerLink border" asp-area="" asp-controller="Account" asp-action="Register">
+                            <h6> انشئ حساب جديد</h6>
+                        </a>
+      </div>
+   
+
+</div>
+        </div>
+    </div>
+
+  
+  </div>
+</div>
+
+<div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+  <div class="offcanvas-header">
+    <h5 id="offcanvasTopLabel">الصفحة الشخصية</h5>
+
     
-    </head>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+
+    <div class="row">
+        <div class="col-lg-6">
+            <h3>مرحبا بعودتك</h3>
+            <p style="font-color:rgb(166, 165, 165) !important">طلال الراشدي</p>
+            <ul class="list-unstyled">
+                <li >
+                   <span><i class="isax isax-arrow-left ms-2"></i>لوحة التحكم</span>
+                    
+                </li>
+                <li>
+                    <a class="registerLink" asp-area="" asp-controller="Account" asp-action="Logout">
+                             <span><i class="isax isax-arrow-left ms-2"></i>تسجيل الخروج</span>
+                    </a>
+                   
+                </li>
+            </ul>
+        </div>
+        <div class="col-lg-6">
+            <h3>التذاكر الخاصة بي</h3>
+            <p>ليس لديك فعاليات قادمة</p>
+        </div>
+    </div>
+     @if (User.Identity.IsAuthenticated)
+    {
+    <div class="d-flex">
+
+        
+        
+    <div class="me-auto">
+     <a class="registerLink" asp-area="" asp-controller="Account" asp-action="Logout">
+      <h6>تسجيل خروج</h6>
+     </a>
+
+        </div>
+    </div>
+        }
+  </div>
+</div>
+
+
+
+    
+</head>
 
 
     <body>

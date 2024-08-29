@@ -13,6 +13,9 @@ using Microsoft.AspNetCore.Authorization;
 using IdentityServer4.Validation;
 using ZXing.QrCode;
 using Shubak_Website.Context;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Formats.Webp;
+using SixLabors.ImageSharp.Processing;
 
 
 namespace Shubak_Website.Controllers;
@@ -21,8 +24,6 @@ public class AdminController : Controller
 {
 
 
-
-    private readonly QRCodeService _qrCodeService;
     private readonly EventsRepository _eventsRepository;
     private readonly TicketsRepository _ticketsRepository;
 
@@ -30,13 +31,11 @@ public class AdminController : Controller
 
     public AdminController(
        
-       QRCodeService qrCodeService,
         TicketsRepository ticketsRepository,
         EventsRepository eventsRepository,
         ILogger<AdminController> logger)
     {
        
-       _qrCodeService = qrCodeService;
         _eventsRepository = eventsRepository;
         _ticketsRepository = ticketsRepository;
         _logger = logger;
@@ -65,7 +64,7 @@ public class AdminController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> UpdateEvents([FromForm] EventFormModel addevent){
+    public async Task<IActionResult> UpdateEvents(  EventFormModel addevent){
 
        var newvalue = await _eventsRepository.UpdateEventAsync(addevent.MapToDto());
 
@@ -112,33 +111,82 @@ public class AdminController : Controller
         return View();
     }
 
+
     [HttpPost]
-    public async Task<IActionResult> AddNewEvent([FromForm] EventFormModel addevent)
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> AddEvent(EventFormModel addevent)
+{
+    if (!ModelState.IsValid)
     {
-
-        var url = "www.google.com";
-
-        var QrCodeGet = _qrCodeService.GenerateQRCode(url);
-
-        if (!ModelState.IsValid)
-        {
-
-            Response.StatusCode = (int)HttpStatusCode.BadRequest;
-            return Json("Model is not valid");
-
-        }
-        else
-        
-        {
-            await _eventsRepository.AddAsync(addevent.MapToDto());
-
-            ModelState.Clear();
-        }
-
-        return RedirectToAction("Index");
+        Response.StatusCode = (int)HttpStatusCode.BadRequest;
+        return View(addevent);
     }
 
+    try{
 
+    // Handle image upload
+    if (addevent.EvImage != null && addevent.EvImage.Length > 0)
+    {
+        var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
+        var extension = Path.GetExtension(addevent.EvImage.FileName).ToLowerInvariant();
+
+        if (!allowedExtensions.Contains(extension))
+        {
+            ModelState.AddModelError("EvImage", "Invalid file type");
+            return View(addevent);
+        }
+
+        var uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "var/www/html/img/");
+
+        if (!Directory.Exists(uploadPath))
+            Directory.CreateDirectory(uploadPath);
+
+        var webpFileName = GetNextFileName(uploadPath, ".webp");
+        var filePath = Path.Combine(uploadPath, webpFileName);
+
+        using (var image = await Image.LoadAsync(addevent.EvImage.OpenReadStream()))
+        {
+            var encoder = new WebpEncoder();
+            await image.SaveAsync(filePath, encoder);
+        }
+
+        addevent.ImagePath = "/img/" + Path.GetFileName(filePath);  // Save the relative path in the model
+    }
+
+    // Add event to the database
+    await _eventsRepository.AddAsync(addevent.MapToDto());
+
+    ViewData["Done"] = "تم حفظ الفعالية";
+    ModelState.Clear();
+    }catch(Exception ex){
+
+    // Log the exception (optional)
+    _logger.LogError(ex, "Error occurred while saving the event.");
+
+    // Handle the error gracefully
+    ModelState.AddModelError(string.Empty, "An error occurred while processing your request. Please try again later.");
+
+    // Return the view with the error message
+    return View(addevent);
+
+    }
+
+    return View();
+}
+
+
+     private string GetNextFileName(string uploadPath, string extension)
+    {
+        var files = Directory.GetFiles(uploadPath, $"*{extension}")
+                             .Select(f => Path.GetFileNameWithoutExtension(f))
+                             .Where(f => int.TryParse(f, out _))
+                             .Select(f => int.Parse(f))
+                             .OrderBy(f => f)
+                             .ToList();
+
+        var nextNumber = (files.Count > 0) ? files.Last() + 1 : 1;
+        return nextNumber.ToString("D3") + extension;
+    }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
@@ -150,4 +198,7 @@ public class AdminController : Controller
 
         return RedirectToAction("MyEventList");
     }
+
+
+
 }

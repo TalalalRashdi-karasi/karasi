@@ -111,6 +111,10 @@
               "target": "Package",
               "version": "[4.1.0, )"
             },
+            "SixLabors.ImageSharp.Web": {
+              "target": "Package",
+              "version": "[3.1.3, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.6.2, )"
