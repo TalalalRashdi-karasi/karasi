@@ -106,8 +106,6 @@ public class AdminController : Controller
             var UserToken =  HttpContext.Session.GetString("_UserToken");
              ViewData["UserTokenForAdminPage"]= UserToken;
         
-
-
         return View();
     }
 

@@ -144,24 +144,25 @@ app.UseEndpoints(endpoints =>
     endpoints.MapRazorPages();
 });
 
-app.Use(async (context, next) =>
-{
-    var contentSecurityPolicy = new StringBuilder();
-    var googleJs = "https://www.googletagmanager.com https://www.google-analytics.com https://www.google.com/ https://www.gstatic.com/";
+// app.Use(async (context, next) =>
 
-    contentSecurityPolicy.Append("default-src https: 'self' 'unsafe-inline';");
-    contentSecurityPolicy.Append($"script-src 'self' 'unsafe-inline' {googleJs};");
-    contentSecurityPolicy.Append("img-src 'self' data: https: https://www.google-analytics.com;");
-    contentSecurityPolicy.Append("style-src 'self' 'unsafe-inline' ;");
-    contentSecurityPolicy.Append("media-src 'self' https: data: ;");
-    context.Response.Headers.Add("Content-Security-Policy", contentSecurityPolicy.ToString());
-    context.Response.Headers.Add("X-Xss-Protection", "1; mode=block");
-    context.Response.Headers.Add("X-Content-Type-Options", "nosniff");
-    context.Response.Headers.Add("Referrer-Policy", "no-referrer");
-    context.Response.Headers.Add("X-Frame-Options", "DENY");
 
-    context.Response.Headers.Add("Feature-Policy", "geolocation 'none';midi 'none';sync-xhr 'none';microphone 'none';camera 'none';magnetometer 'none';gyroscope 'none';fullscreen 'self';payment 'none';");
+//     var contentSecurityPolicy = new StringBuilder();
+//     var googleJs = "https://www.googletagmanager.com https://www.google-analytics.com https://www.google.com/ https://www.gstatic.com/";
 
-    await next.Invoke();
-});
+//     contentSecurityPolicy.Append("default-src https: 'self' 'unsafe-inline';");
+//     contentSecurityPolicy.Append($"script-src 'self' 'unsafe-inline' {googleJs};");
+//     contentSecurityPolicy.Append("img-src 'self' data: https: https://www.google-analytics.com;");
+//     contentSecurityPolicy.Append("style-src 'self' 'unsafe-inline' ;");
+//     contentSecurityPolicy.Append("media-src 'self' https: data: ;");
+//     context.Response.Headers.Add("Content-Security-Policy", contentSecurityPolicy.ToString());
+//     context.Response.Headers.Add("X-Xss-Protection", "1; mode=block");
+//     context.Response.Headers.Add("X-Content-Type-Options", "nosniff");
+//     context.Response.Headers.Add("Referrer-Policy", "no-referrer");
+//     context.Response.Headers.Add("X-Frame-Options", "DENY");
+
+//     context.Response.Headers.Add("Feature-Policy", "geolocation 'none';midi 'none';sync-xhr 'none';microphone 'none';camera 'none';magnetometer 'none';gyroscope 'none';fullscreen 'self';payment 'none';");
+
+//     await next.Invoke();
+// });
 app.Run();
