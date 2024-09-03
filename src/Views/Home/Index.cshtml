@@ -82,7 +82,7 @@
                                   <h3 class="text-black pe-3 mb-3">@ev.EventName</h3>
                                   <div class="d-flex me-3">
                                       <h6  class=" d-inline-block place-style" style="font-weight:normal">@ev.EventPlace</h6>
-                                      <h6 class=" d-inline-block place-style me-3">@ev.EventDate</h6>
+                                      <h6 class=" d-inline-block place-style me-3"> @(ev.EventDate.HasValue ? ev.EventDate.Value.ToString("yyyy-MM-dd") : "")</h6>
                                   </div>
                                  
                                 </div>

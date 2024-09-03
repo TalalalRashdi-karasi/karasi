@@ -105,7 +105,7 @@ app.UseCookiePolicy(new CookiePolicyOptions
 });
 
 // Configure middleware
-if (!app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage(); // Detailed errors in development
 }

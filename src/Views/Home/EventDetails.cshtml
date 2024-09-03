@@ -78,13 +78,13 @@ var SeatError = TempData["LargeNoOfSeat"];
                         <div class="informationBox  p-2 mt-2">
                             <i class="isax isax-calendar-tick"></i>  | <span> تاريخ الفعالية  </span> 
                            
-                            <h4 class="me-4">@Model.EventDate</h4>
+                            <h4 class="me-4">@(Model.EventDate.HasValue ? Model.EventDate.Value.ToString("yyyy-MM-dd") : "")</h4>
                             <input class="form-control input-style text-end" hidden  type="datetime" name="EventDate" ReadOnly="true" id="EventDate" value="@Model.EventDate" >
                         </div>
 
                         <div class="informationBox text-end p-2 mt-2">
                             <i class="isax isax-clock"></i>  | <span>  توقيت الفعالية  </span> 
-                            <h4 class="me-4">@Model.EventTime</h4>
+                            <h4 class="me-4">@(Model.EventTime.HasValue ? Model.EventTime.Value.ToString("hh:mm tt") : "")</h4>
     
                             <input class="form-control input-style text-end" hidden type="datetime" name="EventTime" ReadOnly="true" id="EventTime" value="@Model.EventTime" >
                         </div>
